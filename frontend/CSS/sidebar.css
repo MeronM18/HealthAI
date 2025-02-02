@@ -1,0 +1,49 @@
+.grid-container{
+  background-color: lightblue;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  min-height: 100vh;
+  min-width: 100vh;
+}
+
+nav{
+  background-color: lightcoral;
+  position: sticky;
+  display: grid;
+  grid-column: span 2;
+  grid-template-columns: repeat(6, 1fr);
+  max-width: 250px;
+
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 2px solid white;
+}
+
+.toggle-menu{
+  display: flex;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.menu-bar{
+  grid-column: 1 / span 1;
+}
+
+.menu-bar .menu-button{
+  background-color: transparent;
+  border: none;
+}
+
+.menu-bar .menu-icon{
+  font-size: 24px;
+}
+
+.title{
+  font-size: 20px;
+  grid-column: 3 / span 2;
+}
