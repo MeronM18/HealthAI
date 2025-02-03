@@ -1,49 +1,116 @@
-.grid-container{
-  background-color: lightblue;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  min-height: 100vh;
-  min-width: 100vh;
-}
-
 nav{
-  background-color: lightcoral;
-  position: sticky;
-  display: grid;
+  background-color:  rgb(47, 61, 80);
+
+  grid-row: 1 / span 12;
   grid-column: span 2;
-  grid-template-columns: repeat(6, 1fr);
-  max-width: 250px;
 
-  padding: 15px;
-  margin: 10px;
-  border-radius: 5px;
-  border: 2px solid white;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(12, 1fr);
 }
 
-.toggle-menu{
+nav .topbar{
+  background-color: rgb(40, 53, 71);
+  grid-column: span 4;
+  grid-row: span 1;
+
   display: flex;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-
-  text-align: center;
-  justify-content: center;
-  vertical-align: middle;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
 
-.menu-bar{
-  grid-column: 1 / span 1;
+nav a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
 }
 
-.menu-bar .menu-button{
-  background-color: transparent;
+nav .logo{
+  width: 80px;
+}
+
+nav .title{
+  font-size: 38px;
+  margin-left: 10px;
+}
+
+nav .dark-light-button{
+  background-color: rgb(36, 46, 59);
   border: none;
+  border-radius: 4px;
+  padding: 10px;
+  margin-right: 5px;
+  transition: opacity 0.15s;
 }
 
-.menu-bar .menu-icon{
-  font-size: 24px;
+nav .dark-light-button:hover{
+  cursor: pointer;
+  opacity: 0.8;
 }
 
-.title{
+nav .sun-icon{
   font-size: 20px;
-  grid-column: 3 / span 2;
+  color: white;
+}
+
+nav .navbar-container{
+  grid-column: span 4;
+  grid-row: 3 / span 10;
+  padding: 10px 20px;
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+nav .nav-bars, 
+nav .settings-bars{
+  grid-column: span 4;
+  grid-row: span 1;
+
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+nav .nav-bars,
+nav .settings-bars{
+  transition: color 0.15s, background color 0.15s;
+}
+
+nav .nav-bars:hover,
+nav .settings-bars:hover{
+  color: rgb(214, 208, 208);
+  background-color: rgba(20, 20, 20, 0.815);
+  border-radius: 10px;
+}
+
+nav .nav-bars a,
+nav .settings-bars a{
+  transition: color 0.02s;
+}
+
+nav .nav-bars a:hover, 
+nav .settings-bars a:hover{
+  color: rgb(209, 203, 203);
+}
+
+nav .nav-bars .navbar-icon,
+nav .settings-bars .navbar-icon{
+  font-size: 50px;
+  margin-right: 50px;
+}
+
+nav .nav-bars span,
+nav .settings-bars span{
+  font-size: 28px;
+}
+
+nav .settings-bars{
+  grid-row: 10 / span 1;
 }

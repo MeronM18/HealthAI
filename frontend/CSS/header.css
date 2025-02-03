@@ -1,0 +1,48 @@
+header{
+  border-bottom: 3px solid rgb(180, 245, 253);
+  grid-column: 3 / span 10;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .left-section{
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+header a{
+  display: flex;
+  align-items: center;
+}
+
+header img{
+  max-height: 75px;
+  vertical-align: middle;
+  width: auto;
+}
+
+header h2{
+  font-size: 25px;
+  margin: 0;
+  margin-left: -8px;
+}
+
+header .right-section{
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-right: 30px;
+}
+
+header .rick{
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 8px;
+}

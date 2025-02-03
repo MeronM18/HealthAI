@@ -1,0 +1,6 @@
+main{
+  border: 3px solid pink;
+  grid-column: span 11;
+  grid-row: 2 / span 11;
+  border-radius: 3px;
+}
