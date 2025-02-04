@@ -1,0 +1,18 @@
+:root{
+  --background-color: #FFFFFF;
+  --black-color: #000408;
+  --lightblack-color: #0e1217;
+  --blackgreen-color: #181C14;
+  --gray-color: #62625f;
+  --green-color: #697565;
+  --beige-color: #ECDFCC;
+  --red-color: #8E1616;
+  --lightgray-color: #EEEEEE;
+  --navyblue-color: #0B192C;
+
+  --border-radius-1: 4px;
+  --border-radius-2: 10px;
+  --border-radius-3: 50%;
+
+  --padding-1: 10px 20px;
+}

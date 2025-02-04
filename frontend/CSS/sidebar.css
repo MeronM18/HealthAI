@@ -1,116 +1,18 @@
-nav{
-  background-color:  rgb(47, 61, 80);
+:root{
+  --background-color: #FFFFFF;
+  --black-color: #000408;
+  --lightblack-color: #0e1217;
+  --blackgreen-color: #181C14;
+  --gray-color: #62625f;
+  --green-color: #697565;
+  --beige-color: #ECDFCC;
+  --red-color: #8E1616;
+  --lightgray-color: #EEEEEE;
+  --navyblue-color: #0B192C;
 
-  grid-row: 1 / span 12;
-  grid-column: span 2;
+  --border-radius-1: 4px;
+  --border-radius-2: 10px;
+  --border-radius-3: 50%;
 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-}
-
-nav .topbar{
-  background-color: rgb(40, 53, 71);
-  grid-column: span 4;
-  grid-row: span 1;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
-
-nav a{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  margin: 0;
-  padding: 0;
-}
-
-nav .logo{
-  width: 80px;
-}
-
-nav .title{
-  font-size: 38px;
-  margin-left: 10px;
-}
-
-nav .dark-light-button{
-  background-color: rgb(36, 46, 59);
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  margin-right: 5px;
-  transition: opacity 0.15s;
-}
-
-nav .dark-light-button:hover{
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-nav .sun-icon{
-  font-size: 20px;
-  color: white;
-}
-
-nav .navbar-container{
-  grid-column: span 4;
-  grid-row: 3 / span 10;
-  padding: 10px 20px;
-  
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-}
-
-nav .nav-bars, 
-nav .settings-bars{
-  grid-column: span 4;
-  grid-row: span 1;
-
-  display: flex;
-  align-items: center;
-  padding: 20px 10px;
-}
-
-nav .nav-bars,
-nav .settings-bars{
-  transition: color 0.15s, background color 0.15s;
-}
-
-nav .nav-bars:hover,
-nav .settings-bars:hover{
-  color: rgb(214, 208, 208);
-  background-color: rgba(20, 20, 20, 0.815);
-  border-radius: 10px;
-}
-
-nav .nav-bars a,
-nav .settings-bars a{
-  transition: color 0.02s;
-}
-
-nav .nav-bars a:hover, 
-nav .settings-bars a:hover{
-  color: rgb(209, 203, 203);
-}
-
-nav .nav-bars .navbar-icon,
-nav .settings-bars .navbar-icon{
-  font-size: 50px;
-  margin-right: 50px;
-}
-
-nav .nav-bars span,
-nav .settings-bars span{
-  font-size: 28px;
-}
-
-nav .settings-bars{
-  grid-row: 10 / span 1;
+  --padding-1: 10px 20px;
 }

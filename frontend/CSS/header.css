@@ -1,48 +1,129 @@
+:root{
+  --background-color: #FFFFFF;
+  --black-color: #000408;
+  --lightblack-color: #0e1217;
+  --blackgreen-color: #181C14;
+  --gray-color: #62625f;
+  --green-color: #697565;
+  --beige-color: #ECDFCC;
+  --red-color: #8E1616;
+  --lightgray-color: #EEEEEE;
+  --navyblue-color: #0B192C;
+
+  --border-radius-1: 4px;
+  --border-radius-2: 10px;
+  --border-radius-3: 50%;
+
+  --padding-1: 10px 20px;
+  --padding-2: 3px;
+}
+
 header{
-  border-bottom: 3px solid rgb(180, 245, 253);
-  grid-column: 3 / span 10;
-  border-radius: 3px;
+  grid-column: span 12;
+  background-color: var(--black-color);
+
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+
+  position: relative;
   justify-content: space-between;
 }
 
 header .left-section{
-  max-width: fit-content;
+  height: 100%;
+  overflow: hidden;
+  max-width: 400px;
+  padding: 6px;
+  margin-left: 10px;
+
   display: flex;
-  align-items: center;
   flex-direction: row;
-}
-
-header a{
-  display: flex;
   align-items: center;
 }
 
-header img{
-  max-height: 75px;
+header .menu-button{
+  background-color: var(--black-color);
+  border: 1px solid var(--gray-color);
+  border-radius: var(--border-radius-1);
+  padding: var(--padding-2);
+
+  margin-right: 12px;
+  transition: backgrond-color 0.25s;
+}
+
+header .menu-button:hover{
+  cursor: pointer;
+  background-color: var(--lightblack-color);
+}
+
+header .left-section i{
   vertical-align: middle;
-  width: auto;
+  color: var(--gray-color);
+  font-size: 24px;
+}
+
+header .logo{
+  width: 50px;
+  height: 50px;
+  border-radius: var(--border-radius-3);
+
+  margin-right: 5px;
 }
 
 header h2{
-  font-size: 25px;
-  margin: 0;
-  margin-left: -8px;
+  color: var(--background-color);
+}
+
+header h2 span{
+  color: var(--red-color);
 }
 
 header .right-section{
-  max-width: fit-content;
+  height: 100%;
+  overflow: hidden;
+  max-width: 400px;
+  padding: 10px;
+  margin-right: 10px;
+
   display: flex;
-  align-items: center;
   flex-direction: row;
-  padding-right: 30px;
+  align-items: center;
 }
 
-header .rick{
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 8px;
+header .pfp{
+  width: 35px;
+  height: 35px;
+
+  border-radius: var(--border-radius-3);
+  margin-right: 6px;
+}
+
+header h3{
+  color: var(--background-color);
+  font-size: 15px;
+}
+
+header .drop-button{
+  background-color: var(--black-color);
+  margin: 0;
+  padding: 0;
+}
+
+header .drop-button:hover{
+  cursor: pointer;
+}
+
+header .right-section i{
+  vertical-align: middle;
+  color: var(--gray-color);
+  font-size: 18px;
+  margin-left: 2px;
+
+  transition: opacity 0.1s;
+}
+
+header .right-section i:hover{
+  opacity: 0.6;
 }
