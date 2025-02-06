@@ -16,7 +16,7 @@
 
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-  <script src="/frontend/JS/script.js" defer></script>
+  <script type="text/javascript" src="/frontend/JS/script.js" defer></script>
 
   <title>HealthAI</title>
 </head>
@@ -24,20 +24,53 @@
   <div class="grid-container">
     <header>
       <div class="left-section">
-        <button class="menu-button">
+        <button class="menu-button" id="toggle-btn">
           <i class='bx bx-menu hamburgermenu-icon'></i>
         </button>
-        <img class="logo" src="/frontend/logo/logo1.png">
-        <h2>Health<span class="danger">AI</span></h2>
+        <a href="/frontend/HTML/index.html">
+          <img class="logo" src="/frontend/logo/logo1.png">
+        </a>
+        <a href="/frontend/HTML/index.html">
+          <h2>Health<span class="danger">AI</span></h2>
+        </a>
       </div>
       <div class="right-section">
         <img class="pfp" src="/frontend/images/pfp.jpg">
         <h3>Meron Matti</h3>
-        <button class="drop-button">
-          <i class='bx bxs-chevron-down downarrow-icon'></i>
+        <button class="drop-button" id="submenu-btn">
+          <i class='bx bx-chevron-up downarrow-icon'></i>
         </button>
+        <ul class="sub-menu">
+            <div class="sub-bars">
+              <li><a href="/frontend/HTML/profile.html">Profile <i class='bx bx-user' ></i></a></li>
+            </div>
+            <div class="sub-bars">
+              <li><a href="/frontend/HTML/settings.html">Settings <i class='bx bx-cog bx-rotate-180' ></i></a></li>
+            </div>
+            <div class="sub-bars">
+              <li><a href="/frontend/HTML/login.html">Logout <i class='bx bx-log-out bx-rotate-180' ></i></a></li>
+            </div>
+        </ul>
       </div>
     </header>
+    <nav>
+      <div class="topbar">
+        <a href="/frontend/HTML/index.html">
+          <img class="nav-img" src="/frontend/logo/logo1.png">
+        </a>
+        <button class="closenav" id="close-btn">
+          <i class='bx bx-x'></i>
+        </button>
+      </div>
+      <ul>
+        <li><a href="/frontend/HTML/index.html" class="menu-items"><i class='bx bxs-dashboard menu-icon'></i>Dashboard</a></li>
+        <li><a href="/frontend/HTML/health.html" class="menu-items"><i class='bx bx-body menu-icon'></i>Health</a></li>
+        <li><a href="/frontend/HTML/meal.html" class="menu-items"><i class='bx bxs-baguette menu-icon'></i>Meals</a></li>
+        <li><a href="/frontend/HTML/exercise.html" class="menu-items"><i class='bx bx-dumbbell menu-icon'></i>Exercise Log</a></li>
+        <li><a href="/frontend/HTML/ai.html" class="menu-items"><i class='bx bxs-bot menu-icon'></i>AI Chat</a></li>
+      </ul>
+    </nav>
   </div>
+
 </body>
 </html>

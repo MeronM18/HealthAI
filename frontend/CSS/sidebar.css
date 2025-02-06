@@ -1,18 +1,113 @@
 :root{
   --background-color: #FFFFFF;
   --black-color: #000408;
-  --lightblack-color: #0e1217;
+  --lightblack-color: #13181f;
   --blackgreen-color: #181C14;
   --gray-color: #62625f;
   --green-color: #697565;
   --beige-color: #ECDFCC;
-  --red-color: #8E1616;
+  --red-color: #b80e0e;
   --lightgray-color: #EEEEEE;
   --navyblue-color: #0B192C;
+  --button-background: #4d4d4a;
+  --hover-color: #031c4f;
+
 
   --border-radius-1: 4px;
   --border-radius-2: 10px;
-  --border-radius-3: 50%;
+  --border-radius-3: 18px;
+  --border-radius-4: 50%;
 
   --padding-1: 10px 20px;
+}
+
+nav{
+  position: fixed;
+  height: 100%;
+  background-color: var(--lightblack-color);
+  border-top-right-radius: var(--border-radius-3);
+  border-bottom-right-radius: var(--border-radius-3);
+  overflow: hidden;
+  width: 0;
+  transition: width 300ms ease-in-out;
+  z-index: 9999; 
+}
+
+nav.show{
+  width: 230px;
+}
+
+nav .topbar{
+  padding: 10px 10px 2px 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .nav-img{
+  width: 60px;
+  height: 60px;
+  border-radius: var(--border-radius-3);
+  overflow: hidden;
+}
+
+nav .closenav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--gray-color);
+  border-radius: var(--border-radius-1);
+  background-color: var(--navyblue-color);
+
+  transition: opacity 0.2s;
+}
+
+nav .closenav:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+nav .closenav i{
+  font-size: 20px;
+  color: var(--lightgray-color);
+}
+
+nav ul{
+  list-style-type: none;
+  margin-top: 50px;
+  margin-left: 18px;
+}
+
+nav a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+
+  padding: 10px 10px;
+  color: var(--lightgray-color);
+  text-align: start;
+  font-size: 16px;
+  line-height: 32px;
+  box-sizing: border-box;
+  border-radius: var(--border-radius-2);
+
+  transition: background-color 0.1s;
+}
+
+nav .menu-items.active{
+  color: var(--red-color);
+  background-color: var(--lightgray-color);
+}
+
+nav ul a:hover{
+  background-color: var(--hover-color);
+}
+
+nav .menu-icon{
+  margin-right: 10px;
 }
