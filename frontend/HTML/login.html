@@ -9,6 +9,8 @@
    <link rel="icon" type="image/x-icon" href="/frontend/logo/logo1.png">
    
    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+   <script type="text/javascript" src="/frontend/JS/script.js" defer></script>
    
    <title>HealthAI Login</title>
 </head>
@@ -27,8 +29,8 @@
         <i class='bx bxs-user' ></i>
       </div>
         <div class="passbox">
-          <input class="password-box" type="text" placeholder="Password">
-          <i class='bx bxs-lock-alt' ></i>
+          <input class="password-box" type="password" placeholder="Password" id="password">
+          <i class='bx bxs-lock-alt lockicon' id="lockicon"></i>
         </div>
         <div class="remember-forgot-bar">
           <div class="remember-box">
@@ -39,11 +41,8 @@
         </div>
             <button class="login-btn">Login</button>
         <div class="register">
-          <h4>Don't have an account?<span><a href="/">Register</a></span></h4>
+          <h4>Don't have an account?<span><a href="/frontend/HTML/register.html">Register</a></span></h4>
         </div>
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
   </div>
 </body>

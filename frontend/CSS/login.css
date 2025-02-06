@@ -93,7 +93,7 @@ a{
   gap: 20px;
 
   backdrop-filter: blur(25px);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
 .login-header{
@@ -102,6 +102,7 @@ a{
   font-size: 20px;
   margin-top: 25px;
   margin-bottom: 15px;
+  color: var(--background-color);
 }
 
 .userbox,
@@ -116,9 +117,9 @@ a{
 
 .username-box,
 .password-box{
-  background-color: var(--hover-color);
-  border: 2px solid white;
-  border-radius: 25px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
   width: 340px;
   padding: 20px;
   outline: none;
@@ -141,6 +142,10 @@ a{
   position: absolute;
   font-size: 22px;
   right: 14px;
+}
+
+.passbox i{
+  cursor: pointer;
 }
 
 .remember-forgot-bar{

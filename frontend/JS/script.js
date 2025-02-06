@@ -10,6 +10,17 @@ document.addEventListener("DOMContentLoaded", function() {
   })
 })
 
+let lockicon = document.getElementById('lockicon')
+let password = document.getElementById('password')  
+
+lockicon.onclick = function(){
+  if(password.type == 'password'){
+    password.type = 'text';
+  }else{
+    password.type = 'password';
+  }
+}
+
 /********************************************************* */
 
 const toggleButton = document.getElementById('toggle-btn');
