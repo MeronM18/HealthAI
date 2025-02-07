@@ -12,14 +12,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /*********************************************************** */
 
-let lockicon = document.getElementById('lockicon')
-let password = document.getElementById('password')  
+let lockiconLogin = document.getElementById('lockicon-login');
+let passwordLogin = document.getElementById('password-login');
 
-lockicon.onclick = function(){
-  if(password.type == 'password'){
-    password.type = 'text';
+lockiconLogin.onclick = function(){
+  if(passwordLogin.type == 'password'){
+    passwordLogin.type = 'text';
   }else{
-    password.type = 'password';
+    passwordLogin.type = 'password';
+  }
+}
+
+let lockiconRegister = document.getElementById('lockicon-register');
+let passwordRegister = document.getElementById('password-register');  
+
+lockiconRegister.onclick = function(){
+  if(passwordRegister.type == 'password'){
+    passwordRegister.type = 'text';
+  }else{
+    passwordRegister.type = 'password';
   }
 }
 
@@ -34,6 +45,7 @@ function openSideBar() {
 }
 
 /********************************************************* */
+
 const closeButton = document.getElementById('close-btn');
 closeButton.addEventListener("click", closeSideBar);
 
@@ -43,6 +55,7 @@ function closeSideBar(){
 }
 
 /********************************************************* */
+
 const submenuButton = document.getElementById('submenu-btn');
 submenuButton.addEventListener("click", toggleSideMenu);
 
@@ -51,4 +64,23 @@ function toggleSideMenu() {
   submenu.classList.toggle('show');
 
   submenuButton.classList.toggle('downarrow-icon')
+}
+
+
+function changeForm() {
+  var get = document.querySelector(".login-formbox");
+  var get1 = document.querySelector(".register-formbox");
+  const registerButton = document.getElementById('register');
+  const message = document.getElementById('message');
+
+  get.classList.toggle("hide");
+  get1.classList.toggle("visible");
+
+  if (registerButton.innerText === 'Register') {
+    message.innerText = 'Already have an account?';  
+    registerButton.innerText = 'Login';             
+  } else {
+    message.innerText = 'Don\'t have an account?';  
+    registerButton.innerText = 'Register';         
+}
 }

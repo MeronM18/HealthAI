@@ -65,6 +65,7 @@ a{
   display: flex;
   align-items: center;
   text-align: center;
+  transition: opacity 0.5s ease-in-out;
 
   z-index: 1;
 }
@@ -131,7 +132,8 @@ form h1{
   margin-right: -48px;
 }
 
-.login-btn{
+.login-btn,
+.registerr-btn{
   width: 100%;
   height: 48px;
   background-color: var(--lightblack-color);
@@ -146,13 +148,24 @@ form h1{
   transition: background-color 0.25s, color 0.25s;
 }
 
-.login-btn:hover{
+.login-btn:hover,
+.registerr-btn:hover{
   background-color: var(--background-color);
   color: var(--lightblack-color);
 }
 
 .register-formbox{
-  visibility: hidden;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 50%;
+  transition: right 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
 }
 
 .togglebox{
@@ -165,7 +178,7 @@ form h1{
 }
 
 .toggle-left-panel{
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -196,7 +209,6 @@ form h1{
   border: 2px solid var(--background-color);
   box-shadow: 0 0 0 1px rgba(248, 248, 248, 0.2);
   cursor: pointer;
-  transition: background-color 0.25s, color 0.30s;
   box-shadow: none;
 }
 
@@ -204,4 +216,13 @@ form h1{
   background-color: var(--background-color);
   color: rgb(73, 132, 221);
   border: none;
+}
+
+.login-formbox.hide{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.register-formbox.visible{
+  opacity: 1;
 }
