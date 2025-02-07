@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
   })
 })
 
+/*********************************************************** */
+
 let lockicon = document.getElementById('lockicon')
 let password = document.getElementById('password')  
 

@@ -15,34 +15,54 @@
    <title>HealthAI Login</title>
 </head>
 <body>
-  <div class="flex-container">
-    <div class="title">
-      <img class="logo" src="/frontend/logo/logo1.png">
-      <h1>Health<span>AI</span></h1>
-    </div>
-    <div class="login-container">
-      <div class="login-header">
+  <div class="container">
+
+    <div class="login-formbox">
+      <form action="">
         <h1>Login</h1>
-      </div>
-      <div class="userbox">
-        <input class="username-box" type="text" placeholder= "Username">
-        <i class='bx bxs-user' ></i>
-      </div>
-        <div class="passbox">
-          <input class="password-box" type="password" placeholder="Password" id="password">
-          <i class='bx bxs-lock-alt lockicon' id="lockicon"></i>
+        <div class="inputbox">
+          <input class="usernamebox" type="text" placeholder="Username" required>
+          <i class='bx bxs-user' ></i>
         </div>
-        <div class="remember-forgot-bar">
-          <div class="remember-box">
-            <input class="checkbox" type="checkbox">
-            <h4>Remember me</h>
+          <div class="inputbox">
+            <input class="passwordbox" type="password" placeholder="Password" id="password" required>
+            <i class='bx bxs-lock-alt lockicon' id="lockicon"></i>
           </div>
-          <a href="/"><h4>Forgot Password?</h4></a>
+        <div class="specialbox">
+          <input class="checkbox" type="checkbox">
+          <h3>Remember me</h3>
+          <h3><a href="/">Forgot password?</a></h3>
         </div>
-            <button class="login-btn">Login</button>
-        <div class="register">
-          <h4>Don't have an account?<span><a href="/frontend/HTML/register.html">Register</a></span></h4>
+          <button class="login-btn" id="login-btn">Login</button>
+      </form>
+    </div>
+
+    <div class="togglebox">
+      <div class="toggle-left-panel">
+        <h1 class="hello">Hello, Welcome!</h1>
+        <p>Don't have an account?</p>
+        <button class="register-btn">Register</button>
+      </div>
+
+    <div class="register-formbox">
+      <form action="">
+        <h1>Register</h1>
+        <div class="inputbox">
+          <input class="usernamebox" type="text" placeholder="Username" required>
+          <i class='bx bxs-user' ></i>
         </div>
+        <div class="inputbox">
+          <input class="emailbox" type="text" placeholder="Email" required>
+          <i class='bx bxs-envelope' ></i>
+        </div>
+          <div class="inputbox">
+            <input class="passwordbox" type="password" placeholder="Password" required>
+            <i class='bx bxs-lock-alt lockicon' ></i>
+          </div>
+          <button class="login-btn" id="login-btn">Register</button>
+      </form>
+    </div>
+
     </div>
   </div>
 </body>
