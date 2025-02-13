@@ -143,6 +143,7 @@ header .right-section .downarrow-icon:hover{
 
 header ul{
   position: absolute;
+  z-index: 1;
   margin-top: 165px;
   margin-left: 80px;
   width: 105px;

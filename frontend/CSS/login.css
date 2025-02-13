@@ -57,6 +57,33 @@ a{
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
+.brand{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 100%;
+  height: 100px;
+  top: -20%;
+  justify-content: center;
+}
+
+.brand img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.brand h1{
+  font-size: 50px;
+  color: var(--background-color);
+}
+
+.brand span{
+  color: var(--hover-color);
+}
+
 .login-formbox{
   position: absolute;
   width: 50%;

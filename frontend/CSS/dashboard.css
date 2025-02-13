@@ -21,3 +21,28 @@
   --padding-1: 10px 20px;
   --padding-2: 3px;
 }
+
+main {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr); 
+  margin: 50px;
+  background-color: rgb(204, 204, 204);
+  grid-column: 1 / span 12;
+  grid-row: 2 / span 11;
+  transition: grid-column 500ms ease-in-out, 
+}
+
+main.after {
+  grid-column: 2 / span 11;
+}
+
+main .welcome-text{
+  position: relative;
+  width: 100%;
+  height: 90px;
+  grid-column: span 12;
+  padding: 15px 0 0 30px;
+  border-bottom: 2px solid var(--red-color);
+}
