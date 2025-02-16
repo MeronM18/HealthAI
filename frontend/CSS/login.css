@@ -81,7 +81,7 @@ a{
 }
 
 .brand span{
-  color: var(--hover-color);
+  color: var(--red-color);
 }
 
 .login-formbox{

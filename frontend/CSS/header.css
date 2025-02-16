@@ -81,6 +81,7 @@ header h2{
   color: var(--background-color);
   font-size: 32px;
   margin-left: 2px;
+  font-weight: 700;
 }
 
 header h2 span{
@@ -110,6 +111,7 @@ header .pfp{
 header h3{
   color: var(--background-color);
   font-size: 18px;
+  font-weight: 700;
 }
 
 header .drop-button{

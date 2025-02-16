@@ -16,9 +16,12 @@
 
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-  <script type="text/javascript" src="/frontend/JS/script.js" defer></script>
+  <script src="/frontend/JS/script.js" defer></script>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="/frontend/JS/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet"/>
 
   <title>HealthAI</title>
 </head>
@@ -78,22 +81,46 @@
         <p>Welcome, Meron!</p>
       </div>
 
-      <div class="data-container">
-        <div class="chartcard">
-          <canvas id="myChart"></canvas>
+      <div class="data-container">  
+        <div class="leftmain-section">
+          <div class="bar-container">
+            <canvas id="barchart"></canvas>
+          </div>
+        </div>  
+        
+        <div class="max-w-sm w-full bg-white rounded-lg shadow-sm dark:bg-gray-800 p-4 md:p-6" id="donut-container">
+      
+        <div class="flex justify-between mb-3 p-4" id="calories-flexbox">
+            <div class="flex justify-center items-center">
+                <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Calories</h5>
+              </div>
         </div>
-        <div class="chartcard2">
-          <canvas id="myChart2"></canvas>
+        <div class="flex justify-between mb-3" id="remaining-flexbox">
+            <div class="flex justify-center items-center">
+                <h5 class="text-l font-nobold leading-none text-gray-900 dark:text-white pe-1">Remaining = Goal - Food + Exercise</h5>
+              </div>
         </div>
-        <div class="chartcard3">
-          <canvas id="myChart3"></canvas>
-        </div>
-        <div class="chartcard4">
-          <canvas id="myChart4"></canvas>
+    
+      <!-- Donut Chart -->
+      <div class="py-6" id="donut-chart">
+        
+      </div>
+    
+      <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+        <div class="flex justify-between items-center pt-5">
         </div>
       </div>
+        </div>
+
+        <div class="scatter-container">
+          <canvas id="scatterchart"></canvas>
+        </div>
+
+      </div>
+      
     </main>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 </html>

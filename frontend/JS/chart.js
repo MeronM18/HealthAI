@@ -1,124 +1,178 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('myChart').getContext('2d');
+const getChartOptions = () => {
+  return {
+    series: [35.1, 23.5, 2.4],  // Data for the doughnut
+    colors: ["#131313", "#5bd2f5", "#e97f07"],  // Colors for the slices
+    chart: {
+      height: 310,
+      width: "100%",
+      type: "donut",  // Ensure the type is donut
+    },
+    plotOptions: {
+      pie: {
+        donut: {
+          labels: {
+            show: true,  // Show the labels inside the doughnut
+            name: {
+              show: true,  // Show the name of each segment
+              fontFamily: "Inter, sans-serif",  // Set font
+              fontSize: '18px',  // Size of the name text
+              fontWeight: 700,  // Font weight of the name
+              color: '#FF5733',  // Color of the name
+              offsetY: 20,  // Vertical offset of the name text
+            },
+            value: {
+              show: true,  // Show the value inside the doughnut
+              fontFamily: "Inter, sans-serif",  // Font family for the value
+              fontSize: '21px',  // Size of the value text
+              color: '#FFFFFF',  // Color of the value text
+              offsetY: -20,  // Vertical offset of the value text
+              formatter: function (value) {
+                return value + "k";  // Format the value
+              },
+            },
+            total: {
+              showAlways: true,  // Always show the total label
+              show: true,
+              label: "Remaining",  // Label for the total
+              fontFamily: "Inter, sans-serif",
+              fontSize: '18px',
+              color: '#FF5733',  // Color of the total text
+              formatter: function (w) {
+                const sum = w.globals.seriesTotals.reduce((a, b) => {
+                  return a + b;
+                }, 0);
+                return '$' + sum + 'k';  // Total sum value formatting
+              },
+            },
+          },
+          size: "80%",  // Set the size of the donut
+        },
+      },
+    },
+    dataLabels: {
+      enabled: false,  // Disable the default data labels
+    },
+    labels: [
+      `Goal: 35.1k`,  // Show label with value
+      `Food: 23.5k`,  // Show label with value
+      `Exercise: 2.4k`,  // Show label with value
+    ],  // Labels for the donut slices, now including values
+    legend: {
+      position: 'right',
+      fontSize: '25px',  // Font size for legend labels
+      fontFamily: 'Inter, sans-serif',  // Font family for the legend
+      fontWeight: 700,
+      color: '#ffffff',  // Font weight for the legend
+      markers: {
+        width: 12,  // Width of the marker
+        height: 12,  // Height of the marker
+      },
+      itemMargin: {
+        horizontal: 0,  // Horizontal margin between legend items
+        vertical: 12,  // Vertical margin between legend items
+      },
+    },
+  };
+};
 
-  new Chart(ctx, {
+document.addEventListener('DOMContentLoaded', function () {
+  const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
+  chart.render();
+});
+
+/******************************************************************************************************************************************************************* */
+// Ensure the DOM is fully loaded before running the code
+document.addEventListener("DOMContentLoaded", function() {
+  // Example data for the bar chart
+  const labels = ["January", "February", "March", "April", "May", "June", "July", "January", "February", "March", "April", "May", "June", "July"];  // Example months
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First Dataset',
+      data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
+    }]
+  };
+
+  // Configuration for the chart
+  const config = {
     type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: 'Weight',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgb(235, 64, 52)',
-          'rgb(22, 84, 184)',
-          'rgb(224, 218, 31)',
-          'rgb(27, 204, 35)',
-          'rgb(129, 20, 184)',
-          'rgb(250, 151, 2)'
-        ],
-        borderColor: 'rgb(255,255,255)',
-        borderWidth: 2
-      }]
-    },
+    data: data,
     options: {
       scales: {
         y: {
           beginAtZero: true
         }
       }
-    }
-  });
+    },
+  };
+
+  
+  // Create the chart when the DOM is ready
+  const ctx = document.getElementById('barchart').getContext('2d');
+  new Chart(ctx, config);
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('myChart2').getContext('2d');
+/*******************************************************************************************************************************************************************/
 
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgb(235, 64, 52)',
-          'rgb(22, 84, 184)',
-          'rgb(224, 218, 31)',
-          'rgb(27, 204, 35)',
-          'rgb(129, 20, 184)',
-          'rgb(250, 151, 2)'
-        ],
-        borderWidth: 1
-      }]
-    },
+
+
+
+
+/*******************************************************************************************************************************************************************/
+document.addEventListener("DOMContentLoaded", function(){
+
+  const data = {
+    datasets: [{
+      label: 'Scatter Dataset',
+      data: [{
+        x: -10,
+        y: 0
+      }, {
+        x: 0,
+        y: 10
+      }, {
+        x: 10,
+        y: 5
+      }, {
+        x: 0.5,
+        y: 5.5
+      }],
+      backgroundColor: 'rgb(255, 99, 132)'
+    }],
+  };
+
+  const config = {
+    type: 'scatter',
+    data: data,
     options: {
       scales: {
-        y: {
-          beginAtZero: true
+        x: {
+          type: 'linear',
+          position: 'bottom'
         }
       }
     }
-  });
-});
+  };
 
-document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('myChart3').getContext('2d');
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('myChart4').getContext('2d');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [65, 59, 80, 81, 56, 55, 40],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 205, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(153, 102, 255, 0.2)'
-        ],
-        borderColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(153, 102, 255)',
-          'rgb(255, 159, 64)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
+  const ctx = document.getElementById('scatterchart').getContext('2d');
+  new Chart(ctx, config);
 });

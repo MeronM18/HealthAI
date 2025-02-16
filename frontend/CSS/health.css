@@ -1,0 +1,31 @@
+:root{
+  --background-color: #FFFFFF;
+  --black-color: #000408;
+  --lightblack-color: #13181f;
+  --blackgreen-color: #181C14;
+  --gray-color: #62625f;
+  --green-color: #697565;
+  --beige-color: #ECDFCC;
+  --red-color: #b80e0e;
+  --lightgray-color: #EEEEEE;
+  --navyblue-color: #0B192C;
+  --button-background: #4d4d4a;
+  --hover-color: #031c4f;
+
+
+  --border-radius-1: 4px;
+  --border-radius-2: 10px;
+  --border-radius-3: 18px;
+  --border-radius-4: 50%;
+
+  --padding-1: 10px 20px;
+  --padding-2: 3px;
+}
+
+main{
+  grid-column: span 12;
+  grid-row: span 11;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
