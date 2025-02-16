@@ -117,6 +117,8 @@ document.addEventListener("DOMContentLoaded", function() {
     type: 'bar',
     data: data,
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         y: {
           beginAtZero: true
@@ -164,6 +166,8 @@ document.addEventListener("DOMContentLoaded", function(){
     type: 'scatter',
     data: data,
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           type: 'linear',

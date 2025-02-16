@@ -88,34 +88,84 @@
           </div>
         </div>  
         
-        <div class="max-w-sm w-full bg-white rounded-lg shadow-sm dark:bg-gray-800 p-4 md:p-6" id="donut-container">
-      
-        <div class="flex justify-between mb-3 p-4" id="calories-flexbox">
-            <div class="flex justify-center items-center">
-                <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Calories</h5>
-              </div>
-        </div>
-        <div class="flex justify-between mb-3" id="remaining-flexbox">
-            <div class="flex justify-center items-center">
-                <h5 class="text-l font-nobold leading-none text-gray-900 dark:text-white pe-1">Remaining = Goal - Food + Exercise</h5>
-              </div>
-        </div>
-    
-      <!-- Donut Chart -->
-      <div class="py-6" id="donut-chart">
+        <div class="middlemain-section">
+          <div class="max-w-sm w-full bg-white rounded-lg shadow-sm dark:bg-gray-800 p-4 md:p-6" id="donut-container">
+
+            <div class="flex justify-between mb-3 p-4" id="calories-flexbox">
+                <div class="flex justify-center items-center">
+                    <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Calories</h5>
+                  </div>
+            </div>
+            <div class="flex justify-between mb-3" id="remaining-flexbox">
+                <div class="flex justify-center items-center">
+                    <h5 class="text-l font-nobold leading-none text-gray-900 dark:text-white pe-1">Remaining = Goal - Food + Exercise</h5>
+                  </div>
+            </div>
         
-      </div>
-    
-      <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
-        <div class="flex justify-between items-center pt-5">
-        </div>
-      </div>
+          <!-- Donut Chart -->
+          <div class="py-6" id="donut-chart">
+            
+          </div>
+        
+          <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+            <div class="flex justify-between items-center pt-5">
+            </div>
+          </div>
+       
+          </div>
+
+          <div class="exercisecard-container">
+            <div class="first">
+              <h2>Exercise</h2>
+              <a href="#">
+                <i class='bx bx-plus' id="add-exercise-mainpage"></i>
+              </a>
+            </div>
+            <div class="second">
+              <i class='bx bxs-flame' ></i>
+              <p>50 calories</p>
+            </div>
+            <div class="third">
+              <i class='bx bx-time-five' ></i>
+              <p>00:00 hr</p>
+            </div>
+          </div>
+
+          <div class="moodbar-container">
+            <div class="moodtitle">
+              <h2>How do I feel today?</h2>
+            </div>
+            <div class="contain-the-emojis">
+              <div class="moodsection">
+                <i class='bx bx-happy' ></i>
+                <p>Happy</p>
+              </div>
+              <div class="moodsection">
+                <i class='bx bx-cool' ></i>
+                <p>Chillin</p>
+              </div>
+              <div class="moodsection">
+                <i class='bx bx-meh-alt' ></i>
+                <p>Meh</p>
+              </div>
+              <div class="moodsection">
+                <i class='bx bx-tired' ></i>
+                <p>Tired</p>
+              </div>
+              <div class="moodsection">
+                <i class='bx bx-sad' ></i>
+                <p>Sad</p>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <div class="scatter-container">
-          <canvas id="scatterchart"></canvas>
+        <div class="rightmain-section">
+          <div class="scatter-container">
+            <canvas id="scatterchart"></canvas>
+          </div>
         </div>
-
       </div>
       
     </main>

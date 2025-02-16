@@ -22,10 +22,173 @@
   --padding-2: 3px;
 }
 
-main{
+main {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr); 
+  margin: 50px;
+  background-color: rgb(255, 255, 255);
+  grid-column: 1 / span 12;
+  grid-row: 2 / span 11;
+  transition: grid-column 500ms ease-in-out;
+  overflow: hidden;
+}
+
+main.after {
+  grid-column: 2 / span 11;
+}
+
+.healthheader{
+  position: relative;
+  width: 100%;
+  height: 90px;
+  grid-column: span 12;
+  padding: 15px 0 0 30px;
+  border-bottom: 3px solid var(--background-color);
+  color: black;
+}
+
+.healthheader h2{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.data-container{
+  background-color: rgb(164, 172, 216);
   grid-column: span 12;
   grid-row: span 11;
 
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.data-container .left-section{
+  background-color: transparent;
+  border-radius: 8px;
+  border: 3px solid lightgreen;
+  width: 600px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.data-container .left-section .header{
+  background-color: lightblue;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+
+  border-bottom: 3px solid white;
+}
+
+.data-container .left-section .header h2{
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.bodyinfocontainer{
+  background-color: lightsalmon;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 40px 20px;
+  gap: 15px;
+}
+
+.bodyinfocontainer div{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.bodyinfocontainer h4{
+  font-weight: 400;
+  padding: 3px;
+}
+
+.bodyinfocontainer input{
+  padding: 5px 20px 5px 5px;
+  border-radius: var(--border-radius-2);
+}
+
+.bodyinfocontainer input::placeholder{
+  font-size: 14px;
+}
+
+.gender h4{
+  border-bottom: 2px solid white;
+  margin-bottom: 10px;
+}
+
+.gender .selectgenderbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+}
+
+.gender .selectgenderbox input{
+  padding: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.gender .selectgenderbox p{
+  font-size: 14px;
+}
+
+input:focus, textarea:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+.activitydropdown{
+  background-color: lavenderblush;
+  width: 100%;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.activitydropdown .drop{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.activitydropdown button{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  background-color: pink;
+  width: 100%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.activityoptions ul, li, a{
+  text-decoration: none;
+  list-style: none;
+  list-style-type: none;
+}
+
+.activityoptions ul{
+  position: absolute;
+}
+
+.data-container .right-section{
+  background-color: rgb(241, 238, 238);
+  margin-left: auto;
+  width: 500px;
+  border-radius: 8px;
 }
