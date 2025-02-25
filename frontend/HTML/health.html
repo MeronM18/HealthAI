@@ -86,50 +86,120 @@
           <div class="bodyinfocontainer">
             <div class="age">
               <h4>Age</h4>
-              <input class="age-box" type="text" placeholder="Age">
+              <input class="age-box" type="text" placeholder="Age" id="age">
             </div>
             <div class="height">
               <h4>Height</h4>
-              <input class="height-box" type="text" placeholder="Height (in)">
+              <input class="height-box" type="text" placeholder="Height (in)" id="height">
             </div>
             <div class="weight">
               <h4>Weight</h4>
-              <input class="weight-box" type="text" placeholder="Weight (lbs)">
+              <input class="weight-box" type="text" placeholder="Weight (lbs)" id="weight">
             </div>
             <div class="gender">
               <h4>Gender</h4>
               <div class="selectgenderbox">
-                <input class="togglegender" type="checkbox">
-                <p>Male</p>
-                <input class="togglegender" type="checkbox">
-                <p>Female</p>
+                <input class="togglegender" type="radio" name="gender" id="radio1" value="male">
+                <label for="radio1">Male</label>
+                <input class="togglegender" type="radio" name="gender" id="radio2" value="female">
+                <label for="radio2">Female</label>
               </div>
             </div>
+            <div class="goals">
+              <h4>Goal Weight</h4>
+              <input type="text" class="goalwgt" placeholder="Goal Weight (lbs)" id="goalweight">
+
+              <h4 class="weeklyh4">Weekly Goal</h4>
+              <button class="weeklygoalbtn" id="weeklygoalbtn">
+                <label for="weeklygoalbtn" id="weeklygoalLabel"></label>
+                <i class='bx bx-chevron-down'></i>
+              </button>
+              
+              <ul class="wklygoallist">
+                <li><a href="">Lose 0.5 lbs per week</a></li>
+                <li><a href="">Lose 1 lb per week</a></li>
+                <li><a href="">Maintain Weight</a></li>
+                <li><a href="">Gain 0.5 lbs per week</a></li>
+                <li><a href="">Gain 1 lb per week</a></li>
+              </ul>
+
+            </div>
             <div class="activitydropdown">
-              <div class="drop">
-                <button class="activity-level-btn">
-                  <p>Activity Level</p>
-                  <i class='bx bx-chevron-down' ></i>
+              <h4>Activity Level</h4>
+              <button class="activitybtn" id="activitybtn">
+                  <label for="activitybtn" id="activityLabel"></label>
+                  <i class='bx bx-chevron-down'></i>
                 </button>
-              </div>
-              <div class="activityoptions">
-                <ul>
+              
+                <ul class="activitymenu">
                   <li><a href="">Not Very Active</a></li>
                   <li><a href="">Lightly Active</a></li>
                   <li><a href="">Active</a></li>
-                  <li><a href="">Very Active</a></li>
                 </ul>
+            </div>
+            <div class="caloriegoals">
+              <h4>Calorie Goal</h4>
+              <div class="increment">
+                <button class="minus" id="minusbtn">-</button>
+                <input class="" type="text" placeholder="" id="caloriecountvalue" value="0">
+                <button class="add" id="addbtn">+</button>
               </div>
             </div>
+            <div class="formsubmit">
+              <button class="resetbtn" id="resetbtn">Reset</button>
+              <button class="updatebtn" id="updatebtn">Update</button>
+            </div>
+            </div>
           </div>
+          <div class="middle-section">
+            <div class="bmicontainer">
+              <div class="bmititle">
+                <h2>Body Mass Index</h2>
+                <i class='bx bx-body bodyicon' ></i>
+                
+                <div class="bmimenu" id="bmimenu">
+                  <table>
+                    <thead>
+                        <tr>
+                            <th>BMI Range</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="first">(< 18.5)</td>
+                            <td>Underweight</td>
+                        </tr>
+                        <tr>
+                            <td class="second">(18.5 - 24.9)</td>
+                            <td>Normal</td>
+                        </tr>
+                        <tr>
+                            <td class="third">(25 - 29.9)</td>
+                            <td>Overweight</td>
+                        </tr>
+                        <tr>
+                            <td class="fourth">(30 - 34.9)</td>
+                            <td>Obesity Class I</td>
+                        </tr>
+                        <tr>
+                            <td class="fifth">(35 - 40)</td>
+                            <td>Obesity Class II</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+              </div>
+              <div class="box"></div>
+              <i class='bx bxs-up-arrow'></i>
+            </div>
+          </div>
+          <div class="right-section"></div>
         </div>
-        <div class="middle-section"></div>
-        <div class="right-section"></div>
         </div>
-      </div>
     </main>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 </html>
+

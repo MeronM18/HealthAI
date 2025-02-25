@@ -45,7 +45,6 @@ main.after {
   height: 90px;
   grid-column: span 12;
   padding: 15px 0 0 30px;
-  border-bottom: 3px solid var(--background-color);
   color: black;
 }
 
@@ -62,20 +61,22 @@ main.after {
   display: flex;
   justify-content: flex-start;
   padding: 20px;
+
+  position: relative;
 }
 
 .data-container .left-section{
   background-color: transparent;
   border-radius: 8px;
-  border: 3px solid lightgreen;
-  width: 600px;
+  border: 3px solid rgb(255, 255, 255);
+  width: 500px;
 
   display: flex;
   flex-direction: column;
 }
 
 .data-container .left-section .header{
-  background-color: lightblue;
+  background-color: transparent;
   width: 100%;
   padding: 20px;
   text-align: center;
@@ -84,28 +85,46 @@ main.after {
 }
 
 .data-container .left-section .header h2{
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 600;
+  text-shadow: rgb(255, 255, 255) 1px 2px 5px;
 }
 
 .bodyinfocontainer{
-  background-color: lightsalmon;
-  height: 100%;
+  background-color: transparent;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px 40px 20px;
+  padding: 30px 20px 40px 20px;
   gap: 15px;
+}
+
+.bodyinfocontainer::-webkit-scrollbar{
+  width: 6px;
+}
+
+.bodyinfocontainer::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+.bodyinfocontainer::-webkit-scrollbar-thumb {
+  background:rgb(255, 255, 255); 
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .bodyinfocontainer div{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 70%;
 }
 
 .bodyinfocontainer h4{
+  font-size: 18px;
   font-weight: 400;
   padding: 3px;
 }
@@ -113,6 +132,7 @@ main.after {
 .bodyinfocontainer input{
   padding: 5px 20px 5px 5px;
   border-radius: var(--border-radius-2);
+  box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.3);
 }
 
 .bodyinfocontainer input::placeholder{
@@ -128,17 +148,17 @@ main.after {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .gender .selectgenderbox input{
   padding: 0;
   width: 14px;
   height: 14px;
+  color: black;
 }
 
-.gender .selectgenderbox p{
+.gender .selectgenderbox label{
   font-size: 14px;
 }
 
@@ -147,8 +167,64 @@ input:focus, textarea:focus{
   box-shadow: none;
 }
 
+.goals .weeklyh4{
+  margin-top: 10px;
+}
+
+.goals button,
+.activitydropdown button{
+  width: 100%;
+  background-color: rgb(157, 122, 221);
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  box-shadow: 1px 1px 5px 1px rgb(255, 255, 255);
+}
+
+.goals i{
+  font-size: 16px;
+}
+
+.goals ul, li, a{
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.wklygoallist,
+.activitymenu{
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  overflow: hidden;
+  
+  max-height: 0;
+  visibility: hidden;
+  transition: max-height 300ms ease-in-out;
+}
+
+.wklygoallist.show,
+.activitymenu.show{
+  max-height: 400px;
+  visibility: visible;
+}
+
+.wklygoallist a,
+.activitymenu a{
+  display: block;
+  padding: 5px 0 5px 6px;
+  transition: background-color 0.25s;
+}
+
+.wklygoallist a:hover,
+.activitymenu a:hover{
+  background-color: rgb(140, 157, 255);
+}
+
 .activitydropdown{
-  background-color: lavenderblush;
   width: 100%;
   position: relative;
 
@@ -156,39 +232,249 @@ input:focus, textarea:focus{
   flex-direction: column;
 }
 
-.activitydropdown .drop{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 10px;
-}
-
-.activitydropdown button{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  background-color: pink;
-  width: 100%;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.activityoptions ul, li, a{
+.activitymenu li, a{
   text-decoration: none;
   list-style: none;
   list-style-type: none;
 }
 
-.activityoptions ul{
-  position: absolute;
+.weeklygoalbtn.clicked i,
+.activitybtn.clicked i{
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
 }
 
-.data-container .right-section{
-  background-color: rgb(241, 238, 238);
-  margin-left: auto;
-  width: 500px;
+#weeklygoalLabel,
+#activityLabel{
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.caloriegoals {
+  display: flex !important;
+  flex-direction: column !important; /* Keep it column to stack header and increment */
+  align-items: center !important; 
+  justify-content: center !important; 
+  gap: 15px !important;
+  width: 100%; 
+}
+
+.caloriegoals h4 {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px solid rgb(157, 122, 221);
+  font-weight: 600;
+}
+
+.increment {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important; 
+  align-items: center !important;      
+  gap: 10px !important;              
+  width: 100%;                     
+  padding: 20px; 
+  margin-top: 5px;                  
+  background-color: transparent;      
+  border: 2px solid white; 
+  box-shadow: 1px 1px 6px 1px rgb(255, 255, 255);  
+  border-radius: var(--border-radius-3); 
+}
+
+.increment input{
+  width: 100px;
+  padding: 10px;
+  text-align: center;
+}
+
+.increment button{
+  background-color: transparent;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: var(--border-radius-2);
+  color: white;
+  width: 100%;
+  padding: 3px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.increment button:hover{
+  background-color: rgb(157, 164, 204);
+}
+
+.formsubmit{
+  width: 100%;
+  margin-top: 8px;
+
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-items: center !important;
+  justify-content: space-evenly !important;
+}
+
+.formsubmit button{
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
   border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 600;
+  height: 50px;
+  padding: 0 20px;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.formsubmit button:hover {
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 10px;
+  transition-duration: .1s;
+}
+
+.data-container .middle-section{
+  position: relative;
+  background-color: transparent;
+  width: 1100px;
+  height: 100%;
+  margin-left: 50px;
+  border-radius: var(--border-radius-2);
+  border: 3px solid white;
+}
+
+.bmicontainer{
+  width: 100%;
+  height: 40%;
+  overflow-wrap:normal;
+  overflow-x:hidden;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+
+}
+
+.bmicontainer .bmititle{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  font-size: 35px;
+  top: 18px;
+  font-weight: 600;
+  background-color: transparent;
+}
+
+.bmicontainer .bodyicon {
+  position: absolute;
+  top: 0px;
+  right: 330px;
+  cursor: pointer;
+  color: rgb(60, 0, 172);
+}
+
+.bmimenu{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 330px;
+  font-size: 12px;
+  top: 16px;
+  right: 0px;
+  overflow: hidden;
+  padding: 8px;
+  border-radius: 5px;
+  z-index: 15;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease-in-out, visibility 300ms;
+}
+
+.bmicontainer .bodyicon:hover + .bmimenu{
+  opacity: 1;
+  visibility: visible;
+}
+
+.bmimenu table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bmimenu th, .bmimenu td{
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 16px;
+  padding: 6px;
+  text-align: left;
+}
+
+.bmimenu th{
+  background-color: rgb(223, 217, 217);
+}
+
+.bmimenu .first{
+  background-color: rgb(125, 243, 247);
+}
+
+.bmimenu .second{
+  background-color: rgb(240, 253, 164);
+}
+
+.bmimenu .third{
+  background-color: rgb(117, 252, 128);
+}
+
+.bmimenu .fourth{
+  background-color: rgb(247, 201, 76);
+}
+
+.bmimenu .fifth{
+  background-color: rgb(250, 92, 92);
+}
+
+.bmicontainer .box{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.box .item{
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  font-size: 35px;
+  font-weight: 600;
+  box-shadow: 1px 2px 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bmicontainer i{
+  position: absolute;
+  font-size: 50px;
+  bottom: 0;
+  color: rgb(0, 0, 0);
+  z-index: 10;
+  bottom: 60px;
 }

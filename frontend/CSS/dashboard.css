@@ -46,7 +46,7 @@ main .welcome-text{
   grid-column: span 12;
   padding: 15px 0 0 30px;
   border-bottom: 3px solid var(--background-color);
-  color: rgb(228, 228, 228);
+  color: rgb(202, 198, 198);
 }
 
 main .welcome-text h2{
@@ -59,7 +59,7 @@ main .welcome-text p{
 }
 
 .data-container{
-  background-color: #444853;
+  background-color: rgb(241, 241, 241);
   grid-column: span 12;
   grid-row: span 11;
 
@@ -71,11 +71,12 @@ main .welcome-text p{
 
 .bar-container{
   width: 880px;
-  height: 100%;
+  height: 98%;
   position: relative;
   background-color: transparent;
-  border: 2px solid white;
+  border: 2px solid rgb(3, 14, 77);
   border-radius: 8px;
+  padding: 5px 10px 5px 10px;
 }
 
 .middlemain-section{
@@ -89,7 +90,7 @@ main .welcome-text p{
   #donut-container{
     grid-row: auto;
     background-color: transparent;
-    border: 2px solid white;
+    border: 2px solid rgb(3, 14, 77);
     width: 380px;
     height: 310px;
   }
@@ -100,6 +101,7 @@ main .welcome-text p{
   
   #calories-flexbox h5{
     font-size: 19px;
+    color: black;
   }
   
   #remaining-flexbox{
@@ -108,7 +110,7 @@ main .welcome-text p{
   
   #remaining-flexbox h5{
     font-size: 14px;
-    color: #bbbbbb;
+    color: #757575;
   }
   
   #donut-chart{
@@ -122,7 +124,7 @@ main .welcome-text p{
   flex-direction: column;
 
   background-color: transparent;
-  border: 2px solid white;
+  border: 2px solid rgb(3, 14, 77);
   width: 380px;
   height: 290px;
   border-radius: 8px;
@@ -145,7 +147,7 @@ main .welcome-text p{
 
 .exercisecard-container .first h2{
   font-size: 19px;
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 700;
 }
 
@@ -156,7 +158,7 @@ main .welcome-text p{
 }
 
 .exercisecard-container .first i{
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 20px;
   margin-left: 3px;
 }
@@ -180,8 +182,9 @@ main .welcome-text p{
   color: orange;
 }
 
-.exercisecard-container .second p{
-  color: white;
+.exercisecard-container .second p,
+.exercisecard-container .third p{
+  color: rgb(0, 0, 0);
   font-size: 18px;
   font-weight: 600;
 }
@@ -205,12 +208,6 @@ main .welcome-text p{
   color: black;
 }
 
-.exercisecard-container .third p{
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
-}
-
 .moodbar-container{
   position: relative;
   display: flex;
@@ -218,9 +215,9 @@ main .welcome-text p{
   align-items: center;
   justify-items: center;
   border-radius: 8px;
-  border: 2px solid white;
+  border: 2px solid rgb(3, 14, 77);
   width: 380px;
-  height: 280px;
+  height: 264px;
 }
 
 .moodtitle{
@@ -233,7 +230,7 @@ main .welcome-text p{
 
 .moodtitle h2{
   font-size: 25px;
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 600;
 }
 
@@ -248,6 +245,7 @@ main .welcome-text p{
 
 .moodsection{
   background-color: lightgoldenrodyellow;
+  border-radius: 8px;
   height: 100%;
   width: 100%;
   display: flex;
@@ -294,10 +292,11 @@ main .welcome-text p{
 }
 
 .scatter-container{
-  height: 100%;
+  height: 98%;
   width: 880px;
   position: relative;
-  border: 2px solid white;
+  border: 2px solid rgb(3, 14, 77);
+  padding: 5px 10px 5px 10px;
   border-radius: 8px;
 }
 
