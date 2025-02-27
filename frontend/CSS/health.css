@@ -22,13 +22,17 @@
   --padding-2: 3px;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 main {
   position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr); 
   margin: 50px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(25, 33, 44);
   grid-column: 1 / span 12;
   grid-row: 2 / span 11;
   transition: grid-column 500ms ease-in-out;
@@ -45,7 +49,8 @@ main.after {
   height: 90px;
   grid-column: span 12;
   padding: 15px 0 0 30px;
-  color: black;
+  color: white;
+  border-bottom: 1px solid white;
 }
 
 .healthheader h2{
@@ -54,10 +59,9 @@ main.after {
 }
 
 .data-container{
-  background-color: rgb(164, 172, 216);
+  background-color: rgb(21,27,35);
   grid-column: span 12;
   grid-row: span 11;
-
   display: flex;
   justify-content: flex-start;
   padding: 20px;
@@ -82,12 +86,13 @@ main.after {
   text-align: center;
 
   border-bottom: 3px solid white;
+  color: white;
 }
 
 .data-container .left-section .header h2{
   font-size: 28px;
   font-weight: 600;
-  text-shadow: rgb(255, 255, 255) 1px 2px 5px;
+  text-shadow: rgb(255, 255, 255) 0px 0px 5px;
 }
 
 .bodyinfocontainer{
@@ -127,6 +132,7 @@ main.after {
   font-size: 18px;
   font-weight: 400;
   padding: 3px;
+  color: white;
 }
 
 .bodyinfocontainer input{
@@ -155,11 +161,13 @@ main.after {
   padding: 0;
   width: 14px;
   height: 14px;
-  color: black;
+  color: rgb(183, 99, 231);
 }
 
 .gender .selectgenderbox label{
   font-size: 14px;
+  user-select: none;
+  color: white;
 }
 
 input:focus, textarea:focus{
@@ -221,7 +229,7 @@ input:focus, textarea:focus{
 
 .wklygoallist a:hover,
 .activitymenu a:hover{
-  background-color: rgb(140, 157, 255);
+  background-color: rgb(206, 208, 211)
 }
 
 .activitydropdown{
@@ -350,6 +358,7 @@ input:focus, textarea:focus{
   margin-left: 50px;
   border-radius: var(--border-radius-2);
   border: 3px solid white;
+  overflow: hidden;
 }
 
 .bmicontainer{
@@ -363,7 +372,7 @@ input:focus, textarea:focus{
   justify-content: center;
   text-align: center;
   position: relative;
-
+  border-bottom: 4px solid white;
 }
 
 .bmicontainer .bmititle{
@@ -377,25 +386,26 @@ input:focus, textarea:focus{
   top: 18px;
   font-weight: 600;
   background-color: transparent;
+  z-index: 5;
+  color:white;
 }
 
 .bmicontainer .bodyicon {
-  position: absolute;
+  position: relative;
   top: 0px;
-  right: 330px;
   cursor: pointer;
-  color: rgb(60, 0, 172);
+  color: rgb(138, 112, 211);
 }
 
 .bmimenu{
   position: absolute;
   background-color: rgb(255, 255, 255);
+  color: black;
   width: 330px;
   font-size: 12px;
   top: 16px;
-  right: 0px;
+  right: 30px;
   overflow: hidden;
-  padding: 8px;
   border-radius: 5px;
   z-index: 15;
 
@@ -405,6 +415,11 @@ input:focus, textarea:focus{
 }
 
 .bmicontainer .bodyicon:hover + .bmimenu{
+  opacity: 1;
+  visibility: visible;
+}
+
+.bmimenu:hover{
   opacity: 1;
   visibility: visible;
 }
@@ -476,5 +491,317 @@ input:focus, textarea:focus{
   bottom: 0;
   color: rgb(0, 0, 0);
   z-index: 10;
-  bottom: 60px;
+  bottom: 58px;
+  color: white;
+}
+
+.sleepcontainer{
+  position: relative;
+  width: 50%;
+  height: 540px;
+  background-image: url('/frontend/images/skyimg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 20%;
+  border-radius: 10px;
+  top: 8px;
+  left: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sleepcontainer .sleeptable{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: max-content;
+  font-size: 12px;
+  top: 60px; 
+  right: 5px;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 5px;
+  z-index: 35;
+  transition: opacity 300ms ease-in-out, visibility 300ms;
+}
+
+.sleepcontainer .sleeptable table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sleepcontainer th,.sleepcontainer td{
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 16px;
+  padding: 6px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.sleepcontainer th{
+  background-color: rgb(223, 217, 217);
+}
+
+.sleepcontainer .first{
+  background-color: rgb(236, 166, 13);
+}
+
+.sleepcontainer .second{
+  background-color: rgb(15, 184, 15);
+}
+
+.sleepcontainer .third{
+  background-color: rgb(194, 77, 57);
+}
+
+.sleepcontainer h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 6px;
+  text-align: center;
+  padding: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border-bottom: 2px solid white;
+  border-width: 3px;
+  user-select: none;
+
+  z-index: 1;
+}
+
+.sleepcontainer .moon{
+  position: relative;
+  font-size: 30px;
+  color: rgb(138, 112, 211);
+}
+
+.sleepcontainer .moon:hover{
+  opacity: 0.65;
+}
+
+.sleepcontainer i{
+  cursor: pointer;
+  transition: 100ms;
+  font-size: 15px;
+}
+
+.sleepcontainer i:hover{
+  opacity: 0.85;
+}
+
+#sleephours,
+#sleepminutes{
+  position: relative;
+  text-align: start;
+  top: 30px;
+  margin-bottom: 16px;
+  width: 230px;
+  padding: 15px 15px 15px 8px;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: var(--border-radius-2);
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.6);
+  outline: none;
+
+  z-index: 1;
+}
+
+#sleephours::placeholder,
+#sleepminutes::placeholder{
+  font-weight: 600;
+}
+
+.entersleepvalue{
+  position: relative;
+  width: 220px;
+  padding: 5px;
+  top: 15px;
+
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+
+  visibility: hidden;
+
+  transition: 100ms ease;
+}
+
+.entersleepvalue.show{
+  visibility: visible;
+}
+
+.sleepcontainer button{
+  position: relative;
+  top: 16px;
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 15px 15px 15px 8px;
+  width: 225px;
+  border-radius: var(--border-radius-2);
+  cursor: pointer;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.6);
+  outline: none;
+  user-select: none;
+  font-weight: 500;
+  font-size: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  z-index: 1;
+  transition: 200ms;
+}
+
+.sleepcontainer button:hover{
+  opacity: 0.92;
+  transform: scale(1.05);
+}
+
+.sleepcontainer #logsleep{
+  background-color: lightgreen;
+}
+
+.sleepcontainer #deletelog{
+  background-color: rgb(247, 108, 108);
+}
+
+.log {
+  border: 2px solid rgb(0, 0, 0);
+  background: white;
+  width: 80%;
+  max-height: 200px;
+  overflow-y: auto;
+  text-align: left;
+  z-index: 0; 
+  margin-top: 25px; 
+
+  visibility: hidden;
+}
+
+.log.visible{
+  visibility: visible;
+}
+
+.log::-webkit-scrollbar{
+  width: 4px;
+  overflow-y: hidden;
+}
+
+.log::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+.log::-webkit-scrollbar-thumb {
+  background:rgb(0, 0, 0); 
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.log-item{
+  padding: 8px;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  user-select: none;
+}
+
+.log-item:last-child{
+  border-bottom: none;
+}
+
+.trash-icon{
+  cursor: pointer;
+  color: red;
+  background-color: rgb(199, 199, 199);
+  padding: 5px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.notenough-sleep{
+  background-color: rgb(236, 166, 13);
+}
+
+.healthy-sleep{
+  background-color: rgb(15, 184, 15);
+}
+
+.over-sleep{
+  background-color: rgb(194, 77, 57);
+}
+
+.data-container .right-section{
+  position: relative;
+  background-color: rgb(21,27,35);
+  height: 100%;
+  width: 750px;
+  margin-left: 50px;
+  border-radius: var(--border-radius-2);
+  border: 3px solid white;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.right-section .title{
+  color: white;
+  position: absolute;
+  top: 10px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.linechartcontainer{
+  width: 85%;
+  height: 35%;
+  background-color: rgb(0, 0, 0);
+  overflow-wrap:normal;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  margin-top: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.726);
+  flex-shrink: 0;
+  margin-bottom: 20px;
+}
+
+.line{
+ width: 100%; 
+ height: 4px;
+ position: relative;
+ background-color: white;
+ margin-bottom: 12px;
+}
+
+.progresstitle{
+  font-size: 28px;
+  color: white;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+}
+
+.progresstitle i{
+  font-size: 22px;
 }

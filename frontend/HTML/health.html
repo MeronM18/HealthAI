@@ -18,6 +18,9 @@
 
   <script src="/frontend/JS/script.js" defer></script>
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="/frontend/JS/chart.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet"/>
 
   <title>HealthAI</title>
@@ -191,15 +194,57 @@
                 </div>
               </div>
               <div class="box"></div>
-              <i class='bx bxs-up-arrow'></i>
+              <i class='bx bxs-up-arrow uparrow'></i>
+            </div>
+            <div class="sleepcontainer" id="sleepcontainer">
+              <h1>Sleep Tracker <i class='bx bxs-moon moon' ></i></h1>
+              <div class="sleeptable">
+                <table>
+                      <thead>
+                          <tr>
+                              <th>Sleep Duration</th>
+                              <th>Status</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td class="first"> 6 Hours</td>
+                              <td>Underslept</td>
+                          </tr>
+                          <tr>
+                              <td class="second">6 - 9 Hours</td>
+                              <td>Healthy Sleep</td>
+                          </tr>
+                          <tr>
+                              <td class="third">> 9 Hours</td>
+                              <td>Overslept</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <input type="number" placeholder="Hours" id="sleephours" min="0" max="24">
+              <input type="number" placeholder="Minutes" id="sleepminutes" min="0">
+              <p class="entersleepvalue">Please Enter a Value.</p>
+              <button id="logsleep">&plus; Log Sleep</button>
+              <button id="deletelog"><i class='bx bxs-trash' ></i> Delete Log</button>
+              <div class="log" id="sleeplogdata"></div>
             </div>
           </div>
-          <div class="right-section"></div>
+          <div class="right-section">
+            <h1 class="title">Weight in Numbers</h1>
+            <div class="linechartcontainer">
+              <canvas id="linechart"></canvas>
+            </div>
+            <div class="line">
+            </div>
+            <h1 class="progresstitle">Gl<i class='bx bxs-camera' ></i>w-Up Gallery</h1>
+          </div>
         </div>
         </div>
     </main>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 </html>
 

@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function() { //this runs the funct
   resetForm();
 });
 
-/************************************************************************************ */
+/************************************************************************************************************************* */
 
 let box = document.querySelector('.box'); //grab the box element containing all the items for the scroll wheel
 
@@ -326,3 +326,111 @@ window.addEventListener('wheel', function (event) { //this functions performs wh
   }
 });
 
+/******************************************************************************************** */
+document.getElementById('logsleep').addEventListener('click', function() { //grab the button that logs sleep data
+  let hours = parseInt(document.getElementById('sleephours').value) || 0; //gets the value from the hours input box and takes the string and converts it into an integer
+  let minutes = parseInt(document.getElementById('sleepminutes').value) || 0; //gets the value from the minutes input box and takes the string and converts it into an integer
+  let alertMessage = document.querySelector('.entersleepvalue'); //grabs the alert message 
+
+  //show alert if no values are entered
+  if (hours <= 0 && minutes <= 0) {
+      alertMessage.classList.add('show'); //toggle the message class that displays text
+      return;
+  }
+
+  //hide alert if values are entered
+  alertMessage.classList.remove('show');
+
+  //convert minutes to hours if 60 or more
+  if (minutes >= 60) {
+      hours += Math.floor(minutes / 60); //hours calculation after minutes are converted
+      minutes = minutes % 60; //remaining minutes are calculated as the remainder from above calculation
+  }
+
+  //ensure hours do not exceed 24
+  if (hours > 24) {
+      alertMessage.textContent = "Max is 24 hours.";
+      alertMessage.classList.add('show'); //display alert message
+      return;
+  }
+
+  const date = new Date().toLocaleDateString(); //grab the current date
+  const totalMinutes = hours * 60 + minutes; //calculate total minutes of sleep
+
+  appendLog(`Slept for: ${hours} hours and ${minutes} minutes`, date, totalMinutes); //this is the display text of when a log is added that shows how long slept for, date
+
+  //clear input fields
+  document.getElementById('sleephours').value = ''; //once logged data, the input fields go back to empty
+  document.getElementById('sleepminutes').value = '';
+});
+
+function resetSleep() { //function that clears all log data when button is clicked 
+  const resetButton = document.getElementById('deletelog'); //grab the button
+  resetButton.addEventListener('click', function() { //when clicked, clear up all input values 
+      document.getElementById('sleephours').value = '';
+      document.getElementById('sleepminutes').value = '';
+      document.getElementById('sleeplogdata').innerHTML = ''; //set the log HTML element to empty 
+      document.getElementById('sleeplogdata').classList.remove('visible'); //toggle the css class that hides the log bar
+  });
+}
+
+function appendLog(message, date, totalMinutes) { //function that creates the div elements to store the sleep info
+  const log = document.getElementById('sleeplogdata'); //grabs the section that will hold the data
+  const logItem = document.createElement('div'); //create item div for each log
+  
+  let sleepClass = 'log-item'; //selects the css styling for the info logged
+
+    if (totalMinutes < 360) { //if statements that check the amount of sleep user inputted and judging based on scale on whether they had enough sleep
+        sleepClass += ' notenough-sleep'; //calls the css styling if sleep is less than 6 hours 
+    } else if (totalMinutes >= 360 && totalMinutes < 541) {
+        sleepClass += ' healthy-sleep';
+    } else if (totalMinutes >= 541) {
+        sleepClass += ' over-sleep';
+    }
+
+logItem.className = sleepClass; //than the div is using the styles from the sleepClass
+
+  logItem.innerHTML = `${message} <span style="font-size: 12px; color: black; font-style: italic;"> (${date})</span><i class='bx bxs-trash trash-icon' onClick="deleteLog(this)"></i>`; //now this styles the message of each log and adds the message, date, and a trash icon to remove that specific log
+  log.appendChild(logItem); //adds the new log data inside the container 
+
+  if (log.children.length > 0) { //if the number of inputted sleep logs is more than 0, than toggle css styling to show visible 
+      log.classList.add('visible'); 
+  }
+}
+
+function deleteLog(element) { //when the trash icon is clicked next to each sleep log and takes element as parameter to delect that specific logItem
+  const logItem = element.parentElement; //refers to the entire line entry containing the message, date, and icon
+  const log = document.getElementById('sleeplogdata'); //this grabs the log container where are the info is stored 
+
+  logItem.remove(); //removes the entry 
+
+  if (log.children.length === 0) {
+      log.classList.remove('visible'); //hides the log if the number of entries is 0
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() { //dom to ensure all components of the page are loaded to run
+  resetSleep();
+});
+
+/***************************************************************************** */
+
+document.querySelector('.moon').addEventListener('mouseenter', function() { //grabs the moon icon and checks when the mouse is over it 
+  document.querySelector('.sleeptable').style.visibility = 'visible'; //grabs the table for the sleep status and display it when hovered over 
+  document.querySelector('.sleeptable').style.opacity = '1'; //also set the table to opacity 1
+});
+
+document.querySelector('.moon').addEventListener('mouseleave', function() { //when the mouse is removed from the moon icon
+  document.querySelector('.sleeptable').style.visibility = 'hidden'; //hide the table
+  document.querySelector('.sleeptable').style.opacity = '0'; //opacity to 0 to hide
+});
+
+document.querySelector('.sleeptable').addEventListener('mouseenter', function() { 
+  document.querySelector('.sleeptable').style.visibility = 'visible'; 
+  document.querySelector('.sleeptable').style.opacity = '1'; 
+});
+
+document.querySelector('.sleeptable').addEventListener('mouseleave', function() { 
+  document.querySelector('.sleeptable').style.visibility = 'hidden'; 
+  document.querySelector('.sleeptable').style.opacity = '0'; 
+});
