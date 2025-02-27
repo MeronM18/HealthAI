@@ -196,13 +196,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }]
   };
 
-
   const config = {
     type: 'line', 
-    data: data,    
+    data: data,
+    options: {
+      scales: {
+        x: {
+          grid: {
+            color: 'rgba(255, 255, 255, 0.45)'
+          }
+        },
+        y: {
+          grid: {
+            color: 'rgba(255, 255, 255, 0.45)'
+          }
+        }
+      }
+    }
   };
 
-  
   const ctx = document.getElementById('linechart').getContext('2d');
   new Chart(ctx, config);  
 });

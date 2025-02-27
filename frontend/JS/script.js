@@ -434,3 +434,26 @@ document.querySelector('.sleeptable').addEventListener('mouseleave', function() 
   document.querySelector('.sleeptable').style.visibility = 'hidden'; 
   document.querySelector('.sleeptable').style.opacity = '0'; 
 });
+
+/******************************************************************************** */
+document.addEventListener("DOMContentLoaded", function() {
+  const weightInput = document.getElementById('weight-progress-entry'); //grab the element that will have input value of weight
+
+  weightInput.addEventListener('input', function() { //checks for the event of user keyboard input
+    let inputValue = weightInput.value.replace(' lbs', ''); //sets a variable equal to the input value and replacing that with ' lbs'
+    
+    if (inputValue) { //checks if the user input value contains 'lbs' or not
+      weightInput.value = inputValue + ' lbs';
+    } else {
+      weightInput.value = '';
+    }
+  });
+
+  weightInput.addEventListener('keydown', function(event) { //event listener for when the delete button is pressed
+    if (event.key === 'Backspace') {
+      if (weightInput.value.endsWith(' lbs')) { //checks if input has a number value and lbs unit at end
+        weightInput.value = weightInput.value.replace(' lbs', ''); //then when delete it clicked, the number will be deleted
+      }
+    }
+  });
+});
