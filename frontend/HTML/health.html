@@ -112,7 +112,7 @@
               <h4>Goal Weight</h4>
               <input type="text" class="goalwgt" placeholder="Goal Weight (lbs)" id="goalweight">
 
-              <h4 class="weeklyh4">Weekly Goal</h4>
+              <h4 class="weeklyh4">Goal</h4>
               <button class="weeklygoalbtn" id="weeklygoalbtn">
                 <label for="weeklygoalbtn" id="weeklygoalLabel"></label>
                 <i class='bx bx-chevron-down'></i>
@@ -135,18 +135,11 @@
                 </button>
               
                 <ul class="activitymenu">
-                  <li><a href="">Not Very Active</a></li>
+                  <li><a href="">No Exercise</a></li>
                   <li><a href="">Lightly Active</a></li>
                   <li><a href="">Active</a></li>
+                  <li><a href="">Very Active</a></li>
                 </ul>
-            </div>
-            <div class="caloriegoals">
-              <h4>Calorie Goal</h4>
-              <div class="increment">
-                <button class="minus" id="minusbtn">-</button>
-                <input class="" type="text" placeholder="" id="caloriecountvalue" value="0">
-                <button class="add" id="addbtn">+</button>
-              </div>
             </div>
             <div class="formsubmit">
               <button class="resetbtn" id="resetbtn">Reset</button>
@@ -229,6 +222,33 @@
               <button id="deletelog"><i class='bx bxs-trash' ></i> Delete Log</button>
               <div class="log" id="sleeplogdata"></div>
             </div>
+            <div class="calorieinsight">
+              <img src="/frontend/images/grass.jpg" class="foodimg">
+              <h1 class="ci-h1">Calorie Insight <i class='bx bxs-cheese' ></i></h1>
+              <div class="calorieboard">
+                <div class="caloriecategory" id="cat1">
+                  Lose 0.5lbs/week
+                  <input type="text" value="2000cal"id="calorie1" readonly>
+                </div>
+                <div class="caloriecategory" id="cat2">
+                  Lose 1lbs/week
+                  <input type="text" value="2000cal"id="calorie2" readonly>
+                </div>
+                <div class="caloriecategory" id="cat3">
+                  Maintain Weight
+                  <input type="text" value="2000cal"id="calorie3" readonly>
+                </div>
+                <div class="caloriecategory" id="cat4">
+                  Gain 0.5lbs/week
+                  <input type="text" value="2000cal"id="calorie4" readonly>
+                </div>
+                <div class="caloriecategory" id="cat5">
+                  Gain 1lbs/week
+                  <input type="text" value="2000cal"id="calorie5" readonly>
+                </div>
+
+              </div>
+            </div>
           </div>
           <div class="right-section">
             <h1 class="title">Weight in Numbers</h1>
@@ -240,6 +260,7 @@
             <div class="progresscontainer">
               <div class="addentry">
                 <h1>Entries</h1>
+                <p class="galleryalertmessage"></p>
                 <button id="addentrybutton"><i class='bx bx-plus-medical' ></i></button>
               </div>
               <div class="entryinput">
@@ -249,12 +270,22 @@
                 <input type="date" id="date-entry" />
                
                 <button id="add-image-btn">
+                  <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg">
                   <i class='bx bx-image-add'></i>
                 </button>
 
-                <button id="post-entry">Post</button>
+                <button id="post-entry" type="submit">Post</button>
               </div>
-              
+              <div class="gallerycontainer">
+                <div class="gallery">
+                  <i class='bx bx-image-alt' ></i>
+                </div>
+              </div>
+              <div class="picdisplaybuttons">
+                <button id="onepicbtn"><i class='bx bx-square squareicon' ></i></button>
+                <button id="twopicbtn"><i class='bx bx-book-open twosquareicon' ></i></button>
+              </div>
+              <div class="progresslog" id="progresslogdata"></div>
             </div>
           </div>
         </div>

@@ -188,67 +188,6 @@ menudropdownIcons.forEach(button => { //for each icon, this function is performe
 
 /************************************************************************* */
 
-//function for the calorie count incrementer
-let calorieGoalCount = 0; //originally set calorie count to 0
-let intervalId = null; //no interval at the start hence at null
-
-function updateInputValue() { //function to update value
-  document.getElementById('caloriecountvalue').value = calorieGoalCount; //grab the input value that holds the calorie count and set its value to 0
-}
-
-document.getElementById('minusbtn').onclick = function() { //get the minus button and perform function when clicked
-  // Decrease by 50, but ensure it doesn't go below 0
-  calorieGoalCount = Math.max(0, calorieGoalCount - 50); //when the minus button is clicked, the current value will be decremented by 50
-  updateInputValue(); //this updates the value inside the input automatically
-}
-
-document.getElementById('addbtn').onclick = function() { //get the add button and perform function when clicked 
-  calorieGoalCount += 50; //when add btn is clicked, the current value will be incremented by 50
-  updateInputValue(); //again update value 
-}
-
-document.getElementById('caloriecountvalue').addEventListener('input', function() { //grab the input value box that holds the calorie count and add an eventlistener for when user enters a value and perform a function
-  const enteredValue = parseInt(this.value); //variable that stores in the entered value from the user and change that value into an integer
-  if (!isNaN(enteredValue) && enteredValue >= 0) { //checks if value entered is valid and not a negative
-    calorieGoalCount = enteredValue; //this will then set the entered value to the new calorie count
-  } else { //if negative or invalid number is entered, this will keep calorie count as 0
-    calorieGoalCount = 0;
-  }
-  updateInputValue(); //update the value 
-});
-
-document.getElementById('minusbtn').addEventListener('mousedown', function() { //this function listens to the mouse and checks when user is holding it down for the minus button
-  intervalId = setInterval(function() { //this will now change the value of the interval from null to the function
-    calorieGoalCount = Math.max(0, calorieGoalCount - 50); //when minus button is held down the value continues to decrease by 50
-    updateInputValue(); //value gets updated
-  }, 100); //and every 300 milliseconds that mouse is held down, the value changes 
-});
-
-document.getElementById('addbtn').addEventListener('mousedown', function() { //this functions performs the same thing as mouse being held down for the add button
-  intervalId = setInterval(function() {
-    calorieGoalCount += 50; //increase value by 50
-    updateInputValue(); //update value realtime
-  }, 100); //and every 300 milliseconds that mouse is held down, the value changes 
-});
-
-document.addEventListener('mouseup', function() { //checks when the user release their finger from the mouse
-  clearInterval(intervalId); //the interval's value is now cleared and stops the automatic increment/decrement
-});
-
-document.getElementById('minusbtn').addEventListener('mouseleave', function() { //checks when the mouse is released from the minus button
-  clearInterval(intervalId); //clears interval
-});
-
-document.getElementById('addbtn').addEventListener('mouseleave', function() { //checks when the mouse is released from the add button
-  clearInterval(intervalId); //clears interval 
-});
-
-document.addEventListener('contextmenu', function(){ //checks if right click is clicked to prevent from continuous increment/decrement
-  clearInterval(intervalId); //clears interval
-});
-
-/************************************************************************* */
-
 function resetForm(){ //function to reset the health info form
   const resetButton = document.getElementById('resetbtn'); //create a variable that stores the reset button
   resetButton.addEventListener("click", function(){ //once clicked, function is performed
@@ -326,7 +265,7 @@ window.addEventListener('wheel', function (event) { //this functions performs wh
   }
 });
 
-/******************************************************************************************** */
+/************************************************************************************************************************* */
 document.getElementById('logsleep').addEventListener('click', function() { //grab the button that logs sleep data
   let hours = parseInt(document.getElementById('sleephours').value) || 0; //gets the value from the hours input box and takes the string and converts it into an integer
   let minutes = parseInt(document.getElementById('sleepminutes').value) || 0; //gets the value from the minutes input box and takes the string and converts it into an integer
@@ -457,3 +396,199 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
+/************************************************************************************** */
+const addEntryButton = document.getElementById('addentrybutton'); 
+addEntryButton.addEventListener("click", function() { 
+  const entryForm = document.querySelector('.entryinput');  
+  const alertMessage = document.querySelector('.galleryalertmessage');
+
+  entryForm.classList.toggle('show'); 
+  alertMessage.classList.remove('show'); 
+
+  if (entryForm.classList.contains('show')) {
+    addEntryButton.innerHTML = "<i class='bx bx-minus'></i>"; 
+  } else {
+    addEntryButton.innerHTML = "<i class='bx bx-plus-medical'></i>";
+  }
+});
+
+const postEntryButton = document.getElementById('post-entry'); 
+postEntryButton.addEventListener("click", function() {
+  let weight = parseInt(document.getElementById('weight-progress-entry').value) || 0; 
+  let date = document.getElementById('date-entry'); 
+  const selectedDate = date.value; 
+  const alertMessage = document.querySelector('.galleryalertmessage'); 
+  const entryForm = document.querySelector('.entryinput'); 
+
+
+  if (weight <= 0 && !selectedDate) { 
+    alertMessage.classList.add('show'); 
+    alertMessage.innerHTML = "Please fill in missing fields!";
+  } 
+  else if (weight <= 0) { 
+    alertMessage.classList.add('show');  
+    alertMessage.innerHTML = "Please enter a valid weight!";
+  } 
+  else if (!selectedDate) {
+    alertMessage.classList.add('show');  
+    alertMessage.innerHTML = "Please select a date!";
+  } 
+  else {
+    const currentDate = new Date(); 
+    const inputDate = new Date(selectedDate);
+
+    if (inputDate > currentDate) { 
+      alertMessage.classList.add('show'); 
+      alertMessage.innerHTML = "The selected date cannot be in the future!";
+    } else { 
+      alertMessage.classList.add('show');
+      alertMessage.innerHTML = "Entry Added!";
+
+      entryForm.classList.remove('show');
+      addEntryButton.innerHTML = "<i class='bx bx-plus-medical'></i>";
+
+      document.getElementById('weight-progress-entry').value = '';
+      document.getElementById('date-entry').value = '';
+
+      setTimeout(function() {
+        alertMessage.classList.remove('show');
+      }, 2000);
+
+      appendProgressLog(weight, selectedDate);
+    }
+  }
+});
+
+function appendProgressLog(weight, date) {
+  if (weight > 0 && date) { 
+    const progressLog = document.getElementById('progresslogdata');
+    const progressLogItem = document.createElement('div');
+
+    progressLogItem.className = 'progresslog-item';
+
+    progressLogItem.innerHTML = `${weight} lbs <span style="font-size: 14px; color: black; font-style: italic; color: #757575;">(${date})</span><i class='bx bxs-trash trash-icon' onClick="deleteProgressLog(this)"></i>`;
+    
+    progressLog.appendChild(progressLogItem);
+
+    if (progressLog.children.length > 0) {
+      progressLog.classList.add('visible');
+    }
+  }
+}
+
+function deleteProgressLog(element) {
+  const logItem = element.parentElement; 
+  const progressLog = document.getElementById('progresslogdata');
+
+  logItem.remove();
+
+  if (progressLog.children.length === 0) {
+    progressLog.classList.remove('visible');
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+});
+
+
+/************************************************************************************ */
+document.addEventListener("DOMContentLoaded", function() { //load the DOM; basically functions the gallery buttons to show when one is active or not
+  const onepicBtn = document.getElementById('onepicbtn'); //grab both gallery buttons 
+  const twopicBtn = document.getElementById('twopicbtn');
+  let onepicClicked = true; //set first button clicked as true to start off as white 
+  let twopicClicked = false; //set second button clicked as false to not having white styling 
+
+  const setIconWhite = (btn, iconClass) => { //function to always the first square icon start with white 
+    const icon = btn.querySelector(iconClass);
+    icon.style.color = 'white';
+  };
+
+  const resetIconColor = (btn, iconClass) => { //removes the white icon when another selected 
+    const icon = btn.querySelector(iconClass);
+    icon.style.color = '';
+  };
+
+  setIconWhite(onepicBtn, '.squareicon'); //sets the first button icon to white 
+
+  onepicBtn.addEventListener('mouseenter', function() { //function to check when mouse is hovering over the first button
+    if (!onepicClicked) { //when button is not clicked
+      const icon1 = onepicBtn.querySelector('.squareicon'); //originally start off the button as white even when not hovered over  
+      icon1.style.color = 'white';
+    }
+  });
+
+  onepicBtn.addEventListener('mouseleave', function() { //function that removes the styling when the mouse is no longer hovering over first button
+    if (!onepicClicked) {
+      const icon1 = onepicBtn.querySelector('.squareicon');
+      icon1.style.color = '';
+    }
+  });
+
+  twopicBtn.addEventListener('mouseenter', function() { //second button functionality for mouse hover 
+    if (!twopicClicked) {
+      const icon2 = twopicBtn.querySelector('.twosquareicon');
+      icon2.style.color = 'white';
+    }
+  });
+
+  twopicBtn.addEventListener('mouseleave', function() {
+    if (!twopicClicked) {
+      const icon2 = twopicBtn.querySelector('.twosquareicon');
+      icon2.style.color = '';
+    }
+  });
+
+  onepicBtn.addEventListener('click', function() { //when the first button is clicked function 
+    if (!onepicClicked) { //if not clicked and originally as white, then it will set the clicked variable as true to show it is highlighted 
+      setIconWhite(onepicBtn, '.squareicon');
+      onepicClicked = true;
+      if (twopicClicked) { //however, if the second button is not clicked, then it will remove the white styling
+        resetIconColor(twopicBtn, '.twosquareicon');
+        twopicClicked = false;
+      }
+    }
+  });
+
+  twopicBtn.addEventListener('click', function() { //same functionality for the second butotn 
+    if (!twopicClicked) {
+      setIconWhite(twopicBtn, '.twosquareicon');
+      twopicClicked = true;
+      if (onepicClicked) {
+        resetIconColor(onepicBtn, '.squareicon');
+        onepicClicked = false;
+      }
+    }
+  });
+});
+
+/************************************************************************************************************************************** */
+
+document.addEventListener("DOMContentLoaded", function() {
+  const onepicBtn = document.getElementById('onepicbtn'); //grabs both gallery buttons 
+  const twopicBtn = document.getElementById('twopicbtn');
+  const gallery = document.querySelector('.gallery'); //grabs the container of the gallery picture
+
+  let isTwopicClicked = false; //sets the sidebyside gallery option to false to initally begin with only one pic
+
+  onepicBtn.addEventListener('click', function() { //when one pic button is clicked 
+    const galleries = document.querySelectorAll('.gallery'); //grabs the gallery container 
+    if (galleries.length > 1) { //if more than one galleries 
+      galleries[1].remove(); //removes second gallery and makes sure only one gallery can be added 
+    }
+    isTwopicClicked = false; //sets back to false so you can rotate between gallery views 
+  });
+
+  twopicBtn.addEventListener('click', function() { //when two pic button is clicked 
+    if (!isTwopicClicked) { //when it is clicked 
+      const newGallery = gallery.cloneNode(true); //will clone the gallery div and make a new one
+      gallery.parentElement.appendChild(newGallery); //adds it to the page 
+      isTwopicClicked = true; //then sets that button to true so both views are shown 
+    }
+  });
+});
+
+
+
+/**************************************************************************************************************************************** */
+

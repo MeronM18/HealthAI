@@ -258,65 +258,10 @@ input:focus, textarea:focus{
   font-size: 14px;
 }
 
-.caloriegoals {
-  display: flex !important;
-  flex-direction: column !important; /* Keep it column to stack header and increment */
-  align-items: center !important; 
-  justify-content: center !important; 
-  gap: 15px !important;
-  width: 100%; 
-}
-
-.caloriegoals h4 {
-  font-size: 20px;
-  font-weight: 400;
-  text-align: center;
-  width: 100%;
-  border-bottom: 2px solid rgb(157, 122, 221);
-  font-weight: 600;
-}
-
-.increment {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: center !important; 
-  align-items: center !important;      
-  gap: 10px !important;              
-  width: 100%;                     
-  padding: 20px; 
-  margin-top: 5px;                  
-  background-color: transparent;      
-  border: 2px solid white; 
-  box-shadow: 1px 1px 6px 1px rgb(255, 255, 255);  
-  border-radius: var(--border-radius-3); 
-}
-
-.increment input{
-  width: 100px;
-  padding: 10px;
-  text-align: center;
-}
-
-.increment button{
-  background-color: transparent;
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: var(--border-radius-2);
-  color: white;
-  width: 100%;
-  padding: 3px 10px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 600;
-  transition: background-color 0.2s;
-}
-
-.increment button:hover{
-  background-color: rgb(157, 164, 204);
-}
-
 .formsubmit{
+  position: relative;
   width: 100%;
-  margin-top: 8px;
+  top: 50px;
 
   display: flex !important;
   flex-direction: row !important;
@@ -359,6 +304,7 @@ input:focus, textarea:focus{
   border-radius: var(--border-radius-2);
   border: 3px solid white;
   overflow: hidden;
+
 }
 
 .bmicontainer{
@@ -474,6 +420,7 @@ input:focus, textarea:focus{
 
 .box .item{
   background-color: white;
+  border: 3px solid white;
   position: relative;
   display: flex;
   align-items: center;
@@ -497,19 +444,22 @@ input:focus, textarea:focus{
 
 .sleepcontainer{
   position: relative;
-  width: 50%;
+  width: 47%;
   height: 540px;
   background-image: url('/frontend/images/skyimg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 20%;
   border-radius: 10px;
+  border: 1px solid white;
   top: 8px;
   left: 20px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  float: left;
 }
 
 .sleepcontainer .sleeptable{
@@ -814,6 +764,8 @@ input:focus, textarea:focus{
   flex-direction: column;
   align-items: center;
   margin-top: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .addentry{
@@ -836,6 +788,22 @@ input:focus, textarea:focus{
   user-select: none;
 }
 
+.galleryalertmessage{
+  position: absolute;
+  width: max-content;
+  right: 100px;
+  font-size:12px;
+  color: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in, visibility 200ms ease;
+}
+
+.galleryalertmessage.show{
+  opacity: 1;
+  visibility: visible;
+}
+
 .addentry button{
   display: flex;
   align-items: center;
@@ -846,7 +814,7 @@ input:focus, textarea:focus{
   height: 18px;
   padding: 18px;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
   transition: 300ms ease;
   will-change: transform;
@@ -867,6 +835,15 @@ input:focus, textarea:focus{
   text-align: center;
   padding: 14px 20px 14px 20px;
   gap: 15px;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+  transition: visibility 200ms ease-in-out, opacity 200ms ease-in;
+}
+
+.entryinput.show{
+  visibility: visible;
+  opacity: 1;
 }
 
 .entry_weight {
@@ -913,6 +890,16 @@ input:focus, textarea:focus{
   opacity: 0.80;
 }
 
+#file-input{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+
 #post-entry{
   width: 80px;
   height: 40px;
@@ -930,4 +917,268 @@ input:focus, textarea:focus{
 
 #post-entry:hover{
   transform: scale(1.05);
+}
+
+.gallerycontainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.gallery{
+  position: relative;
+  bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 130px;
+  border: 2px solid black;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.gallery img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.gallery i{
+  position: relative;
+  font-size: 75px;
+  color: rgb(109, 109, 109);
+  opacity: 0.85;
+  z-index: 0;
+}
+
+.picdisplaybuttons{
+  position: relative;
+  top: -25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: max-content;
+  background-color:rgb(78, 77, 77);  
+  gap: 2px;
+  border-radius: var(--border-radius-2);
+}
+
+.picdisplaybuttons button{
+  padding: 4px 15px 4px 15px;
+  width: 100%;
+  display: flex;
+  border-radius: inherit;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#onepicbtn{
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+
+#onepicbtn::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px; 
+  height: 18px;
+  border-radius: var(--border-radius-2);
+  background-color: rgb(129, 127, 127);
+}
+#twopicbtn{
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.picdisplaybuttons i{
+  color: rgb(180, 174, 174);
+  font-size: 24px;
+  transition: 100ms ease-in;
+}
+
+.progresslog{
+  border: 2px solid rgb(0, 0, 0);
+  background: white;
+  width: 80%;
+  max-height: 200px;
+  overflow-y: auto;
+  text-align: left;
+  z-index: 0; 
+  margin-top: 25px; 
+
+  visibility: hidden;
+}
+
+.progresslog.visible{
+  visibility: visible;
+}
+
+.progresslog::-webkit-scrollbar{
+  width: 4px;
+  overflow-y: hidden;
+}
+
+.progresslog::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+.progresslog::-webkit-scrollbar-thumb {
+  background:rgb(0, 0, 0); 
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.progresslog-item{
+  padding: 15px;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  cursor: pointer;
+}
+
+.progresslog-item:last-child{
+  border-bottom: none;
+}
+
+.calorieinsight{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  width: 47%;
+  height: 540px;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid white;
+  margin: auto;
+  top: 8px;
+  left: 45px;
+  border-radius: 10px;
+  float: left;
+}
+
+.calorieinsight .foodimg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  opacity: 0.62;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.calorieinsight .ci-h1{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  font-weight: bolder;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 3px solid white;
+  text-shadow: rgb(0, 0, 0) 0px 0px 5px;
+
+  z-index: 2;
+}
+
+.calorieinsight .ci-h1 i{
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  color: rgb(255, 217, 0);
+}
+
+.cloudcontainer{
+  position: relative;
+  margin-top: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: max-content;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.calorieboard{
+  position: absolute;
+  top: 47%;
+  left: 48.5%;
+  transform: translate(-50%, -50%);
+  width: 74.5%;
+  height: 35%;
+  background-color: transparent;
+  border-radius: var(--border-radius-2);
+  padding: 6px;
+  z-index: 10;
+}
+
+.caloriecategory{
+  position: absolute;
+  width: 119px;
+  height: 60px;
+  border: 2px solid black;
+  border-radius: var(--border-radius-2);
+  padding-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+}
+
+.caloriecategory input{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: var(--border-radius-2);
+  background-color: transparent;
+  width: 100%;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 2px;
+  color: black;
+  overflow-y: hidden;
+}
+
+#cat1{
+  left: 6px;
+  top: 6px;
+}
+
+#cat2{
+  right: 6px;
+  top: 6px;
+}
+
+#cat3{
+  top: 64px;
+  left: 128px;
+}
+
+#cat4{
+  left: 6px;
+  bottom: 6px;
+}
+
+#cat5{
+  right: 6px;
+  bottom: 6px;
 }
