@@ -1,0 +1,411 @@
+:root{
+  --background-color: #FFFFFF;
+  --black-color: #000408;
+  --lightblack-color: #13181f;
+  --blackgreen-color: #181C14;
+  --gray-color: #62625f;
+  --green-color: #697565;
+  --beige-color: #ECDFCC;
+  --red-color: #b80e0e;
+  --lightgray-color: #EEEEEE;
+  --navyblue-color: #0B192C;
+  --button-background: #4d4d4a;
+  --hover-color: #031c4f;
+
+
+  --border-radius-1: 4px;
+  --border-radius-2: 10px;
+  --border-radius-3: 18px;
+  --border-radius-4: 50%;
+
+  --padding-1: 10px 20px;
+  --padding-2: 3px;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+main {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr); 
+  margin: 50px;
+  background-color: rgb(25, 33, 44);
+  grid-column: 1 / span 12;
+  grid-row: 2 / span 11;
+  transition: grid-column 500ms ease-in-out;
+  overflow: hidden;
+}
+
+main.after {
+  grid-column: 2 / span 11;
+}
+
+.mealheader{
+  position: relative;
+  width: 100%;
+  height: 90px;
+  grid-column: span 12;
+  padding: 15px 0 0 30px;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.mealheader h2{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.data-container{
+  background-color: rgb(21,27,35);
+  grid-column: span 12;
+  grid-row: span 11;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 20px;
+
+  position: relative;
+}
+
+.top{
+  background-color: black;
+  width: 100%;
+  height: 8%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px 10px 25px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid white;
+}
+
+.caloriecount,
+.top-title,
+.diarydate{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.caloriecount h2{
+  position: relative;
+  width: max-content;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+}
+
+.caloriecount h2::after{
+  content: '';
+  position: absolute;
+  border-radius: var(--border-radius-2);
+  background: linear-gradient(45deg, blue, green);
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+}
+
+#caloriecountmealpage{
+  letter-spacing: 1px;
+}
+
+.top-title{
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+}
+
+.diarydate{
+  position: relative;
+  font-weight: 600;
+}
+
+.diarydate button{
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.diarydate button i{
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: 200ms ease;
+}
+
+.diarydate button i:hover{
+  color: rgb(122, 121, 121);
+}
+
+#datespan{
+  color: white;
+  padding: 8px;
+  font-size: 22px;
+  width: max-content;
+}
+
+.searchmeals{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background-color: rgb(244, 255, 206);
+  border-radius: var(--border-radius-2);
+  border: 1px solid white;
+  transition: 500ms ease-in;
+  z-index: 1;
+}
+
+.searchmeals .searchbox{
+  position: relative;
+  top: 24px;
+  width: 95%;
+  height: max-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbox input {
+  position: relative;
+  flex: 1;
+  height: 60px;
+  padding-left: 14px;
+  font-size: 16px;
+  border-radius: var(--border-radius-2);
+  border: none;
+  background-color: rgb(247, 247, 243);
+  box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.searchbox input::placeholder {
+  font-size: 16px;
+}
+
+.searchbox button {
+  position: absolute;
+  cursor: pointer;
+  background-color: rgb(252, 232, 118);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  width: 80px;
+  height: 100%;
+  border-top-right-radius: var(--border-radius-2);
+  border-bottom-right-radius: var(--border-radius-2);
+  right: 0;
+  top: 0;
+  z-index: 2;
+
+  opacity: 0;
+  transition: all 320ms ease;
+}
+
+.searchbox button:hover{
+  background: rgb(255, 225, 53);
+}
+
+.searchbox button i {
+  font-size: 30px;
+}
+
+.searchbox input:not(:placeholder-shown) + button {
+  visibility: visible;
+  opacity: 1;
+}
+
+.searchbox input:focus{
+  outline: 0;
+}
+
+.meals-main-sections{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.breakfast-snacks,
+.lunch-drinks,
+.dinner-macros{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  width: 33%;
+}
+
+.breakfast-snacks .breakfast,
+.lunch-drinks .lunch,
+.dinner-macros .dinner{
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: rgb(33, 42, 55);
+  width: 100%;
+  height: 50%;
+}
+
+.breakfast-snacks .snacks,
+.lunch-drinks .drinks,
+.dinner-macros .macros{
+  position: relative;
+  background-color: rgb(51, 54, 61);
+  width: 100%;
+  height: 50%;
+}
+
+.breakfast,
+.snacks,
+.lunch,
+.drinks,
+.dinner,
+.macros{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.breakfast .breakfasttopbar,
+.snacks .snacktopbar,
+.lunch .lunchtopbar,
+.drinks .drinkstopbar,
+.dinner .dinnertopbar{
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 0 50px;
+  border: 3px solid white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.breakfasttopbar h2,
+.snacktopbar h2,
+.lunchtopbar h2,
+.drinkstopbar h2,
+.dinnertopbar h2{
+  font-size: 32px;
+  font-weight: 700;
+  color: rgb(196, 217, 255);
+}
+
+.breakfasttopbar h2 i,
+.snacktopbar h2 i,
+.lunchtopbar h2 i,
+.drinkstopbar h2 i,
+.dinnertopbar h2 i{
+  color: white;
+  font-size: 28px;
+  margin-left: 4px;
+}
+
+.breakfasttopbar button,
+.snacktopbar button,
+.lunchtopbar button,
+.drinkstopbar button,
+.dinnertopbar button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: max-content;
+  background-color: rgb(0, 0, 0);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer; 
+  box-shadow: inset 0 0 10px 2px rgba(83, 83, 83, 0.65);
+  transition: 350ms ease-in-out;
+  color: white;
+}
+
+.breakfasttopbar button:hover,
+.snacktopbar button:hover,
+.lunchtopbar button:hover,
+.drinkstopbar button:hover,
+.dinnertopbar button:hover{
+  background-color: white;
+  color: black;
+  transform: scale(1.06);
+}
+
+.breakfasttopbar button i,
+.snacktopbar button i,
+.lunchtopbar button i,
+.drinkstopbar button i,
+.dinnertopbar button i{
+  font-size: 24px;
+}
+
+.breakfastlog,
+.snackslog,
+.lunchlog,
+.drinkslog,
+.dinnerlog{
+  position: relative;
+  border: 2px solid rgb(0, 0, 0);
+  background: white;
+  width: 95%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 0; 
+  bottom: 280px;
+  visibility: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.breakfastlog::-webkit-scrollbar,
+.snackslog::-webkit-scrollbar,
+.lunchlog::-webkit-scrollbar,
+.drinkslog::-webkit-scrollbar,
+.dinnerlog::-webkit-scrollbar{
+  width: 4px;
+  overflow-y: hidden;
+}
+
+.breakfastlog::-webkit-scrollbar-track,
+.snackslog::-webkit-scrollbar-track,
+.lunchlog::-webkit-scrollbar-track,
+.drinkslog::-webkit-scrollbar-track,
+.dinnerlog::-webkit-scrollbar-track{
+  background: inherit;
+}
+
+.breakfastlog::-webkit-scrollbar-thumb,
+.snackslog::-webkit-scrollbar-thumb,
+.lunchlog::-webkit-scrollbar-thumb,
+.drinkslog::-webkit-scrollbar-thumb,
+.dinnerlog::-webkit-scrollbar-thumb{
+  background:rgb(0, 0, 0); 
+  border-radius: 10px;
+  cursor: pointer;
+}

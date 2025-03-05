@@ -1,7 +1,7 @@
 const getChartOptions = () => {
   return {
     series: [35.1, 23.5, 2.4],  // Data for the doughnut
-    colors: ["#131313", "#5bd2f5", "#e97f07"],  // Colors for the slices
+    colors: ["#0fb040", "#e72e2e", "#1c56c1"],  // Colors for the slices
     chart: {
       height: 310,
       width: "100%",

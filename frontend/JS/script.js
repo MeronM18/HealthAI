@@ -1,11 +1,11 @@
 function changeForm() { //create a function to change between login form and register form
-  var get = document.querySelector(".login-formbox"); //these 4 lines create variables that store the needed info from the HTMl
-  var get1 = document.querySelector(".register-formbox"); //this grabs the register form container
+  const loginFormBox = document.querySelector(".login-formbox"); //these 4 lines create variables that store the needed info from the HTMl
+  const registerFormBox = document.querySelector(".register-formbox"); //this grabs the register form container
   const registerButton = document.getElementById('register'); //this grabs the register button
   const message = document.getElementById('message'); //this grabs the message button
 
-  get.classList.toggle("hide"); //from the forms, this will perform a class in the css that hides and shows the forms
-  get1.classList.toggle("visible");
+  loginFormBox.classList.toggle("hide"); //from the forms, this will perform a class in the css that hides and shows the forms
+  registerFormBox.classList.toggle("visible");
 
   if (registerButton.innerText === 'Register') { //checks if currently on login page or register page 
     message.innerText = 'Already have an account?';  //if on register formbox, the login nav will show on the left
@@ -13,168 +13,123 @@ function changeForm() { //create a function to change between login form and reg
   } else { //vice versa
     message.innerText = 'Don\'t have an account?';  
     registerButton.innerText = 'Register';         
-}
+  }
 }
 
 /********************************************************* */
 
-document.addEventListener("DOMContentLoaded", function () { //the DOMcontentloaded function is used read and modify contents and structure of a webpage
-  let lockiconLogin = document.getElementById('lockicon-login'); //select the lockicon from the login formbox
-  let passwordLogin = document.getElementById('password-login'); //select the password input box from the login formbox
-  
-  lockiconLogin.onclick = function() { //when the icon is clicked, the function is performed
-    if(passwordLogin.type === 'password'){ //checks if the current input inside the password inputbox is that of type 'password'
-      passwordLogin.type = 'text'; //if so the password is revealed and not hidden
-    } else { //this keeps the password hidden
-      passwordLogin.type = 'password';
-    }
-  }
-  
-  let lockiconRegister = document.getElementById('lockicon-register'); //same process now on the register formbox
-  let passwordRegister = document.getElementById('password-register');  
-  
-  lockiconRegister.onclick = function() {
-    if(passwordRegister.type === 'password'){
-      passwordRegister.type = 'text';
-    } else {
-      passwordRegister.type = 'password';
-    }
-  }
+document.addEventListener("DOMContentLoaded", () => { //the DOMcontentloaded function is used read and modify contents and structure of a webpage
+  const togglePasswordVisibility = (iconId, passwordId) => {
+    const lockIcon = document.getElementById(iconId);
+    const passwordInput = document.getElementById(passwordId);
+
+    if (!lockIcon || !passwordInput) return; // Safety check
+
+    lockIcon.addEventListener('click', () => {
+      passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    });
+  };
+
+  // Apply to both login and register password fields
+  togglePasswordVisibility('lockicon-login', 'password-login');
+  togglePasswordVisibility('lockicon-register', 'password-register');
 });  
 
 /********************************************************* */
 
-document.addEventListener("DOMContentLoaded", function () { //function to redirect to new page once login button is clicked
+document.addEventListener("DOMContentLoaded", () => { //function to redirect to new page once login button is clicked
   const loginButton = document.getElementById('login-btn'); //grabs the login button from the login formbox
+  
+  const openPage = (event) => {
+    event.preventDefault(); //prevents the page from refreshing
+    
+    try {
+      window.location.href = "/frontend/HTML/index.html"; //opens the index.html page
+    } catch (error) {
+      console.error('Navigation error:', error);
+    }
+  };
   
   if (loginButton) { //this checks if the login-btn id is actually true and exists in the DOM
     loginButton.addEventListener("click", openPage); //call the function openpage when clicked
-  }
-  
-  function openPage(event) {
-    event.preventDefault(); //prevents the page from refreshing
-    window.location.href = "/frontend/HTML/index.html"; //opens the index.html page
   }
 });
 
 /********************************************************* */
 
-document.addEventListener("DOMContentLoaded", function() { //this functions checks what html page is currently loaded
+document.addEventListener("DOMContentLoaded", () => { //this functions checks what html page is currently loaded
   const currentPage = window.location.pathname; //grabs the name of the current window
   const menuItems = document.querySelectorAll('.menu-items'); //this selects all menu items from the navbar on the left side of page
 
-  menuItems.forEach(function(item){ //for all menuitems, this function is performed
+  menuItems.forEach((item) => { //for all menuitems, this function is performed
     const link = item.getAttribute('href'); //grabs the link of what the menu items are referring to
-    if (link == currentPage) { //checks if the link of each menu item is that of the current html page
+    if (link === currentPage) { //checks if the link of each menu item is that of the current html page
       item.classList.add('active'); //if it is, this will call the css class to highlight the current page menu item
     }
-  })
-})
+  });
+});
 
 /********************************************************* */
 
 const toggleButton = document.getElementById('toggle-btn'); //this grabs the button that opens the side menu and displays it
-toggleButton.addEventListener("click", openSideBar); //once clicked, the function is performed 
-
-function openSideBar() {
+toggleButton.addEventListener("click", () => { //once clicked, the function is performed 
   const navbar = document.querySelector('nav'); //selects the nav container
   const dashboard = document.querySelector('main'); //also selects the main dashboard container
 
   navbar.classList.toggle('show'); //calls the show class to actually display the navbar
   dashboard.classList.toggle('after'); //this adjusts the layout of the main to fit the navbar in
-}
+});
 
 /********************************************************* */
 
 const closeButton = document.getElementById('close-btn'); //this is to close the navbar
-closeButton.addEventListener("click", closeSideBar); //function once closed button is clicked 
-
-function closeSideBar(){
+closeButton.addEventListener("click", () => { //function once closed button is clicked 
   const navbarshow = document.querySelector('nav'); //grabs the nav container
   navbarshow.classList.remove('show'); //calls the shows class and removes any styles from it which removes the navbar and keeps it hidden
 
   const dashboardclose = document.querySelector('main'); //this grabs the main dashboard container again
   dashboardclose.classList.remove('after'); //removes any styles that were added and now back to current position
-}
+});
 
 /********************************************************* */
 
 const submenuButton = document.getElementById('submenu-btn'); //top right of header to open dropdown menu
-submenuButton.addEventListener("click", toggleSideMenu); //function when the button is clicked 
-
-function toggleSideMenu() {
+submenuButton.addEventListener("click", () => { //function when the button is clicked 
   const submenu = document.querySelector('.sub-menu'); //grabs the class of the HTML elements 
   submenu.classList.toggle('show'); //calls the class to actually display the submenu
 
   submenuButton.classList.toggle('downarrow-icon'); //changes the downarrow icon into an arrow facing up
-}
+});
 
 /*********************************************************** */
 
-const weeklyGoalButton = document.getElementById('weeklygoalbtn');  //creates variable to grab the weeklygoal selection dropdownmenu
-weeklyGoalButton.addEventListener("click", toggleWeeklyGoal); //once clicked a function is performed 
+const createDropdownHandler = (buttonId, listClass, labelId) => {
+  const button = document.getElementById(buttonId);
+  const list = document.querySelector(listClass);
+  const label = document.getElementById(labelId);
+  const arrowIcon = button.querySelector('i');
 
-function toggleWeeklyGoal() { //create and store items into 4 variables
-  const weeklyGoalList = document.querySelector('.wklygoallist'); //this is the list containing the dropdown menu options
-  const weeklygoalLabel = document.getElementById('weeklygoalLabel'); //grab the label for what goal is selected
-  const goalItems = weeklyGoalList.querySelectorAll('a'); //grabs all anchor tags from the list
-  const arrowIcon = weeklyGoalButton.querySelector('i'); //grabs the icon for the dropdown menu
-
-  weeklyGoalList.classList.toggle('show'); //this shows the drop down menu when clicked by calling the class
-  
-  if (weeklyGoalList.classList.contains('show')) { //if the list is shown, then the icon will be transformed and rotated 180 degrees
-    arrowIcon.style.transform = 'rotate(180deg)';
-  } else { //if not shown, icon stays same
-    arrowIcon.style.transform = 'rotate(0deg)';
-  }
-
-  goalItems.forEach(item => { //function to check what menu option is selected
-    item.addEventListener('click', (e) => { //variable item that also checks when an option is clicked
-      e.preventDefault(); //prevents from refreshing page
-
-      
-      weeklygoalLabel.textContent = item.textContent; //the item that is selected will then be displayed inside the label
-
-      
-      weeklyGoalList.classList.remove('show'); //this will then remove the original show class and now the dropdownmenu is hidden
-
-      
-      arrowIcon.style.transform = 'rotate(0deg)'; //this will now rotate the icon back to its original position
-    });
+  button.addEventListener('click', () => {
+    list.classList.toggle('show');
+    arrowIcon.style.transform = list.classList.contains('show') 
+      ? 'rotate(180deg)' 
+      : 'rotate(0deg)';
   });
-}
 
-/************************************************************************* */
-
-const activityButton = document.getElementById('activitybtn'); //similar function to the one above for dropdownmenus and setting the label text 
-activityButton.addEventListener("click", toggleActivities);
-
-function toggleActivities() {
-  const activityOptions = document.querySelector('.activitymenu');
-  const activityLabel = document.getElementById('activityLabel');
-  const activityItems = activityOptions.querySelectorAll('a');
-  const arrowIcon = activityButton.querySelector('i'); 
-
-  activityOptions.classList.toggle('show');
-  
-  if (activityOptions.classList.contains('show')) {
-    arrowIcon.style.transform = 'rotate(180deg)';
-  } else {
-    arrowIcon.style.transform = 'rotate(0deg)';
-  }
-
-  activityItems.forEach(item => {
+  const items = list.querySelectorAll('a');
+  items.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
-
-      activityLabel.textContent = item.textContent;
-
-      activityOptions.classList.remove('show');
-
+      label.textContent = item.textContent;
+      list.classList.remove('show');
       arrowIcon.style.transform = 'rotate(0deg)';
     });
   });
-}
+};
+
+// Apply to both weekly goal and activity dropdowns
+createDropdownHandler('weeklygoalbtn', '.wklygoallist', 'weeklygoalLabel');
+createDropdownHandler('activitybtn', '.activitymenu', 'activityLabel');
 
 /*************************************************************** */
 
@@ -223,13 +178,13 @@ for (let i = 14; i <= 40.1; i += 0.1) { //from range 14.0 to 40.1 this for loop 
   }
 
   if (roundedValue >= 18.5 && roundedValue <= 24.9) {
-    div.style.backgroundColor = 'rgb(240, 253, 164)';
-  }
-
-  if (roundedValue >= 25 && roundedValue <= 29.9) {
     div.style.backgroundColor = 'rgb(117, 252, 128)';
   }
-
+  
+  if (roundedValue >= 25 && roundedValue <= 29.9) {
+    div.style.backgroundColor = 'rgb(240, 253, 164)';
+  }
+  
   if (roundedValue >= 30 && roundedValue <= 34.9) {
     div.style.backgroundColor = 'rgb(247, 201, 76)';
   }
@@ -588,7 +543,4 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-
-
 /**************************************************************************************************************************************** */
-

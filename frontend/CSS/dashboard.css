@@ -45,7 +45,6 @@ main .welcome-text{
   height: 90px;
   grid-column: span 12;
   padding: 15px 0 0 30px;
-  border-bottom: 3px solid var(--background-color);
   color: rgb(202, 198, 198);
 }
 
@@ -70,7 +69,7 @@ main .welcome-text p{
 }
 
 .bar-container{
-  width: 880px;
+  width: 900px;
   height: 98%;
   position: relative;
   background-color: transparent;
@@ -199,7 +198,7 @@ main .welcome-text p{
   justify-items: center;
   flex-direction: row;
 
-  border: 2px solid black;
+  border: 2px solid rgb(222, 235, 38);
   border-radius: 3px;
 }
 
@@ -217,7 +216,7 @@ main .welcome-text p{
   border-radius: 8px;
   border: 2px solid rgb(3, 14, 77);
   width: 380px;
-  height: 264px;
+  height: 265px;
 }
 
 .moodtitle{
@@ -293,7 +292,7 @@ main .welcome-text p{
 
 .scatter-container{
   height: 98%;
-  width: 880px;
+  width: 900px;
   position: relative;
   border: 2px solid rgb(3, 14, 77);
   padding: 5px 10px 5px 10px;
