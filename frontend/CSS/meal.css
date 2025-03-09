@@ -159,16 +159,73 @@ main.after {
   transform: translate(-50%, -50%);
   width: 800px;
   height: 800px;
-  background-color: rgb(244, 255, 206);
+  background-color: white;
   border-radius: var(--border-radius-2);
   border: 1px solid white;
-  transition: 500ms ease-in;
+  transition: 100ms ease-in;
   z-index: 1;
+
+  visibility: hidden;
+}
+
+.searchmeals header{
+  position: absolute;
+  top: 10px;
+  left: 24px;
+  width: max-content;
+  height: max-content;
+  border: none;
+  font-size: 25px;
+  background-color: transparent;
+}
+
+#addFoodBtn{
+  position: absolute;
+  background-color: rgb(42, 136, 45);
+  color: white;
+  border-radius: var(--border-radius-2);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.6);
+  right: 54px;
+  top: 6px;
+  width: 150px;
+  height: 45px;
+  z-index: 10;
+  cursor: pointer;
+  transition: 120ms ease-out;
+}
+
+#addFoodBtn:hover{
+  opacity: 0.9;
+}
+
+#addFoodBtn:active{
+  transform: scale(0.95);
+}
+
+#closeFoodBtn{
+  position: absolute;
+  background-color: rgb(226, 226, 226);
+  color: black;
+  border-radius: 50%;
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  object-fit: contain;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  transition: all 100ms ease;
+}
+
+#closeFoodBtn:hover{
+  background-color: rgb(209, 0, 0);
+  color: white;
 }
 
 .searchmeals .searchbox{
   position: relative;
-  top: 24px;
+  top: 60px;
   width: 95%;
   height: max-content;
 
@@ -182,10 +239,11 @@ main.after {
   flex: 1;
   height: 60px;
   padding-left: 14px;
+  padding-right: 100px;
   font-size: 16px;
   border-radius: var(--border-radius-2);
   border: none;
-  background-color: rgb(247, 247, 243);
+  background-color:white;
   box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.35);
   z-index: 1;
 }
@@ -214,7 +272,7 @@ main.after {
   transition: all 320ms ease;
 }
 
-.searchbox button:hover{
+.searchbox button:hover {
   background: rgb(255, 225, 53);
 }
 
@@ -222,13 +280,231 @@ main.after {
   font-size: 30px;
 }
 
-.searchbox input:not(:placeholder-shown) + button {
+.searchbox input:not(:placeholder-shown) + button{
   visibility: visible;
   opacity: 1;
 }
 
 .searchbox input:focus{
   outline: 0;
+}
+
+.suggestions{
+  position: absolute;
+  list-style-type: none;
+  width: 95%;
+  height: 442px;
+  top: 135px;
+  background-color: transparent;
+  border-radius: var(--border-radius-1);
+  border: 1px solid rgb(190, 188, 188);
+  overflow-y: auto;
+}
+
+.suggestions::-webkit-scrollbar{
+  width: 8px;
+  overflow-y: hidden;
+}
+
+.suggestions::-webkit-scrollbar-track{
+  background: inherit;
+}
+
+.suggestions::-webkit-scrollbar-thumb{
+  background:rgb(78, 78, 78); 
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.suggestionsdiv{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.suggestionsdiv:nth-child(odd){
+  background-color: white;
+}
+
+.suggestionsdiv:nth-child(even){
+  background-color: rgb(247, 246, 246);
+}
+
+.suggestionsdiv:hover{
+  background-color: rgb(216, 229, 241);
+  cursor: pointer;
+}
+
+.suggestionsdiv:last-child{
+  border-bottom: none;
+}
+
+.suggestionsdiv i{
+  font-size: 20px;
+}
+
+.foodinfo{
+  position: absolute;
+  padding: 4px;
+  bottom: 10px;
+  width: 95%;
+  height: 200px;
+  border-radius: var(--border-radius-1);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid lightgray;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.foodinfo span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.nutrients{
+  position: absolute;
+  background: transparent;
+  border: 1px solid rgb(212, 210, 210);
+  border-left: 0;
+  border-radius: var(--border-radius-2);
+  left: 0;
+  width: 48%;
+  height: 85%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nutrients h2{
+  text-decoration: underline;
+}
+
+.proteindiv,
+.carbsdiv,
+.fatdiv{
+  font-size: 18px;
+}
+
+.proteindiv{
+  color: red;
+}
+
+.carbsdiv{
+  color:green;
+}
+
+.fatdiv{
+  color: blue;
+}
+
+.nutrients span{
+  text-decoration: none;
+}
+
+.servingsize{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgb(212, 210, 210);
+  border-radius: var(--border-radius-2);
+  border-right: 0;
+  width: 48%;
+  height: 85%;
+  right: 0px;
+}
+
+.servingsize h2{
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.servingsize input{
+  width: 60px;
+  padding: 8px;
+  border: 1px solid rgb(156, 156, 156);
+  border-radius: 6px;
+}
+
+.servingsize input:focus{
+  outline: 0;
+}
+
+.unitsbtn{
+  width: 25%;
+  background-color: rgb(255, 255, 255);
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 200ms;
+  border: 1px solid rgb(156, 156, 156);
+  border-radius: 6px;
+}
+
+.unitsbtn:hover{
+  background-color: rgb(236, 234, 234);
+}
+
+.unitsbtn span{
+  text-decoration: none;
+  font-size: 16px;
+  padding: 0;
+}
+
+.servingunits {
+  position: absolute;
+  top: 105px;
+  right: 38px;
+  list-style-type: none;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid rgb(163, 163, 163);
+  width: 80px;
+  overflow: hidden;
+  max-height: 0;
+  visibility: hidden; 
+  text-align: center;
+  transition: max-height 300ms ease-in-out, visibility 0s ease 300ms; 
+  z-index: 10;
+}
+
+.servingunits.show {
+  max-height: 200px; 
+  visibility: visible;
+  transition: max-height 300ms ease-in-out, visibility 0s ease 0s;
+}
+
+.servingunits li{
+  border-bottom: 1px solid rgb(175, 175, 175);
+}
+
+.servingunits li:last-child{
+  border: none;
+}
+
+.servingunits a{
+  display: block;
+  width: 100%;
+  transition: 300ms ease;
+  padding: 0px 10px 0px 2px;
+}
+
+.servingunits a:hover{
+  background-color: rgb(216, 229, 241);
 }
 
 .meals-main-sections{
@@ -406,6 +682,10 @@ main.after {
 .drinkslog::-webkit-scrollbar-thumb,
 .dinnerlog::-webkit-scrollbar-thumb{
   background:rgb(0, 0, 0); 
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
+}
+
+.macros{
+  padding: 21px;
 }

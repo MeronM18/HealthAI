@@ -218,3 +218,75 @@ document.addEventListener("DOMContentLoaded", function() {
   const ctx = document.getElementById('linechart').getContext('2d');
   new Chart(ctx, config);  
 });
+
+/******************************************************************************************************************************* */
+document.addEventListener("DOMContentLoaded", function(){
+  const DATA_COUNT = 3;
+  const labels = ['Protein', 'Carbohydrates', 'Fats']; 
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Grams',
+        data: [65, 80, 95],  // Sample data
+        borderColor: 'rgb(0, 0, 0)',
+        backgroundColor: 'rgb(34, 43, 56)',
+      },
+      {
+        label: 'Percentage',
+        data: [25, 50, 25], 
+        borderColor: 'rgb(0, 0, 0)',
+        backgroundColor: 'rgb(21,27,35)',
+      }
+    ]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      indexAxis: 'y', 
+      elements: {
+        bar: {
+          borderWidth: 2,
+        }
+      },
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: {
+            color: '#ffffff',
+          },
+        },
+        title: {
+          display: true,
+          text: 'Macros',
+          font: {
+            size: 32,
+            weight: 700,
+          },
+          color:'rgb(196, 217, 255)',
+        }
+      },
+      scales: {
+        x: {
+          min: 0,
+          max: 100,
+          ticks: {
+            color: '#ffffff',
+            stepSize: 10,
+          },
+        },
+        y: {
+          ticks: {
+            color: '#ffffff',
+          },
+        }
+      }
+    },
+  };
+
+  const ctx = document.getElementById('macroChart').getContext('2d');
+  new Chart(ctx, config);
+});
