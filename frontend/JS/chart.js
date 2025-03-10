@@ -290,3 +290,91 @@ document.addEventListener("DOMContentLoaded", function(){
   const ctx = document.getElementById('macroChart').getContext('2d');
   new Chart(ctx, config);
 });
+
+/********************************************************************************************************** */
+
+const calorieData = [
+  { category: 'Gym', calories: 450 },
+  { category: 'Cardio', calories: 380 },
+  { category: 'Sports', calories: 320 },
+  { category: 'Outdoor', calories: 280 },
+  { category: 'Personal', calories: 220 }
+];
+
+const chartColors = [
+  'rgb(247, 111, 0)',  
+  'rgb(255, 221, 0)',   
+  'rgb(54, 162, 235)',   
+  'rgb(4, 148, 23)',  
+  'rgb(153, 102, 255)'
+  
+];
+
+document.addEventListener('DOMContentLoaded', function() {
+  const ctx = document.getElementById('caloriechart');
+  
+  if (ctx) {
+    let calorieChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: calorieData.map(item => item.category),
+        datasets: [{
+          label: 'Calories Burned',
+          data: calorieData.map(item => item.calories),
+          backgroundColor: calorieData.map((_, index) => chartColors[index % chartColors.length]),
+          borderColor: calorieData.map((_, index) => chartColors[index % chartColors.length]),
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgb(66, 66, 66)',
+            },
+            ticks: {
+              color: 'rgb(177, 15, 15)',
+            },
+            title: {
+              display: true,
+              text: 'Calories',
+              font: {
+                size: 16,
+              },
+              color: '#ffffff',
+            }
+          },
+          x: {
+            grid: {
+              color: 'rgb(66, 66, 66)',
+            },
+            ticks: {
+              color: 'rgb(250, 250, 250)',
+            }
+          },
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              color: '#ffffff',
+              usePointStyle: true,
+              boxWidth: 20,
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.raw + ' calories';
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+});

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Burn Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .chart-container {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .summary, .add-activity {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #333;
+    }
+    .activity-list {
+      margin-top: 15px;
+    }
+    .activity-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    .color-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .total-calories {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calories Burned by Activity</h1>
+  
+  <div class="chart-container">
+    <canvas id="calorieChart"></canvas>
+  </div>
+  
+  <div class="controls">
+    <div class="summary">
+      <h2>Summary</h2>
+      <div class="total-calories">Total Calories: <span id="totalCalories">0</span></div>
+      <div class="activity-list" id="activityList">
+        <!-- Activity items will be added here dynamically -->
+      </div>
+    </div>
+    
+    <div class="add-activity">
+      <h2>Add Activity</h2>
+      <input type="text" id="categoryInput" placeholder="Activity Category">
+      <input type="number" id="caloriesInput" placeholder="Calories Burned">
+      <button id="addActivityBtn">Add Activity</button>
+    </div>
+  </div>
+  
+  <script>
+    // Initial data
+    let calorieData = [
+      { category: 'Gym', calories: 450 },
+      { category: 'Cardio', calories: 380 },
+      { category: 'Sports', calories: 320 },
+      { category: 'Outdoor', calories: 280 },
+      { category: 'Personal', calories: 220 }
+    ];
+    
+    // Colors for the chart
+    const chartColors = [
+      'rgb(255, 99, 132)',   // Red
+      'rgb(54, 162, 235)',   // Blue
+      'rgb(255, 206, 86)',   // Yellow
+      'rgb(75, 192, 192)',   // Teal
+      'rgb(153, 102, 255)',  // Purple
+      'rgb(255, 159, 64)',   // Orange
+      'rgb(199, 199, 199)'   // Gray
+    ];
+    
+    // Get chart context
+    const ctx = document.getElementById('calorieChart').getContext('2d');
+    
+    // Create chart
+    let calorieChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: calorieData.map(item => item.category),
+        datasets: [{
+          label: 'Calories Burned',
+          data: calorieData.map(item => item.calories),
+          backgroundColor: calorieData.map((_, index) => chartColors[index % chartColors.length]),
+          borderColor: calorieData.map((_, index) => chartColors[index % chartColors.length]),
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Calories'
+            }
+          }
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return context.raw + ' calories';
+              }
+            }
+          }
+        }
+      }
+    });
+    
+    // Function to update the summary
+    function updateSummary() {
+      const totalCalories = calorieData.reduce((sum, item) => sum + item.calories, 0);
+      document.getElementById('totalCalories').textContent = totalCalories;
+      
+      const activityList = document.getElementById('activityList');
+      activityList.innerHTML = '';
+      
+      calorieData.forEach((item, index) => {
+        const colorIndex = index % chartColors.length;
+        const activityItem = document.createElement('div');
+        activityItem.className = 'activity-item';
+        activityItem.innerHTML = `
+          <div>
+            <span class="color-dot" style="background-color: ${chartColors[colorIndex]}"></span>
+            ${item.category}
+          </div>
+          <div>${item.calories} cal</div>
+        `;
+        activityList.appendChild(activityItem);
+      });
+    }
+    
+    // Function to update the chart
+    function updateChart() {
+      calorieChart.data.labels = calorieData.map(item => item.category);
+      calorieChart.data.datasets[0].data = calorieData.map(item => item.calories);
+      calorieChart.data.datasets[0].backgroundColor = calorieData.map((_, index) => 
+        chartColors[index % chartColors.length]
+      );
+      calorieChart.update();
+      updateSummary();
+    }
+    
+    // Add activity button handler
+    document.getElementById('addActivityBtn').addEventListener('click', function() {
+      const categoryInput = document.getElementById('categoryInput');
+      const caloriesInput = document.getElementById('caloriesInput');
+      
+      const category = categoryInput.value.trim();
+      const calories = parseInt(caloriesInput.value);
+      
+      if (category && !isNaN(calories) && calories > 0) {
+        calorieData.push({ category, calories });
+        updateChart();
+        
+        // Clear inputs
+        categoryInput.value = '';
+        caloriesInput.value = '';
+      } else {
+        alert('Please enter a valid category and calories value');
+      }
+    });
+    
+    // Initialize summary
+    updateSummary();
+  </script>
+</body>
+</html>
