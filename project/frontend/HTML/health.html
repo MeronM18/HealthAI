@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/CSS/general.css" class="css">
+
+  <link rel="stylesheet" href="/CSS/header.css" class="header">
+
+  <link rel="stylesheet" href="/CSS/sidebar.css" class="style">
+
+  <link rel="stylesheet" href="/CSS/health.css" class="health">
+
+  <link rel="icon" type="image/x-icon" href="/images/logo1.png">
+
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <script src="/JS/general.js" defer></script>
+  <script src="/JS/health.js" defer></script>
+  <script src="/JS/chart.js"></script>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet"/>
+
+  <title>HealthAI</title>
+</head>
+<body>
+  <div class="grid-container">
+    <header>
+      <div class="left-section">
+        <button class="menu-button" id="toggle-btn">
+          <i class='bx bx-menu hamburgermenu-icon'></i>
+        </button>
+        <a href="/HTML/index.html">
+          <img class="logo" src="/images/logo1.png">
+        </a>
+        <a href="/HTML/index.html">
+          <h2>Health<span class="danger">AI</span></h2>
+        </a>
+      </div>
+      <div class="right-section">
+        <img class="pfp" src="/images/pfp.jpg">
+        <h3>Meron Matti</h3>
+        <button class="drop-button" id="submenu-btn">
+          <i class='bx bx-chevron-up downarrow-icon'></i>
+        </button>
+        <ul class="sub-menu">
+            <div class="sub-bars">
+              <li><a href="/HTML/profile.html">Profile <i class='bx bx-user' ></i></a></li>
+            </div>
+            <div class="sub-bars">
+              <li><a href="/HTML/settings.html">Settings <i class='bx bx-cog bx-rotate-180' ></i></a></li>
+            </div>
+            <div class="sub-bars">
+              <li><a href="/HTML/login.html">Logout <i class='bx bx-log-out bx-rotate-180' ></i></a></li>
+            </div>
+        </ul>
+      </div>
+    </header>
+    <nav>
+      <div class="topbar">
+        <a href="/HTML/index.html">
+          <img class="nav-img" src="/images/logo1.png">
+        </a>
+        <button class="closenav" id="close-btn">
+          <i class='bx bx-x'></i>
+        </button>
+      </div>
+      <ul>
+        <li><a href="/HTML/index.html" class="menu-items"><i class='bx bxs-dashboard menu-icon'></i>Dashboard</a></li>
+        <li><a href="/HTML/health.html" class="menu-items"><i class='bx bx-body menu-icon'></i>Health</a></li>
+        <li><a href="/HTML/meal.html" class="menu-items"><i class='bx bxs-baguette menu-icon'></i>Meals</a></li>
+        <li><a href="/HTML/exercise.html" class="menu-items"><i class='bx bx-dumbbell menu-icon'></i>Exercise</a></li>
+        <li><a href="/HTML/ai.html" class="menu-items"><i class='bx bxs-bot menu-icon'></i>AI Chat</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div class="healthheader">
+        <h2>Health</h2>
+        <p>Body Metrics</p>
+      </div>
+
+      <div class="data-container">
+        <div class="left-section">
+          <div class="header">
+            <h2>Health Information</h2>
+          </div>
+          <div class="bodyinfocontainer">
+            <div class="age">
+              <h4>Age</h4>
+              <input class="age-box" type="text" placeholder="Age" id="age">
+            </div>
+            <div class="height">
+              <h4>Height</h4>
+              <input class="height-box" type="text" placeholder="Height (in)" id="height">
+            </div>
+            <div class="weight">
+              <h4>Weight</h4>
+              <input class="weight-box" type="text" placeholder="Weight (lbs)" id="weight">
+            </div>
+            <div class="gender">
+              <h4>Gender</h4>
+              <div class="selectgenderbox">
+                <input class="togglegender" type="radio" name="gender" id="radio1" value="male">
+                <label for="radio1">Male</label>
+                <input class="togglegender" type="radio" name="gender" id="radio2" value="female">
+                <label for="radio2">Female</label>
+              </div>
+            </div>
+            <div class="goals">
+              <h4>Goal Weight</h4>
+              <input type="text" class="goalwgt" placeholder="Goal Weight (lbs)" id="goalweight">
+
+              <h4 class="weeklyh4">Goal</h4>
+              <button class="weeklygoalbtn" id="weeklygoalbtn">
+                <label for="weeklygoalbtn" id="weeklygoalLabel"></label>
+                <i class='bx bx-chevron-down'></i>
+              </button>
+              
+              <ul class="wklygoallist">
+                <li><a href="">Lose 0.5 lbs per week</a></li>
+                <li><a href="">Lose 1 lb per week</a></li>
+                <li><a href="">Maintain Weight</a></li>
+                <li><a href="">Gain 0.5 lbs per week</a></li>
+                <li><a href="">Gain 1 lb per week</a></li>
+              </ul>
+
+            </div>
+            <div class="activitydropdown">
+              <h4>Activity Level</h4>
+              <button class="activitybtn" id="activitybtn">
+                  <label for="activitybtn" id="activityLabel"></label>
+                  <i class='bx bx-chevron-down'></i>
+                </button>
+              
+                <ul class="activitymenu">
+                  <li><a href="">No Exercise</a></li>
+                  <li><a href="">Lightly Active</a></li>
+                  <li><a href="">Active</a></li>
+                  <li><a href="">Very Active</a></li>
+                </ul>
+            </div>
+            <div class="formsubmit">
+              <button class="resetbtn" id="resetbtn">Reset</button>
+              <button class="updatebtn" id="updatebtn">Update</button>
+            </div>
+            </div>
+          </div>
+          <div class="middle-section">
+            <div class="bmicontainer">
+              <div class="bmititle">
+                <h2>Body Mass Index</h2>
+                <i class='bx bx-body bodyicon' ></i>
+                
+                <div class="bmimenu" id="bmimenu">
+                  <table>
+                    <thead>
+                        <tr>
+                            <th>BMI Range</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="first">(< 18.5)</td>
+                            <td>Underweight</td>
+                        </tr>
+                        <tr>
+                            <td class="second">(18.5 - 24.9)</td>
+                            <td>Normal</td>
+                        </tr>
+                        <tr>
+                            <td class="third">(25 - 29.9)</td>
+                            <td>Overweight</td>
+                        </tr>
+                        <tr>
+                            <td class="fourth">(30 - 34.9)</td>
+                            <td>Obesity Class I</td>
+                        </tr>
+                        <tr>
+                            <td class="fifth">(35 - 40)</td>
+                            <td>Obesity Class II</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+              </div>
+              <div class="box"></div>
+              <i class='bx bxs-up-arrow uparrow'></i>
+            </div>
+            <div class="sleepcontainer" id="sleepcontainer">
+              <h1>Sleep Tracker <i class='bx bxs-moon moon' ></i></h1>
+              <div class="sleeptable">
+                <table>
+                      <thead>
+                          <tr>
+                              <th>Sleep Duration</th>
+                              <th>Status</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td class="first"> 6 Hours</td>
+                              <td>Underslept</td>
+                          </tr>
+                          <tr>
+                              <td class="second">6 - 9 Hours</td>
+                              <td>Healthy Sleep</td>
+                          </tr>
+                          <tr>
+                              <td class="third">> 9 Hours</td>
+                              <td>Overslept</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <input type="number" placeholder="Hours" id="sleephours" min="0" max="24">
+              <input type="number" placeholder="Minutes" id="sleepminutes" min="0">
+              <p class="entersleepvalue">Please Enter a Value.</p>
+              <button id="logsleep">&plus; Log Sleep</button>
+              <button id="deletelog"><i class='bx bxs-trash' ></i> Delete Log</button>
+              <div class="log" id="sleeplogdata"></div>
+            </div>
+            <div class="calorieinsight">
+              <img src="/images/grass.jpg" class="foodimg">
+              <h1 class="ci-h1">Calorie Insight <i class='bx bxs-cheese' ></i></h1>
+              <div class="calorieboard">
+                <div class="caloriecategory" id="cat1">
+                  Lose 0.5lbs/week
+                  <input type="text" value="-- kcal"id="calorie1" readonly>
+                </div>
+                <div class="caloriecategory" id="cat2">
+                  Lose 1lbs/week
+                  <input type="text" value="-- kcal"id="calorie2" readonly>
+                </div>
+                <div class="caloriecategory" id="cat3">
+                  Maintain Weight
+                  <input type="text" value="-- kcal"id="calorie3" readonly>
+                </div>
+                <div class="caloriecategory" id="cat4">
+                  Gain 0.5lbs/week
+                  <input type="text" value="-- kcal"id="calorie4" readonly>
+                </div>
+                <div class="caloriecategory" id="cat5">
+                  Gain 1lbs/week
+                  <input type="text" value="-- kcal"id="calorie5" readonly>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="right-section">
+            <h1 class="title">Weight in Numbers</h1>
+            <div class="linechartcontainer">
+              <canvas id="linechart"></canvas>
+            </div>
+            <div class="line"></div>
+            <h1 class="progresstitle">Gl<i class='bx bxs-camera' ></i>w-Up Gallery</h1>
+            <div class="progresscontainer">
+              <div class="addentry">
+                <h1>Entries</h1>
+                <p class="galleryalertmessage"></p>
+                <button id="addentrybutton"><i class='bx bx-plus-medical' ></i></button>
+              </div>
+              <div class="entryinput">
+                 
+                <input type="input" class="entry_weight" placeholder="Weight" name="weight" id="weight-progress-entry" required spellcheck="false"  />
+                
+                <input type="date" id="date-entry" />
+               
+                <button id="add-image-btn">
+                  <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg">
+                  <i class='bx bx-image-add'></i>
+                </button>
+
+                <button id="post-entry" type="submit">Post</button>
+              </div>
+              <div class="gallerycontainer">
+                <div class="gallery">
+                  <i class='bx bx-image-alt' ></i>
+                </div>
+              </div>
+              <div class="picdisplaybuttons">
+                <button id="onepicbtn"><i class='bx bx-square squareicon' ></i></button>
+                <button id="twopicbtn"><i class='bx bx-book-open twosquareicon' ></i></button>
+              </div>
+              <div class="progresslog" id="progresslogdata"></div>
+            </div>
+          </div>
+      </div>
+    </main>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>
+

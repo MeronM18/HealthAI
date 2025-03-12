@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/CSS/general.css" class="css">
+
+  <link rel="stylesheet" href="/CSS/header.css" class="header">
+
+  <link rel="stylesheet" href="/CSS/sidebar.css" class="style">
+
+  <link rel="stylesheet" href="/CSS/meal.css" class="main">
+
+  <link rel="icon" type="image/x-icon" href="/images/logo1.png">
+
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="/JS/general.js" defer></script>
+  <script src="/JS/meal.js" defer></script>
+  <script src="/JS/chart.js"></script>
+  <script src="https://kit.fontawesome.com/39fec9239f.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet"/>
+
+  <title>HealthAI</title>
+</head>
+<body>
+  <div class="grid-container">
+    <header>
+      <div class="left-section">
+        <button class="menu-button" id="toggle-btn">
+          <i class='bx bx-menu hamburgermenu-icon'></i>
+        </button>
+        <a href="/HTML/index.html">
+          <img class="logo" src="/images/logo1.png">
+        </a>
+        <a href="/HTML/index.html">
+          <h2>Health<span class="danger">AI</span></h2>
+        </a>
+      </div>
+      <div class="right-section">
+        <img class="pfp" src="/images/pfp.jpg">
+        <h3>Meron Matti</h3>
+        <button class="drop-button" id="submenu-btn">
+          <i class='bx bx-chevron-up downarrow-icon'></i>
+        </button>
+        <ul class="sub-menu">
+            <div class="sub-bars">
+              <li><a href="/HTML/profile.html">Profile <i class='bx bx-user' ></i></a></li>
+            </div>
+            <div class="sub-bars">
+              <li><a href="/HTML/settings.html">Settings <i class='bx bx-cog bx-rotate-180' ></i></a></li>
+            </div>
+            <div class="sub-bars">
+              <li><a href="/HTML/login.html">Logout <i class='bx bx-log-out bx-rotate-180' ></i></a></li>
+            </div>
+        </ul>
+      </div>
+    </header>
+    <nav>
+      <div class="topbar">
+        <a href="/HTML/index.html">
+          <img class="nav-img" src="/images/logo1.png">
+        </a>
+        <button class="closenav" id="close-btn">
+          <i class='bx bx-x'></i>
+        </button>
+      </div>
+      <ul>
+        <li><a href="/HTML/index.html" class="menu-items"><i class='bx bxs-dashboard menu-icon'></i>Dashboard</a></li>
+        <li><a href="/HTML/health.html" class="menu-items"><i class='bx bx-body menu-icon'></i>Health</a></li>
+        <li><a href="/HTML/meal.html" class="menu-items"><i class='bx bxs-baguette menu-icon'></i>Meals</a></li>
+        <li><a href="/HTML/exercise.html" class="menu-items"><i class='bx bx-dumbbell menu-icon'></i>Exercise</a></li>
+        <li><a href="/HTML/ai.html" class="menu-items"><i class='bx bxs-bot menu-icon'></i>AI Chat</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div class="mealheader">
+        <h2>Meals</h2>
+        <p>Food Diary</p>
+      </div>
+
+      <div class="data-container">
+        <div class="top">
+          <div class="caloriecount">
+            <h2>Calories: <span id="caloriecountmealpage">--</span></h2>
+          </div>
+          <div class="top-title">
+            <h2>Daily Intake</h2>
+          </div>
+          <div class="diarydate">
+            <button id="leftdatebtn">
+              <i class='bx bx-chevron-left' ></i>
+            </button>
+            <span id="datespan">Today</span>
+            <button id="rightdatebtn">
+              <i class='bx bx-chevron-right' ></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="searchmeals" id="searchfood">
+
+            <header>Add food to Diary</header>
+            <button id="addFoodBtn">Add Food</button>
+            <button id="closeFoodBtn">X</button>
+
+            <div class="searchbox">
+              <input type="text" id="food-input-box" placeholder="Search delicious food..." autocomplete="off">
+              <button id="searchbtn"><i class='bx bx-search-alt' ></i></button>
+            </div>
+
+            <ul id="suggestions" class="suggestions">
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+            </ul>
+
+            <div class="foodinfo">
+              <span class="foodname">Apples</span>
+
+              <div class="nutrients">
+                <div class="proteindiv">
+                  <h2>Protein</h2>
+                  <span>50%</span>
+                </div>
+                <div class="carbsdiv">
+                  <h2>Carbohydrates</h2>
+                  <span>25%</span>
+                </div>
+                <div class="fatdiv">
+                  <h2>Fat</h2>
+                  <span>25%</span>
+                </div>
+              </div>
+
+              <div class="servingsize">
+                <h2>Serving Size: </h2>
+                <input type="number" min="0">
+
+                <button class="unitsbtn" id="unitsbtn">
+                  <span id="unitslabel"></span>
+                  <i class='bx bx-chevron-down'></i>
+                </button>
+                
+                <ul class="servingunits">
+                  <li><a href="">mg</a></li>
+                  <li><a href="">g</a></li>
+                  <li><a href="">oz</a></li>
+                  <li><a href="">lb</a></li>
+                  <li><a href="">kg</a></li>
+                </ul>
+              </div>
+
+            </div>
+          
+        </div>
+
+        <div class="meals-main-sections">
+          <div class="breakfast-snacks">
+            <div class="breakfast">
+              <div class="breakfasttopbar">
+                <h2>Breakfast <i class="fa-solid fa-egg"></i></h2>
+                <button id="breakfastaddbtn"><i class='bx bx-plus-medical' ></i></button>
+              </div>
+              <div class="breakfastlog"></div>
+            </div>
+            <div class="snacks">
+              <div class="snacktopbar">
+                <h2>Snacks <i class="fa-solid fa-cookie-bite"></i></h2>
+                <button id="snacksaddbtn"><i class='bx bx-plus-medical' ></i></button>
+              </div>
+              <div class="snackslog"></div>
+            </div>
+          </div>
+          <div class="lunch-drinks">
+            <div class="lunch">
+              <div class="lunchtopbar">
+                <h2>Lunch <i class="fa-solid fa-burger"></i></h2>
+                <button id="lunchaddbtn"><i class='bx bx-plus-medical' ></i></button>
+              </div>
+              <div class="lunchlog"></div>
+            </div>
+            <div class="drinks">
+              <div class="drinkstopbar">
+                <h2>Drinks <i class="fa-solid fa-glass-water"></i></h2>
+                <button id="drinksaddbtn"><i class='bx bx-plus-medical' ></i></button>
+              </div>
+              <div class="drinkslog"></div>
+            </div>
+          </div>
+          <div class="dinner-macros">
+            <div class="dinner">
+              <div class="dinnertopbar">
+                <h2>Dinner <i class="fa-solid fa-utensils"></i></h2>
+                <button id="dinneraddbtn"><i class='bx bx-plus-medical' ></i></button>
+              </div>
+              <div class="dinnerlog"></div>
+            </div>
+            <div class="macros">
+              <canvas id="macroChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>
