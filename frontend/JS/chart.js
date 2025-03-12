@@ -1,9 +1,9 @@
 const getChartOptions = () => {
   return {
-    series: [35.1, 23.5, 2.4],  // Data for the doughnut
+    series: [10, 0, 0],  // Data for the doughnut
     colors: ["#0fb040", "#e72e2e", "#1c56c1"],  // Colors for the slices
     chart: {
-      height: 310,
+      height: 220,
       width: "100%",
       type: "donut",  // Ensure the type is donut
     },
@@ -27,7 +27,7 @@ const getChartOptions = () => {
               color: '#FFFFFF',  // Color of the value text
               offsetY: -20,  // Vertical offset of the value text
               formatter: function (value) {
-                return value + "k";  // Format the value
+                return value + "kcal";  // Format the value
               },
             },
             total: {
@@ -41,7 +41,7 @@ const getChartOptions = () => {
                 const sum = w.globals.seriesTotals.reduce((a, b) => {
                   return a + b;
                 }, 0);
-                return '$' + sum + 'k';  // Total sum value formatting
+                return sum + ' kcal';  // Total sum value formatting
               },
             },
           },
@@ -53,9 +53,9 @@ const getChartOptions = () => {
       enabled: false,  // Disable the default data labels
     },
     labels: [
-      `Goal: 35.1k`,  // Show label with value
-      `Food: 23.5k`,  // Show label with value
-      `Exercise: 2.4k`,  // Show label with value
+      `Goal: 10 kcal`,  // Show label with value
+      `Food: 0 kcal`,  // Show label with value
+      `Exercise: 0 kcal`,  // Show label with value
     ],  // Labels for the donut slices, now including values
     legend: {
       position: 'right',
@@ -88,8 +88,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First Dataset',
-      data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+      label: 'Bar Graph',
+      data: [],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(255, 159, 64, 0.2)',
@@ -135,29 +135,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /*******************************************************************************************************************************************************************/
 
-
-
-
-
-/*******************************************************************************************************************************************************************/
 document.addEventListener("DOMContentLoaded", function(){
 
   const data = {
     datasets: [{
-      label: 'Scatter Dataset',
-      data: [{
-        x: -10,
-        y: 0
-      }, {
-        x: 0,
-        y: 10
-      }, {
-        x: 10,
-        y: 5
-      }, {
-        x: 0.5,
-        y: 5.5
-      }],
+      label: 'Scatter Cjart',
+      data: [],
       backgroundColor: 'rgb(255, 99, 132)'
     }],
   };
@@ -189,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function() {
     labels: labels,
     datasets: [{
       label: 'My First Dataset',
-      data: [65, 59, 80, 81, 56, 55, 40],
+      data: [],
       fill: false,
       borderColor: 'rgb(75, 192, 192)', 
       tension: 0.1  
@@ -228,13 +211,13 @@ document.addEventListener("DOMContentLoaded", function(){
     datasets: [
       {
         label: 'Grams',
-        data: [65, 80, 95],  // Sample data
+        data: [],  // Sample data
         borderColor: 'rgb(0, 0, 0)',
         backgroundColor: 'rgb(34, 43, 56)',
       },
       {
         label: 'Percentage',
-        data: [25, 50, 25], 
+        data: [], 
         borderColor: 'rgb(0, 0, 0)',
         backgroundColor: 'rgb(21,27,35)',
       }
@@ -294,17 +277,17 @@ document.addEventListener("DOMContentLoaded", function(){
 /********************************************************************************************************** */
 
 const calorieData = [
-  { category: 'Gym', calories: 450 },
-  { category: 'Cardio', calories: 380 },
-  { category: 'Sports', calories: 320 },
-  { category: 'Outdoor', calories: 280 },
-  { category: 'Personal', calories: 220 }
+  { category: 'Gym', calories: 20},
+  { category: 'Cardio', calories: 20 },
+  { category: 'Sports', calories: 50 },
+  { category: 'Outdoor', calories: 100 },
+  { category: 'Personal', calories: 20 }
 ];
 
 const chartColors = [
-  'rgb(247, 111, 0)',  
-  'rgb(255, 221, 0)',   
   'rgb(54, 162, 235)',   
+  'rgb(255, 221, 0)',   
+  'rgb(247, 111, 0)',  
   'rgb(4, 148, 23)',  
   'rgb(153, 102, 255)'
   
@@ -336,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
               color: 'rgb(66, 66, 66)',
             },
             ticks: {
-              color: 'rgb(177, 15, 15)',
+              color: 'rgb(250, 250, 250)',
             },
             title: {
               display: true,

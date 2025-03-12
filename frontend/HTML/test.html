@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIV Creation Logger</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .content-area {
+      flex: 2;
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .log-container {
+      flex: 1;
+      height: 400px;
+      overflow-y: auto;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      border-radius: 8px;
+      padding: 10px;
+      font-family: monospace;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .log-entry {
+      padding: 6px 10px;
+      margin-bottom: 5px;
+      border-left: 3px solid #3498db;
+      background-color: #2a2a2a;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .log-entry .timestamp {
+      color: #8e8e8e;
+      font-size: 0.85em;
+    }
+    
+    .log-entry .message {
+      color: #3498db;
+      margin-left: 5px;
+    }
+    
+    .log-entry .details {
+      color: #2ecc71;
+      margin-top: 3px;
+      font-size: 0.9em;
+    }
+    
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    .dynamic-div {
+      padding: 10px;
+      margin: 5px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .clear-log {
+      background-color: #e74c3c;
+    }
+    
+    .clear-log:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <h1>DIV Creation Logger</h1>
+  
+  <div class="container">
+    <div class="content-area" id="content">
+      <h2>Content Area</h2>
+      <button id="create-div">Create New Div</button>
+      <button id="create-random">Create Random Divs</button>
+    </div>
+    
+    <div class="log-wrapper">
+      <h2>Creation Log</h2>
+      <button id="clear-log" class="clear-log">Clear Log</button>
+      <div class="log-container" id="log-container">
+        <!-- Log entries will appear here -->
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contentArea = document.getElementById('content');
+      const logContainer = document.getElementById('log-container');
+      const createDivBtn = document.getElementById('create-div');
+      const createRandomBtn = document.getElementById('create-random');
+      const clearLogBtn = document.getElementById('clear-log');
+      
+      let divCounter = 0;
+      
+      // Function to create a log entry
+      function logEvent(message, details = '') {
+        const logEntry = document.createElement('div');
+        logEntry.className = 'log-entry';
+        
+        const timestamp = new Date();
+        const timeStr = timestamp.toLocaleTimeString() + '.' + timestamp.getMilliseconds().toString().padStart(3, '0');
+        
+        logEntry.innerHTML = `
+          <span class="timestamp">[${timeStr}]</span>
+          <span class="message">${message}</span>
+          ${details ? `<div class="details">${details}</div>` : ''}
+        `;
+        
+        logContainer.appendChild(logEntry);
+        logContainer.scrollTop = logContainer.scrollHeight; // Auto-scroll to bottom
+      }
+      
+      // Function to create a new div
+      function createNewDiv(id = null) {
+        divCounter++;
+        const newDiv = document.createElement('div');
+        newDiv.className = 'dynamic-div';
+        
+        const divId = id || `div-${divCounter}`;
+        newDiv.id = divId;
+        newDiv.textContent = `Div ${divId} created at ${new Date().toLocaleTimeString()}`;
+        
+        contentArea.appendChild(newDiv);
+        
+        // Log the creation
+        logEvent('Div created', `ID: ${divId}, Content: "${newDiv.textContent}"`);
+        
+        return newDiv;
+      }
+      
+      // Create a single div
+      createDivBtn.addEventListener('click', () => {
+        createNewDiv();
+      });
+      
+      // Create random number of divs
+      createRandomBtn.addEventListener('click', () => {
+        const count = Math.floor(Math.random() * 5) + 1; // 1-5 divs
+        logEvent(`Creating ${count} random divs`);
+        
+        for (let i = 0; i < count; i++) {
+          setTimeout(() => {
+            createNewDiv(`random-${Date.now().toString(36).substr(-4)}`);
+          }, i * 300); // Slight delay between creations
+        }
+      });
+      
+      // Clear log
+      clearLogBtn.addEventListener('click', () => {
+        logContainer.innerHTML = '';
+        logEvent('Log cleared');
+      });
+      
+      // Initial log entry
+      logEvent('Logger initialized', 'Ready to track div creations');
+    });
+  </script>
+</body>
+</html>

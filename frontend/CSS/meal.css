@@ -164,6 +164,7 @@ main.after {
   border: 1px solid white;
   transition: 100ms ease-in;
   z-index: 1;
+  overflow-y: auto;
 
   visibility: hidden;
 }
