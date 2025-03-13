@@ -16,7 +16,7 @@ function changeForm() { //create a function to change between login form and reg
   }
 }
 
-/********************************************************* */
+/******************************************************************************************************** */
 
 document.addEventListener("DOMContentLoaded", () => { //the DOMcontentloaded function is used read and modify contents and structure of a webpage
   const togglePasswordVisibility = (iconId, passwordId) => {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => { //the DOMcontentloaded fun
   togglePasswordVisibility('lockicon-register', 'password-register');
 });  
 
-/********************************************************* */
+/********************************************************************************************************** */
 
 document.addEventListener("DOMContentLoaded", () => { //function to redirect to new page once login button is clicked
   const loginButton = document.getElementById('login-btn'); //grabs the login button from the login formbox

@@ -166,6 +166,7 @@ main.after {
   z-index: 1;
   overflow-y: auto;
 
+  opacity: 0;
   visibility: hidden;
 }
 
@@ -389,10 +390,15 @@ main.after {
   text-decoration: underline;
 }
 
+.caloriediv,
 .proteindiv,
 .carbsdiv,
 .fatdiv{
   font-size: 18px;
+}
+
+.caloriediv{
+  color: black;
 }
 
 .proteindiv{
@@ -431,81 +437,17 @@ main.after {
   margin-right: 10px;
 }
 
-.servingsize input{
-  width: 60px;
+.servingsize input,
+#unitsdropdown{
+  width: 70px;
   padding: 8px;
   border: 1px solid rgb(156, 156, 156);
   border-radius: 6px;
 }
 
-.servingsize input:focus{
+.servingsize input:focus,
+#unitsdropdown:focus{
   outline: 0;
-}
-
-.unitsbtn{
-  width: 25%;
-  background-color: rgb(255, 255, 255);
-  padding: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: 200ms;
-  border: 1px solid rgb(156, 156, 156);
-  border-radius: 6px;
-}
-
-.unitsbtn:hover{
-  background-color: rgb(236, 234, 234);
-}
-
-.unitsbtn span{
-  text-decoration: none;
-  font-size: 16px;
-  padding: 0;
-}
-
-.servingunits {
-  position: absolute;
-  top: 105px;
-  right: 38px;
-  list-style-type: none;
-  text-decoration: none;
-  background-color: white;
-  border: 1px solid rgb(163, 163, 163);
-  width: 80px;
-  overflow: hidden;
-  max-height: 0;
-  visibility: hidden; 
-  text-align: center;
-  transition: max-height 300ms ease-in-out, visibility 0s ease 300ms; 
-  z-index: 10;
-}
-
-.servingunits.show {
-  max-height: 200px; 
-  visibility: visible;
-  transition: max-height 300ms ease-in-out, visibility 0s ease 0s;
-}
-
-.servingunits li{
-  border-bottom: 1px solid rgb(175, 175, 175);
-}
-
-.servingunits li:last-child{
-  border: none;
-}
-
-.servingunits a{
-  display: block;
-  width: 100%;
-  transition: 300ms ease;
-  padding: 0px 10px 0px 2px;
-}
-
-.servingunits a:hover{
-  background-color: rgb(216, 229, 241);
 }
 
 .meals-main-sections{
@@ -640,51 +582,86 @@ main.after {
   font-size: 24px;
 }
 
-.breakfastlog,
-.snackslog,
-.lunchlog,
-.drinkslog,
-.dinnerlog{
-  position: relative;
-  border: 2px solid rgb(0, 0, 0);
-  background: white;
-  width: 95%;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 0; 
-  bottom: 280px;
-  visibility: hidden;
+.breakfastlog-container,
+.snackslog-container,
+.lunchlog-container,
+.drinkslog-container,
+.dinnerlog-container{
+  position: absolute;
+  width: 90%;
+  max-height: 300px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+
+  background-color: rgb(51, 54, 61);
+  box-shadow: 0 2px 8px 0px rgba(0, 0, 0, 0.65);
 }
 
-.breakfastlog::-webkit-scrollbar,
-.snackslog::-webkit-scrollbar,
-.lunchlog::-webkit-scrollbar,
-.drinkslog::-webkit-scrollbar,
-.dinnerlog::-webkit-scrollbar{
+.snackslog-container,
+.drinkslog-container{
+  background-color: rgb(32, 42, 55);
+}
+
+.breakfastlog-container::-webkit-scrollbar,
+.snackslog-container::-webkit-scrollbar,
+.lunchlog-container::-webkit-scrollbar,
+.drinkslog-container::-webkit-scrollbar,
+.dinnerlog-container::-webkit-scrollbar{
   width: 4px;
   overflow-y: hidden;
 }
 
-.breakfastlog::-webkit-scrollbar-track,
-.snackslog::-webkit-scrollbar-track,
-.lunchlog::-webkit-scrollbar-track,
-.drinkslog::-webkit-scrollbar-track,
-.dinnerlog::-webkit-scrollbar-track{
+.breakfastlog-container::-webkit-scrollbar-track,
+.snackslog-container::-webkit-scrollbar-track,
+.lunchlog-container::-webkit-scrollbar-track,
+.drinkslog-container::-webkit-scrollbar-track,
+.dinnerlog-container::-webkit-scrollbar-track{
   background: inherit;
 }
 
-.breakfastlog::-webkit-scrollbar-thumb,
-.snackslog::-webkit-scrollbar-thumb,
-.lunchlog::-webkit-scrollbar-thumb,
-.drinkslog::-webkit-scrollbar-thumb,
-.dinnerlog::-webkit-scrollbar-thumb{
+.breakfastlog-container::-webkit-scrollbar-thumb,
+.snackslog-container::-webkit-scrollbar-thumb,
+.lunchlog-container::-webkit-scrollbar-thumb,
+.drinkslog-container::-webkit-scrollbar-thumb,
+.dinnerlog-container::-webkit-scrollbar-thumb{
   background:rgb(0, 0, 0); 
   border-radius: 5px;
   cursor: pointer;
+}
+
+.foodlogitem{
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+  justify-content: space-between;
+  color: white;
+  flex-direction: row;
+  width: 100%;
+  height: 25%;
+  overflow: hidden;
+  gap: 10px;
+}
+
+.foodlogitem .left{
+  display: flex;
+  flex-direction: column;
+}
+
+.foodlogitem .left span{
+  padding-left: 10px;
+}
+
+.foodlogitem .right{
+  display: flex;
+  flex-direction: row; 
+}
+
+.foodlogitem .right span{
+  padding-right: 10px;
 }
 
 .macros{

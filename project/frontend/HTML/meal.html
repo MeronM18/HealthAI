@@ -113,34 +113,38 @@
               <button id="searchbtn"><i class='bx bx-search-alt' ></i></button>
             </div>
 
-            <ul id="suggestions" class="suggestions">
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
-              <div class="suggestionsdiv" id="suggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+            <ul id="mealsuggestions" class="suggestions">
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              <div class="suggestionsdiv" id="mealsuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
             </ul>
 
             <div class="foodinfo">
-              <span class="foodname">Apples</span>
+              <span class="foodname">Meal Name</span>
 
               <div class="nutrients">
+                <div class="caloriediv">
+                  <h2>Calories</h2>
+                  <span>--</span>
+                </div>
                 <div class="proteindiv">
                   <h2>Protein</h2>
-                  <span>50%</span>
+                  <span>--</span>
                 </div>
                 <div class="carbsdiv">
                   <h2>Carbohydrates</h2>
-                  <span>25%</span>
+                  <span>--</span>
                 </div>
                 <div class="fatdiv">
                   <h2>Fat</h2>
-                  <span>25%</span>
+                  <span>--</span>
                 </div>
               </div>
 
@@ -148,18 +152,15 @@
                 <h2>Serving Size: </h2>
                 <input type="number" min="0">
 
-                <button class="unitsbtn" id="unitsbtn">
-                  <span id="unitslabel"></span>
-                  <i class='bx bx-chevron-down'></i>
-                </button>
-                
-                <ul class="servingunits">
-                  <li><a href="">mg</a></li>
-                  <li><a href="">g</a></li>
-                  <li><a href="">oz</a></li>
-                  <li><a href="">lb</a></li>
-                  <li><a href="">kg</a></li>
-                </ul>
+                <div class="dropdown">
+                  <select id="unitsdropdown">
+                    <option value="option1">g</option>
+                    <option value="option2">oz</option>
+                    <option value="option3">mg</option>
+                    <option value="option4">lb</option>
+                  </select>
+                </div>
+
               </div>
 
             </div>
@@ -173,14 +174,14 @@
                 <h2>Breakfast <i class="fa-solid fa-egg"></i></h2>
                 <button id="breakfastaddbtn"><i class='bx bx-plus-medical' ></i></button>
               </div>
-              <div class="breakfastlog"></div>
+              <div class="breakfastlog-container"></div>
             </div>
             <div class="snacks">
               <div class="snacktopbar">
                 <h2>Snacks <i class="fa-solid fa-cookie-bite"></i></h2>
                 <button id="snacksaddbtn"><i class='bx bx-plus-medical' ></i></button>
               </div>
-              <div class="snackslog"></div>
+              <div class="snackslog-container"></div>
             </div>
           </div>
           <div class="lunch-drinks">
@@ -189,14 +190,14 @@
                 <h2>Lunch <i class="fa-solid fa-burger"></i></h2>
                 <button id="lunchaddbtn"><i class='bx bx-plus-medical' ></i></button>
               </div>
-              <div class="lunchlog"></div>
+              <div class="lunchlog-container"></div>
             </div>
             <div class="drinks">
               <div class="drinkstopbar">
                 <h2>Drinks <i class="fa-solid fa-glass-water"></i></h2>
                 <button id="drinksaddbtn"><i class='bx bx-plus-medical' ></i></button>
               </div>
-              <div class="drinkslog"></div>
+              <div class="drinkslog-container"></div>
             </div>
           </div>
           <div class="dinner-macros">
@@ -205,7 +206,7 @@
                 <h2>Dinner <i class="fa-solid fa-utensils"></i></h2>
                 <button id="dinneraddbtn"><i class='bx bx-plus-medical' ></i></button>
               </div>
-              <div class="dinnerlog"></div>
+              <div class="dinnerlog-container"></div>
             </div>
             <div class="macros">
               <canvas id="macroChart"></canvas>

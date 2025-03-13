@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        dialog {
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0,5);
+        }
+    </style>
+</head>
+<body>
+
+    <button id="openModal">Open Modal</button>
+
+    <dialog id="modal">
+        <p>This is a modal window.</p>
+        <button id="closeModal">Close</button>
+    </dialog>
+
+    <script>
+        const modal = document.getElementById("modal");
+        document.getElementById("openModal").addEventListener("click", () => {
+            modal.showModal();  // Disables interaction with the background
+        });
+        document.getElementById("closeModal").addEventListener("click", () => {
+            modal.close();
+        });
+    </script>
+
+</body>
+</html>

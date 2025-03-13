@@ -202,16 +202,13 @@
                   <i class='bx bxs-tree-alt outdoor-icon' ></i>
                   <h1>Outdoors</h1>
                 </div>
-                <div class="exercise-category" id="createOwn">
-                  <i class='bx bx-plus'></i>
-                  <h1>Personal</h1>
-                </div>
               </div>
 
             </div>
 
-            <div class="find-exercise-container">
+            <div class="find-exercise-container" id="searchExerciseDiv">
               <h2 class="addExerciseTitle">Add Exercise to Diary</h2>
+              <button id="addExerciseBtn">Add Exercise</button>
               <button id="closeExerciseBtn">X</button>
               <div class="searchbox">
                 <input type="text" id="exercise-input-box" placeholder="Find the burn..." autocomplete="off">
@@ -219,12 +216,54 @@
               </div>
 
               <div class="currentselection">
-                <h2>Cardio</h2>
-                <h2>Gym</h2>
-                <h2>Sports</h2>
-                <h2>Outdoor</h2>
-                <h2>Personal</h2>
+                <h2 class="active" id="cardioSelection">Cardio</h2>
+                <h2 id="gymSelection">Gym</h2>
+                <h2 id="sportSelection">Sports</h2>
+                <h2 id="outdoorSelection">Outdoor</h2>
               </div>
+
+              <ul id="exercisesuggestions" class="suggestions">
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+                <div class="suggestionsdiv" id="exercisesuggestionsdiv"><i class="fa-solid fa-book"></i> My phone died</div>
+              </ul>
+
+              <div class="duration-exercise-container">
+                <span class="exercisename">Exercise Name</span>
+
+                  <div class="duration">
+                    <h2>Duration: </h2>
+                    <input id="duration" type="number" min="0">
+                    <select id="timedropdown">
+                      <option value="option1">s</option>
+                      <option value="option2">min</option>
+                      <option value="option3">hr</option>
+                    </select>
+                  </div>
+  
+                  <div class="intensity">
+                    <h2>Intensity: </h2>
+                    <select id="intensitydropdown">
+                      <option value="option1">Lightly</option>
+                      <option value="option2">Moderate</option>
+                      <option value="option3">Intense</option>
+                    </select>
+                  </div>
+  
+                  <div class="totalkcalburnt-duration">
+                    <h2>Burned: </h2>
+                    <span id="calorie-list-number">-- kcal</span>
+                  </div>
+              
+              </div>
+
             </div>
 
             <button id="addexercisebtn">

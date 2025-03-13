@@ -8,13 +8,59 @@ document.addEventListener('DOMContentLoaded', function() {
   const progressPercentage = document.getElementById('progress-percentage');
   const progressRemainingCalories = document.getElementById('progress-remaining-calories');
   const progressBar = document.querySelector('.progress-bar');
-  
+
+  const chooseExerciseContainer = document.querySelector('.choose-exercise-container');
+  const searchExerciseDiv = document.getElementById('searchExerciseDiv');
+  const closeExerciseBtn = document.getElementById('closeExerciseBtn');
+
+  const cardioCategory = document.getElementById('cardioCategory');
+  const gymCategory = document.getElementById('gymCategory');
+  const outdoorCategory = document.getElementById('outdoorCategory');
+  const sportsCategory = document.getElementById('sportsCategory');
+
+  const cardioSelection = document.getElementById('cardioSelection');
+  const gymSelection = document.getElementById('gymSelection');
+  const sportSelection = document.getElementById('sportSelection');
+  const outdoorSelection = document.getElementById('outdoorSelection');
+
+  const overlayDiv = document.createElement('div');
+  overlayDiv.className = 'page-overlay';
+  document.body.appendChild(overlayDiv);
+
   let exerciseCount = 0;
   let totalCalories = 0;
   let calorieGoal = 0;
   let milestoneSet = false;
   let goalAchieved = false;
-  
+
+  function openSearchExercise() {
+    searchExerciseDiv.style.visibility = 'visible';
+    searchExerciseDiv.style.opacity = '1';
+    searchExerciseDiv.classList.add('search-exercise-visible');
+    overlayDiv.style.display = 'block';
+  }
+
+  function closeSearchExercise() {
+    searchExerciseDiv.style.visibility = 'hidden';
+    searchExerciseDiv.style.opacity = '0';
+    searchExerciseDiv.classList.remove('search-exercise-visible');
+    overlayDiv.style.display = 'none';
+  }
+
+  function openChooseExercise() {
+    chooseExerciseContainer.style.visibility = 'visible';
+    chooseExerciseContainer.style.opacity = '1';
+    chooseExerciseContainer.classList.add('search-exercise-visible');
+    overlayDiv.style.display = 'block';
+  }
+
+  function closeChooseExercise() {
+    chooseExerciseContainer.style.visibility = 'hidden';
+    chooseExerciseContainer.style.opacity = '0';
+    chooseExerciseContainer.classList.remove('search-exercise-visible');
+    overlayDiv.style.display = 'none';
+  }
+
   milestoneButton.addEventListener('click', function() {
     const inputValue = parseInt(milestoneInput.value);
     
@@ -31,6 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   addExerciseBtn.addEventListener('click', function() {
+    openChooseExercise();
+
     if (logContainer.children.length === 0) {
       exerciseCount = 0;
     }
@@ -82,6 +130,72 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     logContainer.prepend(logItem);
+  });
+
+  cardioCategory.addEventListener('click', function(){
+    closeChooseExercise();
+    openSearchExercise();
+  });
+
+  gymCategory.addEventListener('click', function(){
+    closeChooseExercise();
+    openSearchExercise();
+  });
+
+  outdoorCategory.addEventListener('click', function(){
+    closeChooseExercise();
+    openSearchExercise();
+  });
+
+  sportsCategory.addEventListener('click', function(){
+    closeChooseExercise();
+    openSearchExercise();
+  });
+
+  overlayDiv.addEventListener('click', function(event) {
+    if (event.target === overlayDiv) {
+      closeSearchExercise();
+      closeChooseExercise();
+    }
+  });
+
+  if (closeExerciseBtn) {
+    closeExerciseBtn.addEventListener('click', function() {
+      closeSearchExercise();
+    });
+  }
+
+  function setActiveSelection(selectionElement) {
+    cardioSelection.classList.remove('active');
+    gymSelection.classList.remove('active');
+    sportSelection.classList.remove('active');
+    outdoorSelection.classList.remove('active');
+    
+    selectionElement.classList.add('active');
+  }
+  
+  cardioCategory.addEventListener('click', function() {
+    setActiveSelection(cardioSelection);
+    closeChooseExercise();
+    openSearchExercise();
+  });
+  
+  gymCategory.addEventListener('click', function() {
+    setActiveSelection(gymSelection);
+    closeChooseExercise();
+    openSearchExercise();
+  });
+  
+  sportsCategory.addEventListener('click', function() {
+    setActiveSelection(outdoorSelection);
+    closeChooseExercise();
+    openSearchExercise();
+  });
+  
+  outdoorCategory.addEventListener('click', function() {
+    setActiveSelection(sportSelection);
+    closeChooseExercise();
+    openSearchExercise();
   });
   
   function updateProgress() {
@@ -204,6 +318,51 @@ document.addEventListener('DOMContentLoaded', function() {
       border-radius: 50%;
       animation: confettiFall linear forwards;
     }
+
+    .page-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 998;
+      display: none;
+    }
+    
+    .search-exercise-visible {
+      z-index: 999;
+      position: absolute;
+    }
+       
+    .choose-exercise-container {
+    width: 100%;
+    height: 100%;
+  }
+    #searchExerciseDiv {
+      width: 70%;
+      height: 93%;
+    }
   `;
   document.head.appendChild(style);
 });
+
+/******************************************************************************* */
+
+document.addEventListener('DOMContentLoaded', function() {
+  const categories = document.querySelectorAll('.currentselection h2');
+  
+  categories.forEach(category => {
+    category.addEventListener('click', function() {
+      if (!this.classList.contains('active')) {
+        categories.forEach(cat => {
+          cat.classList.remove('active');
+        });
+        this.classList.add('active');
+      }
+    });
+  });
+});
+
+/******************************************************************************* */
