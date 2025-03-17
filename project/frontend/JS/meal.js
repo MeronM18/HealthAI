@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+  const yesterdayBtn = document.getElementById('leftdatebtn');
+  const tomorrowBtn = document.getElementById('rightdatebtn');
+  const dateSpan = document.getElementById('datespan');
+
   const breakfastAddBtn = document.getElementById('breakfastaddbtn');
   const snacksAddBtn = document.getElementById('snacksaddbtn');
   const lunchaddbtn = document.getElementById('lunchaddbtn');
@@ -13,13 +17,88 @@ document.addEventListener('DOMContentLoaded', function() {
   const lunchLogContainer = document.querySelector('.lunchlog-container');
   const drinksLogContainer = document.querySelector('.drinkslog-container');
   const dinnerLogContainer = document.querySelector('.dinnerlog-container');
+
+  const calorieCount = document.getElementById('caloriecountmealpage');
+
+  let currentDate = new Date();
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
+  currentDate.setHours(0, 0, 0, 0);
   
+  function updateDateDisplay() {
+    const options = { month: 'long', day: 'numeric' };
+    
+    if (currentDate.getTime() === today.getTime()) {
+      dateSpan.textContent = 'Today';
+    } else {
+      dateSpan.textContent = currentDate.toLocaleDateString('en-US', options);
+    }
+  }
+  
+  updateDateDisplay();
+  
+  yesterdayBtn.addEventListener('click', function() {
+    currentDate.setDate(currentDate.getDate() - 1);
+    updateDateDisplay();
+  });
+  
+  tomorrowBtn.addEventListener('click', function() {
+    currentDate.setDate(currentDate.getDate() + 1);
+    updateDateDisplay();
+  });
+
   let foodCount = 0;
   let currentContainer = null;
   
   const overlayDiv = document.createElement('div');
   overlayDiv.className = 'page-overlay';
   document.body.appendChild(overlayDiv);
+  
+  function updateTotalCalories() {
+    const allFoodItems = document.querySelectorAll('.foodlogitem');
+    
+    let totalCalories = 0;
+    let totalProtein = 0;
+    let totalCarbs = 0;
+    let totalFats = 0;
+    
+    allFoodItems.forEach(item => {
+      totalCalories += parseInt(item.dataset.calories);
+      totalProtein += parseInt(item.dataset.protein);
+      totalCarbs += parseInt(item.dataset.carbs);
+      totalFats += parseInt(item.dataset.fats);
+    });
+    
+    calorieCount.textContent = allFoodItems.length > 0 ? totalCalories + ' kcal' : '--';
+    
+    const chartInstance = Chart.getChart('macroChart');
+    
+    if (chartInstance) {
+      const totalGrams = totalProtein + totalCarbs + totalFats;
+      
+      chartInstance.data.datasets[0].data = [totalProtein, totalCarbs, totalFats];
+      
+      if (totalGrams > 0) {
+        const proteinPercentage = (totalProtein / totalGrams * 100).toFixed(1);
+        const carbsPercentage = (totalCarbs / totalGrams * 100).toFixed(1);
+        const fatsPercentage = (totalFats / totalGrams * 100).toFixed(1);
+        
+        chartInstance.data.datasets[1].data = [proteinPercentage, carbsPercentage, fatsPercentage];
+      } else {
+        chartInstance.data.datasets[1].data = [0, 0, 0];
+      }
+      
+      const maxGrams = Math.max(totalProtein, totalCarbs, totalFats);
+      if (maxGrams > 0) {
+        const newMax = Math.ceil(maxGrams / 10) * 10;
+        chartInstance.options.scales.x.max = Math.max(newMax, 100);
+      } else {
+        chartInstance.options.scales.x.max = 100;
+      }
+      
+      chartInstance.update();
+    }
+  }
   
   function openSearchMeals(container) {
     currentContainer = container;
@@ -46,6 +125,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const calories = Math.floor(Math.random() * 400) + 100;
     const servingSize = Math.floor(Math.random() * 400) + 100;
+    const protein = Math.floor(Math.random() * 30) + 5;
+    const carbs = Math.floor(Math.random() * 50) + 10;
+    const fats = Math.floor(Math.random() * 20) + 3;
     
     const logItem = document.createElement('div');
     logItem.className = 'foodlogitem';
@@ -59,12 +141,20 @@ document.addEventListener('DOMContentLoaded', function() {
         <span id="foodlogitemservingsize">${servingSize} g</span>
       </div>
       <div class="right">
+        <div class="macros">
+          <span id="foodlogitemprotein">P: ${protein}g</span>
+          <span id="foodlogitemcarbs">C: ${carbs}g</span>
+          <span id="foodlogitemfats">F: ${fats}g</span>
+        </div>
         <span id="foodlogitemcaloriecount">${calories} kcal</span>
         <span class="food-item-trash"><i class='bx bxs-trash'></i></span>
       </div>
     `;
     
     logItem.dataset.calories = calories;
+    logItem.dataset.protein = protein;
+    logItem.dataset.carbs = carbs;
+    logItem.dataset.fats = fats;
     
     const trashIcon = logItem.querySelector('.food-item-trash');
     trashIcon.addEventListener('click', function() {
@@ -72,10 +162,12 @@ document.addEventListener('DOMContentLoaded', function() {
       
       setTimeout(() => {
         container.removeChild(logItem);
+        updateTotalCalories();
       }, 300);
     });
     
     container.prepend(logItem);
+    updateTotalCalories();
   }
   
   breakfastAddBtn.addEventListener('click', function() {
@@ -150,6 +242,19 @@ document.addEventListener('DOMContentLoaded', function() {
       margin: 10px 0px;
     }
     
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .macros {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.8rem;
+      text-align: right;
+    }
+    
     .food-item-trash {
       cursor: pointer;
       margin-left: 10px;
@@ -160,4 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   `;
   document.head.appendChild(style);
+  
+  // Initialize calorie count on page load
+  updateTotalCalories();
 });

@@ -277,20 +277,17 @@ document.addEventListener("DOMContentLoaded", function(){
 /********************************************************************************************************** */
 
 const calorieData = [
-  { category: 'Gym', calories: 20},
-  { category: 'Cardio', calories: 20 },
-  { category: 'Sports', calories: 50 },
-  { category: 'Outdoor', calories: 100 },
-  { category: 'Personal', calories: 20 }
+  { category: 'Gym'},
+  { category: 'Cardio'},
+  { category: 'Sports'},
+  { category: 'Outdoor'}
 ];
 
 const chartColors = [
   'rgb(54, 162, 235)',   
   'rgb(255, 221, 0)',   
   'rgb(247, 111, 0)',  
-  'rgb(4, 148, 23)',  
-  'rgb(153, 102, 255)'
-  
+  'rgb(4, 148, 23)'  
 ];
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -1,0 +1,186 @@
+:root{
+  --background-color: #FFFFFF;
+  --black-color: #000408;
+  --lightblack-color: #13181f;
+  --blackgreen-color: #181C14;
+  --gray-color: #62625f;
+  --green-color: #697565;
+  --beige-color: #ECDFCC;
+  --red-color: #b80e0e;
+  --lightgray-color: #EEEEEE;
+  --navyblue-color: #0B192C;
+  --button-background: #4d4d4a;
+  --hover-color: #031c4f;
+
+
+  --border-radius-1: 4px;
+  --border-radius-2: 10px;
+  --border-radius-3: 18px;
+  --border-radius-4: 50%;
+
+  --padding-1: 10px 20px;
+  --padding-2: 3px;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  max-width: 40rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container input {
+  outline: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid lightgray;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.top p {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.top-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+#photo {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 1);
+  object-fit: cover;
+  background-color: lightgray;
+}
+
+#file {
+  display: none;
+}
+
+#uploadbtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.top-bottom-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.top-bottom input {
+  text-align: center;
+}
+
+.middle {
+  margin-top: 30px;
+}
+
+.middle h2 {
+  margin-bottom: 10px;
+}
+
+.mid-email {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.bottom {
+  margin-top: 30px;
+}
+
+.bottom h2{
+  margin-bottom: 10px;
+}
+
+.bottom-left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 40px; 
+}
+
+.password-field i {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: gray;
+}
+
+.container button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#editemail{
+  margin-top: 0;
+}
+
+.container button:hover {
+  background-color: #0056b3;
+}

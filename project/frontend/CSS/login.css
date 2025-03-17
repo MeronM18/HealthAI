@@ -125,7 +125,9 @@ form h1{
 }
 
 .inputbox .usernamebox,
-.passwordbox, .emailbox{
+.usernamebox-reg,
+.passwordbox, 
+.emailbox {
   width: 100%;
   border-radius: var(--border-radius-2);
   background-color: transparent;
@@ -137,6 +139,15 @@ form h1{
   font-weight: 600;
 }
 
+.inputbox .usernamebox::placeholder,
+.usernamebox-reg::placeholder,
+.passwordbox::placeholder, 
+.emailbox::placeholder {
+  color: var(--background-color);
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .inputbox i{
   position: absolute;
   right: 20px;
@@ -146,29 +157,8 @@ form h1{
   color: white;
 }
 
-.inputbox .usernamebox::placeholder,
-.passwordbox::placeholder, .emailbox::placeholder{
-  color: var(--background-color);
-  font-size: 14px;
-  font-weight: 400;
-}
-
 .inputbox .lockicon{
   cursor: pointer;
-}
-
-.specialbox{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-}
-
-.specialbox input{
-  accent-color: var(--hover-color);
-  margin-right: -48px;
 }
 
 .login-btn,

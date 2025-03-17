@@ -75,22 +75,17 @@
     </div>
 
     <div class="login-formbox">
-      <form action="">
+      <form id="login-form" method="POST">
         <h1>Login</h1>
         <div class="inputbox">
-          <input class="usernamebox" type="text" placeholder="Username" required>
-          <i class='bx bxs-user' ></i>
+          <input class="usernamebox" type="username" name="username" placeholder="Username" autocomplete="username" required>
+          <i class='bx bxs-user'></i>
         </div>
-          <div class="inputbox">
-            <input class="passwordbox" type="password" placeholder="Password" id="password-login" required>
-            <i class='bx bxs-lock-alt lockicon' id="lockicon-login"></i>
-          </div>
-        <div class="specialbox">
-          <input class="checkbox" type="checkbox">
-          <h3>Remember me</h3>
-          <h3><a href="/">Forgot password?</a></h3>
+        <div class="inputbox">
+          <input class="passwordbox" type="password" name="password" placeholder="Password" id="password-login" autocomplete="current-password" required>
+          <i class='bx bxs-lock-alt lockicon' id="lockicon-login"></i>
         </div>
-          <button class="login-btn" id="login-btn">Login</button>
+        <button type="submit" class="login-btn" id="login-btn">Login</button>
       </form>
     </div>
 
@@ -103,21 +98,21 @@
     </div>
 
     <div class="register-formbox">
-      <form action="">
+      <form id="register-form" method="POST">
         <h1>Register</h1>
         <div class="inputbox">
-          <input class="usernamebox" type="text" placeholder="Username" required>
-          <i class='bx bxs-user' ></i>
+          <input class="usernamebox-reg" type="text" name="username" placeholder="Username" autocomplete="username" required>
+          <i class='bx bxs-user'></i>
         </div>
         <div class="inputbox">
-          <input class="emailbox" type="email" placeholder="Email" required>
-          <i class='bx bxs-envelope' ></i>
+          <input class="emailbox" type="email" name="email" placeholder="Email" autocomplete="email" required>
+          <i class='bx bxs-envelope'></i>
         </div>
-          <div class="inputbox">
-            <input class="passwordbox" type="password" placeholder="Password" id="password-register" required>
-            <i class='bx bxs-lock-alt lockicon' id="lockicon-register" ></i>
-          </div>
-          <button class="registerr-btn" id="registerr-btn">Register</button>
+        <div class="inputbox">
+          <input class="passwordbox" type="password" name="password" placeholder="Password" id="password-register" autocomplete="new-password" required>
+          <i class='bx bxs-lock-alt lockicon' id="lockicon-register"></i>
+        </div>
+        <button type="submit" class="registerr-btn" id="registerr-btn">Register</button>
       </form>
     </div>
 

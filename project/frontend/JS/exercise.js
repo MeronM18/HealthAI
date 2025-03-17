@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+  const yesterdayBtn = document.getElementById('leftdatebtnexercise');
+  const tomorrowBtn = document.getElementById('rightdatebtnexercise');
+  const dateSpan = document.getElementById('datespanexercise');
+
   const addExerciseBtn = document.getElementById('addexercisebtn');
   const logContainer = document.querySelector('.exerciselog-container');
   const totalCaloriesSpan = document.getElementById('calorieburnexercisepage');
@@ -23,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const sportSelection = document.getElementById('sportSelection');
   const outdoorSelection = document.getElementById('outdoorSelection');
 
+  const addToDiary = document.querySelector('.addexercisetodiary');
+
   const overlayDiv = document.createElement('div');
   overlayDiv.className = 'page-overlay';
   document.body.appendChild(overlayDiv);
@@ -32,6 +38,89 @@ document.addEventListener('DOMContentLoaded', function() {
   let calorieGoal = 0;
   let milestoneSet = false;
   let goalAchieved = false;
+  let selectedCategory = '';
+
+  let currentDate = new Date();
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
+  currentDate.setHours(0, 0, 0, 0);
+  
+  function updateDateDisplay() {
+    const options = { month: 'long', day: 'numeric' };
+    
+    if (currentDate.getTime() === today.getTime()) {
+      dateSpan.textContent = 'Today';
+    } else {
+      dateSpan.textContent = currentDate.toLocaleDateString('en-US', options);
+    }
+  }
+  
+  updateDateDisplay();
+  
+  yesterdayBtn.addEventListener('click', function() {
+    currentDate.setDate(currentDate.getDate() - 1);
+    updateDateDisplay();
+  });
+  
+  tomorrowBtn.addEventListener('click', function() {
+    currentDate.setDate(currentDate.getDate() + 1);
+    updateDateDisplay();
+  });
+  
+  const calorieData = [
+    { category: 'Gym', calories: 0 },
+    { category: 'Cardio', calories: 0 },
+    { category: 'Sports', calories: 0 },
+    { category: 'Outdoor', calories: 0 }
+  ];
+
+  const chartColors = [
+    'rgb(54, 162, 235)',   
+    'rgb(255, 221, 0)',   
+    'rgb(247, 111, 0)',  
+    'rgb(4, 148, 23)'
+  ];
+
+  function updateChart() {
+    const chartInstance = Chart.getChart('caloriechart');
+    
+    if (chartInstance) {
+      chartInstance.data.labels = calorieData.map(item => item.category);
+      chartInstance.data.datasets[0].data = calorieData.map(item => item.calories);
+      
+      chartInstance.update();
+    }
+  }
+
+  function updateCaloriesAndChart() {
+    calorieData.forEach(item => {
+      item.calories = 0;
+    });
+    
+    const allExerciseItems = document.querySelectorAll('.log-item');
+    
+    totalCalories = 0;
+    
+    allExerciseItems.forEach(item => {
+      const calories = parseInt(item.dataset.calories);
+      const category = item.dataset.category || 'Personal';
+      
+      totalCalories += calories;
+      
+      const categoryIndex = calorieData.findIndex(data => data.category === category);
+      if (categoryIndex !== -1) {
+        calorieData[categoryIndex].calories += calories;
+      }
+    });
+    
+    totalCaloriesSpan.textContent = allExerciseItems.length > 0 ? totalCalories + " kcal" : "--";
+    
+    if (milestoneSet) {
+      updateProgress();
+    }
+    
+    updateChart();
+  }
 
   function openSearchExercise() {
     searchExerciseDiv.style.visibility = 'visible';
@@ -78,7 +167,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   addExerciseBtn.addEventListener('click', function() {
     openChooseExercise();
+  });
 
+  addToDiary.addEventListener('click', function() {
     if (logContainer.children.length === 0) {
       exerciseCount = 0;
     }
@@ -90,18 +181,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const caloriesBurned = Math.floor(Math.random() * 300) + 100;
     
-    totalCalories += caloriesBurned;
-    
-    totalCaloriesSpan.textContent = totalCalories + " kcal";
-    
-    if (milestoneSet) {
-      updateProgress();
-    }
-    
     const logItem = document.createElement('div');
     logItem.className = 'log-item';
     
-    const exerciseName = `Exercise ${exerciseCount}`;
+    const exerciseName = `${selectedCategory} Exercise ${exerciseCount}`;
     
     logItem.innerHTML = `
       <div class="log-item-title">${exerciseName}</div>
@@ -111,43 +194,50 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     
     logItem.dataset.calories = caloriesBurned;
+    logItem.dataset.category = selectedCategory;
     
     const trashIcon = logItem.querySelector('.log-item-trash');
     trashIcon.addEventListener('click', function() {
-      totalCalories -= parseInt(logItem.dataset.calories);
-      
-      totalCaloriesSpan.textContent = totalCalories + " kcal";
-      
-      if (milestoneSet) {
-        updateProgress();
-      }
-      
       logItem.style.animation = 'fadeOut 0.3s';
       
       setTimeout(() => {
         logContainer.removeChild(logItem);
+        updateCaloriesAndChart();
       }, 300);
     });
     
     logContainer.prepend(logItem);
+    
+    updateCaloriesAndChart();
+    
+    closeSearchExercise();
+    closeChooseExercise();
   });
 
   cardioCategory.addEventListener('click', function(){
+    selectedCategory = 'Cardio';
+    setActiveSelection(cardioSelection);
     closeChooseExercise();
     openSearchExercise();
   });
 
   gymCategory.addEventListener('click', function(){
+    selectedCategory = 'Gym';
+    setActiveSelection(gymSelection);
     closeChooseExercise();
     openSearchExercise();
   });
 
   outdoorCategory.addEventListener('click', function(){
+    selectedCategory = 'Outdoor';
+    setActiveSelection(outdoorSelection);
     closeChooseExercise();
     openSearchExercise();
   });
 
   sportsCategory.addEventListener('click', function(){
+    selectedCategory = 'Sports';
+    setActiveSelection(sportSelection);
     closeChooseExercise();
     openSearchExercise();
   });
@@ -173,30 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     selectionElement.classList.add('active');
   }
-  
-  cardioCategory.addEventListener('click', function() {
-    setActiveSelection(cardioSelection);
-    closeChooseExercise();
-    openSearchExercise();
-  });
-  
-  gymCategory.addEventListener('click', function() {
-    setActiveSelection(gymSelection);
-    closeChooseExercise();
-    openSearchExercise();
-  });
-  
-  sportsCategory.addEventListener('click', function() {
-    setActiveSelection(outdoorSelection);
-    closeChooseExercise();
-    openSearchExercise();
-  });
-  
-  outdoorCategory.addEventListener('click', function() {
-    setActiveSelection(sportSelection);
-    closeChooseExercise();
-    openSearchExercise();
-  });
   
   function updateProgress() {
     const remainingCalories = calorieGoal - totalCalories;
@@ -337,32 +403,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
        
     .choose-exercise-container {
-    width: 100%;
-    height: 100%;
-  }
+      width: 100%;
+      height: 100%;
+    }
+    
     #searchExerciseDiv {
       width: 70%;
       height: 93%;
     }
   `;
   document.head.appendChild(style);
+
+  // Initialize chart on page load
+  updateCaloriesAndChart();
 });
-
-/******************************************************************************* */
-
-document.addEventListener('DOMContentLoaded', function() {
-  const categories = document.querySelectorAll('.currentselection h2');
-  
-  categories.forEach(category => {
-    category.addEventListener('click', function() {
-      if (!this.classList.contains('active')) {
-        categories.forEach(cat => {
-          cat.classList.remove('active');
-        });
-        this.classList.add('active');
-      }
-    });
-  });
-});
-
-/******************************************************************************* */

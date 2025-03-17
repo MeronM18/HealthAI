@@ -119,7 +119,10 @@ main.after {
   color: white;
   font-size: 30px;
   font-weight: 600;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 6%;
+  transform: translate(-50%, -50%);
 }
 
 .diarydate{

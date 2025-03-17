@@ -1,0 +1,233 @@
+:root{
+  --background-color: #FFFFFF;
+  --black-color: #000408;
+  --lightblack-color: #13181f;
+  --blackgreen-color: #181C14;
+  --gray-color: #62625f;
+  --green-color: #697565;
+  --beige-color: #ECDFCC;
+  --red-color: #b80e0e;
+  --lightgray-color: #EEEEEE;
+  --navyblue-color: #0B192C;
+  --button-background: #4d4d4a;
+  --hover-color: #031c4f;
+
+
+  --border-radius-1: 4px;
+  --border-radius-2: 10px;
+  --border-radius-3: 18px;
+  --border-radius-4: 50%;
+
+  --padding-1: 10px 20px;
+  --padding-2: 3px;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+main {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr); 
+  margin: 50px;
+  background-color: rgb(25, 33, 44);
+  grid-column: 1 / span 12;
+  grid-row: 2 / span 11;
+  transition: grid-column 500ms ease-in-out;
+  overflow: hidden;
+}
+
+main.after {
+  grid-column: 2 / span 11;
+}
+
+.aiheader{
+  position: relative;
+  width: 100%;
+  height: 90px;
+  grid-column: span 12;
+  padding: 15px 0 0 30px;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.aiheader h2{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.data-container{
+  grid-column: span 12;
+  grid-row: span 12;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  position: relative;
+}
+
+#video-background{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.data-container p{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3.4rem;
+  color: rgb(255, 255, 255);
+}
+
+.data-container p i{
+  color: rgb(255, 255, 255);
+}
+
+.chat {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.chat form, .chat textarea {
+  width: 50rem;
+}
+
+.chat form {
+  height: auto;
+  position: relative;
+}
+
+.chat textarea {
+  position: relative; 
+  background: transparent;
+  backdrop-filter: blur(.45rem);
+  box-sizing: border-box;
+  min-height: 3rem; 
+  max-height: 10rem;
+  resize: none;
+  outline: none;
+  border: none;
+  padding: 1.2rem 5rem 1.2rem 1.4rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 3px 0 rgb(255, 255, 255);
+  font-size: 1.3rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+#chat-text::-webkit-scrollbar {
+  width: 1rem;
+  height: 1rem;
+}
+
+#chat-text::-webkit-scrollbar-track {
+  background: transparent;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+#chat-text::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: rgba(150, 150, 150, 0.5);
+  border: 4px solid transparent; 
+  background-clip: padding-box;
+  border-radius: 8px;
+}
+
+#chat-text::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(151, 151, 151, 0.7);
+}
+
+#chat-text::-webkit-scrollbar-button {
+  display: none;
+}
+
+.chat textarea::placeholder{
+  color: rgb(225, 225, 225);
+  font-size: 1.1rem;
+}
+
+#search {
+  position: absolute;
+  cursor: pointer;
+  right: 52.6rem;
+  top: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: .6rem;
+  border: none;
+  background: rgb(0, 99, 204);
+  user-select: none;
+  transform-origin: center;
+}
+
+#search:hover{
+  background-color: rgb(10, 89, 174);
+}
+
+#search i{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.hidden{
+  transform: scaleX(0);
+}
+
+@keyframes popAnimation {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.pop-in {
+  animation: popAnimation .65s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.loader {
+  position: absolute;
+  right: 52.6rem;
+  top: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #FFF;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  transform-origin: center;
+  animation: rotation 1s linear infinite;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
