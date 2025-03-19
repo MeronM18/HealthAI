@@ -150,6 +150,46 @@ document.addEventListener('DOMContentLoaded', function() {
     overlayDiv.style.display = 'none';
   }
 
+  // Set active selection - modified to handle selection clicks
+  function setActiveSelection(selectionElement) {
+    // Clear all active states
+    cardioSelection.classList.remove('active');
+    gymSelection.classList.remove('active');
+    sportSelection.classList.remove('active');
+    outdoorSelection.classList.remove('active');
+    
+    // Set new active state
+    selectionElement.classList.add('active');
+    
+    // Update the selected category based on which element is active
+    if (selectionElement === cardioSelection) {
+      selectedCategory = 'Cardio';
+    } else if (selectionElement === gymSelection) {
+      selectedCategory = 'Gym';
+    } else if (selectionElement === sportSelection) {
+      selectedCategory = 'Sports';
+    } else if (selectionElement === outdoorSelection) {
+      selectedCategory = 'Outdoor';
+    }
+  }
+
+  // Add direct click handlers for selection elements
+  cardioSelection.addEventListener('click', function() {
+    setActiveSelection(cardioSelection);
+  });
+
+  gymSelection.addEventListener('click', function() {
+    setActiveSelection(gymSelection);
+  });
+
+  sportSelection.addEventListener('click', function() {
+    setActiveSelection(sportSelection);
+  });
+
+  outdoorSelection.addEventListener('click', function() {
+    setActiveSelection(outdoorSelection);
+  });
+
   milestoneButton.addEventListener('click', function() {
     const inputValue = parseInt(milestoneInput.value);
     
@@ -170,6 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   addToDiary.addEventListener('click', function() {
+    if (!selectedCategory) {
+      alert('Please select an exercise category first');
+      return;
+    }
+    
     if (logContainer.children.length === 0) {
       exerciseCount = 0;
     }
@@ -253,15 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
     closeExerciseBtn.addEventListener('click', function() {
       closeSearchExercise();
     });
-  }
-
-  function setActiveSelection(selectionElement) {
-    cardioSelection.classList.remove('active');
-    gymSelection.classList.remove('active');
-    sportSelection.classList.remove('active');
-    outdoorSelection.classList.remove('active');
-    
-    selectionElement.classList.add('active');
   }
   
   function updateProgress() {
@@ -365,6 +401,24 @@ document.addEventListener('DOMContentLoaded', function() {
     .log-item-trash i:hover {
       color: #e74c3c;
     }
+
+    @media screen and (max-width: 1550px) {
+      .log-item-title {
+        font-size: 14px;
+      }
+      
+      .log-item-calories {
+        font-size: 12px;
+      }
+      
+      .log-item-time {
+        font-size: 10px;
+      }
+      
+      .log-item-trash i {
+        font-size: 16px;
+      }
+    }
     
     .confetti-container {
       position: fixed;
@@ -405,11 +459,6 @@ document.addEventListener('DOMContentLoaded', function() {
     .choose-exercise-container {
       width: 100%;
       height: 100%;
-    }
-    
-    #searchExerciseDiv {
-      width: 70%;
-      height: 93%;
     }
   `;
   document.head.appendChild(style);

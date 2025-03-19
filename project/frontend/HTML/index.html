@@ -41,20 +41,20 @@
         </a>
       </div>
       <div class="right-section">
-        <img class="pfp" src="/images/pfp.jpg">
-        <h3>Meron Matti</h3>
+        <img class="pfp" src="/images/profileicon.jpg">
+        <h3>username</h3>
         <button class="drop-button" id="submenu-btn">
           <i class='bx bx-chevron-up downarrow-icon'></i>
         </button>
-        <ul class="sub-menu">
-            <div class="sub-bars">
-              <li><a href="/HTML/settings.html">Settings <i class='bx bx-cog bx-rotate-180' ></i></a></li>
-            </div>
-            <div class="sub-bars">
-              <li><a href="/HTML/login.html">Logout <i class='bx bx-log-out bx-rotate-180' ></i></a></li>
-            </div>
-        </ul>
       </div>
+      <ul class="sub-menu">
+          <div class="sub-bars">
+            <li><a href="/HTML/settings.html">Settings <i class='bx bx-cog bx-rotate-180' ></i></a></li>
+          </div>
+          <div class="sub-bars">
+            <li><a href="/HTML/login.html">Logout <i class='bx bx-log-out bx-rotate-180' ></i></a></li>
+          </div>
+      </ul>
     </header>
     <nav>
       <div class="topbar">
@@ -80,92 +80,16 @@
       </div>
 
       <div class="data-container">  
-        <div class="leftmain-section">
-          <div class="bar-container">
-            <canvas id="barchart"></canvas>
-          </div>
-        </div>  
-        
-        <div class="middlemain-section">
-          <div class="max-w-sm w-full bg-white rounded-lg shadow-sm dark:bg-gray-800 p-4 md:p-6" id="donut-container">
-
-            <div class="flex justify-between mb-3 p-4" id="calories-flexbox">
-                <div class="flex justify-center items-center">
-                    <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Calories</h5>
-                  </div>
-            </div>
-            <div class="flex justify-between mb-3" id="remaining-flexbox">
-                <div class="flex justify-center items-center">
-                    <h5 class="text-l font-nobold leading-none text-gray-900 dark:text-white pe-1">Remaining = Goal - Food + Exercise</h5>
-                  </div>
-            </div>
-        
-          <!-- Donut Chart -->
-          <div class="py-6" id="donut-chart">
-            
-          </div>
-        
-          <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
-            <div class="flex justify-between items-center pt-5">
-            </div>
-          </div>
-       
-          </div>
-
-          <div class="exercisecard-container">
-            <div class="first">
-              <h2>Exercise</h2>
-              <a href="#">
-                <i class='bx bx-plus' id="add-exercise-mainpage"></i>
-              </a>
-            </div>
-            <div class="second">
-              <i class='bx bxs-flame' ></i>
-              <p>-- calories</p>
-            </div>
-            <div class="third">
-              <i class='bx bx-time-five' ></i>
-              <p>00:00 hr</p>
-            </div>
-          </div>
-
-          <div class="moodbar-container">
-            <div class="moodtitle">
-              <h2>How do I feel today?</h2>
-            </div>
-            <div class="contain-the-emojis">
-              <div class="moodsection">
-                <i class='bx bx-happy' ></i>
-                <p>Happy</p>
-              </div>
-              <div class="moodsection">
-                <i class='bx bx-cool' ></i>
-                <p>Chillin</p>
-              </div>
-              <div class="moodsection">
-                <i class='bx bx-meh-alt' ></i>
-                <p>Meh</p>
-              </div>
-              <div class="moodsection">
-                <i class='bx bx-tired' ></i>
-                <p>Tired</p>
-              </div>
-              <div class="moodsection">
-                <i class='bx bx-sad' ></i>
-                <p>Sad</p>
-              </div>
-            </div>
-
-          </div>
+        <div class="div">Remaining goal</div>
+        <div class="div">calories</div>
+        <div class="div">weight change</div>
+        <div class="div">Fasting</div>
+        <div class="div" id="checkindiv">
+          <button id="checkinbtn">Check In</button>
         </div>
-
-        <div class="rightmain-section">
-          <div class="scatter-container">
-            <canvas id="scatterchart"></canvas>
-          </div>
-        </div>
+        <div class="div">exercise</div>
+        <div class="div">chatbot</div>
       </div>
-      
     </main>
   </div>
 

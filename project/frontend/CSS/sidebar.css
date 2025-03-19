@@ -111,3 +111,9 @@ nav ul a:hover{
 nav .menu-icon{
   margin-right: 10px;
 }
+
+@media (max-width: 1550px) {
+  nav.show{
+    width: 190px;
+  }
+}

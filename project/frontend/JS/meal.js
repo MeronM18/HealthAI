@@ -242,6 +242,24 @@ document.addEventListener('DOMContentLoaded', function() {
       margin: 10px 0px;
     }
     
+    @media screen and (max-width: 1550px) {
+      #foodlogitemname {
+        font-size: 14px;
+      }
+      #foodlogitemservingsize {
+        font-size: 12px;
+      }
+      .macros span {
+        font-size: 11px;
+      }
+      #foodlogitemcaloriecount {
+        font-size: 13px;
+      }
+      .food-item-trash i {
+        font-size: 14px;
+      }
+    }
+    
     .right {
       display: flex;
       align-items: center;

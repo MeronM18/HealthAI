@@ -255,3 +255,10 @@ form h1{
 .register-formbox.visible{
   opacity: 1;
 }
+
+@media (max-width: 1550px) {
+  .container{
+    width: 800px;
+    height: 500px;
+  }
+}

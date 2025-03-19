@@ -260,11 +260,11 @@ main.after {
 .searchbox button {
   position: absolute;
   cursor: pointer;
-  background-color: rgb(252, 232, 118);
+  background-color: rgb(42, 136, 45);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   width: 80px;
   height: 100%;
   border-top-right-radius: var(--border-radius-2);
@@ -278,7 +278,7 @@ main.after {
 }
 
 .searchbox button:hover {
-  background: rgb(255, 225, 53);
+  background: rgb(32, 113, 35);
 }
 
 .searchbox button i {
@@ -669,4 +669,239 @@ main.after {
 
 .macros{
   padding: 21px;
+}
+
+@media (max-width: 1550px) {
+  main {
+    margin: 20px;
+  }
+  main .mealheader {
+    height: 65px;
+    padding: 10px 0 0 30px;
+  }
+  main .mealheader h2{
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  main .mealheader p{
+    font-size: 12px;
+  }
+  .data-container{
+    padding: 0px;
+  }
+  .top{
+    border-bottom: none;
+  }
+  .top-title{
+    font-size: 24px;
+    top: 1.4rem;
+  }
+  .caloriecount h2{
+    font-size: 18px;
+  }
+  .caloriecount h2::after{
+    content: '';
+    position: absolute;
+    border-radius: var(--border-radius-2);
+    background: linear-gradient(45deg, blue, green);
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+  }
+  #datespan{
+    padding: 6px;
+    font-size: 18px;
+  }
+  .diarydate button{
+    font-size: 22px;
+  }
+  .breakfast-snacks,
+  .lunch-drinks,
+  .dinner-macros{
+    gap: 6px;
+  }
+  .breakfast .breakfasttopbar,
+  .snacks .snacktopbar,
+  .lunch .lunchtopbar,
+  .drinks .drinkstopbar,
+  .dinner .dinnertopbar{
+    height: 62px;
+    padding: 0 30px 0 30px;
+    border: 2px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .breakfasttopbar h2,
+  .snacktopbar h2,
+  .lunchtopbar h2,
+  .drinkstopbar h2,
+  .dinnertopbar h2{
+    font-size: 25px;
+  }
+  .breakfasttopbar h2 i,
+  .snacktopbar h2 i,
+  .lunchtopbar h2 i,
+  .drinkstopbar h2 i,
+  .dinnertopbar h2 i{
+    font-size: 22px;
+    margin-left: 2px;
+  }
+  .breakfasttopbar button,
+  .snacktopbar button,
+  .lunchtopbar button,
+  .drinkstopbar button,
+  .dinnertopbar button{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 6px 1px rgba(83, 83, 83, 0.65);
+  }
+
+  .breakfasttopbar button:hover,
+  .snacktopbar button:hover,
+  .lunchtopbar button:hover,
+  .drinkstopbar button:hover,
+  .dinnertopbar button:hover{
+    transform: scale(1.03);
+  }
+  .breakfasttopbar button i,
+  .snacktopbar button i,
+  .lunchtopbar button i,
+  .drinkstopbar button i,
+  .dinnertopbar button i{
+    font-size: 18px;
+  }
+  .macros{
+    padding: 0px;
+  }
+  .breakfastlog-container,
+  .snackslog-container,
+  .lunchlog-container,
+  .drinkslog-container,
+  .dinnerlog-container{
+    max-height: 160px;
+    box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.65);
+  }
+  .foodlogitem{
+    height: 12%;
+    gap: 8px;
+  }
+  .foodlogitem .left span{
+    padding-left: 8px;
+  }
+  .foodlogitem .right span{
+    padding-right: 8px;
+  }
+  .searchmeals{
+    top: 42%;
+    width: 630px;
+    height: 600px;
+    background-color: white;
+    border-radius: var(--border-radius-2);
+    border: 1px solid white;
+    transition: 100ms ease-in;
+    z-index: 1;
+    overflow-y: auto;
+  
+    opacity: 0;
+    visibility: hidden;
+  }
+  .searchmeals header{
+    top: 8px;
+    left: 20px;
+    font-size: 22px;
+  }
+  #addFoodBtn{
+    right: 48px;
+    top: 6px;
+    width: 126px;
+    height: 40px;
+  }
+  #addFoodBtn:active{
+    transform: scale(0.96);
+  }
+  #closeFoodBtn{
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+    top: 5px;
+    right: 5px;
+  }
+  .searchmeals .searchbox{
+    top: 55px;
+  }
+  
+  .searchbox input {
+    height: 50px;
+    padding-left: 12px;
+    padding-right: 100px;
+    font-size: 14px;
+    box-shadow: 0 0 6px 0 rgb(0, 0, 0, 0.35);
+  }
+  
+  .searchbox input::placeholder {
+    font-size: 14px;
+  }
+  .searchbox button i {
+    font-size: 28px;
+  }
+  .suggestions{
+    width: 95%;
+    height: 320px;
+    top: 118px;
+    background-color: transparent;
+    border-radius: var(--border-radius-1);
+    border: 1px solid rgb(190, 188, 188);
+    overflow-y: auto;
+  }
+  .suggestions::-webkit-scrollbar{
+    width: 6px;
+  }
+  .suggestionsdiv{
+    gap: 15px;
+    padding: 8px;
+    font-size: 14px;
+  }
+  .suggestionsdiv i{
+    font-size: 16px;
+  }
+  .foodinfo{
+    padding: 2px;
+    bottom: 10px;
+    width: 95%;
+    height: 145px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+  .foodinfo span{
+    font-size: 15px;
+  }
+  .nutrients{
+    width: 49%;
+    height: 84%;
+  }
+  .caloriediv,
+  .proteindiv,
+  .carbsdiv,
+  .fatdiv{
+    font-size: 15px;
+  }
+  .servingsize{
+    gap: 6px;
+    width: 49%;
+    height: 84%;
+  }
+  .servingsize h2{
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 8px;
+  }
+  .servingsize input,
+  #unitsdropdown{
+    width: 60px;
+    padding: 6px;
+  }
 }

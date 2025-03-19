@@ -43,21 +43,6 @@ main.after {
   grid-column: 2 / span 11;
 }
 
-.aiheader{
-  position: relative;
-  width: 100%;
-  height: 90px;
-  grid-column: span 12;
-  padding: 15px 0 0 30px;
-  color: white;
-  border-bottom: 1px solid white;
-}
-
-.aiheader h2{
-  font-size: 25px;
-  font-weight: 700;
-}
-
 .data-container{
   grid-column: span 12;
   grid-row: span 12;
@@ -231,3 +216,53 @@ main.after {
     transform: rotate(360deg);
   }
 } 
+
+@media (max-width: 1550px) {
+  main {
+    margin: 0px;
+  }
+  .data-container p{
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.8rem;
+  }
+  .chat {
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .chat form, .chat textarea {
+    width: 46em;
+  }
+  .chat textarea {
+    min-height: 3rem; 
+    max-height: 8.4rem;
+    padding: 1rem 5rem 1rem 1.2rem;
+    font-size: 1rem;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  #chat-text::-webkit-scrollbar {
+    width: .8rem;
+    height: 1rem;
+  }
+  .chat textarea::placeholder{
+    font-size: .9rem;
+  }
+  #search {
+    right: 25.6rem;
+    top: 0.4rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  #search i{
+    font-size: 1.3rem;
+  }
+  .loader {
+    right: 25.6rem;
+    top: 0.4rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}

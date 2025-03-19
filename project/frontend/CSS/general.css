@@ -54,3 +54,21 @@ img{
   grid-template-rows: repeat(12, 1fr);
   grid-template-columns: repeat(12, 1fr);
 }
+
+@media (max-height: 85vh) {
+  body {
+    height: 85vh;
+  }
+  .grid-container {
+    height: 85vh;
+  }
+}
+
+@media (max-width: 60vw) {
+  body {
+    width: 60vw;
+  }
+  .grid-container {
+    width: 60vw;
+  }
+}

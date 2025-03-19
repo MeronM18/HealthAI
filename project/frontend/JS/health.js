@@ -290,7 +290,7 @@ postEntryButton.addEventListener("click", function() {
 
     if (inputDate > currentDate) { 
       alertMessage.classList.add('show'); 
-      alertMessage.innerHTML = "The selected date cannot be in the future!";
+      alertMessage.innerHTML = "No future dates!";
     } else { 
       alertMessage.classList.add('show');
       alertMessage.innerHTML = "Entry Added!";

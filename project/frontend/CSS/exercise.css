@@ -561,7 +561,9 @@ main.after {
 }
 
 .find-exercise-container{
-  bottom: 120px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgb(235, 235, 235);
   position: absolute;
   width: 70%;
@@ -652,7 +654,7 @@ main.after {
 .searchbox button {
   position: absolute;
   cursor: pointer;
-  background-color:black;
+  background-color: rgb(42, 136, 45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -667,6 +669,10 @@ main.after {
 
   opacity: 0;
   transition: all 320ms ease;
+}
+
+.searchbox button:hover{
+  background: rgb(32, 113, 35);
 }
 
 .searchbox button i {
@@ -979,4 +985,365 @@ main.after {
 
 .log-item-trash:hover{
   transform: translateY(-3px);
+}
+
+@media (max-width: 1550px) {
+  main {
+    margin: 20px;
+  }
+  main .exerciseheader {
+    height: 65px;
+    padding: 10px 0 0 30px;
+  }
+  main .exerciseheader h2{
+    font-size: 18px;
+    font-weight: 700;
+  }
+  main .exerciseheader p{
+    font-size: 12px;
+  }
+  .data-container{
+    padding: 8px;
+  }
+  .top{
+    padding: 10px 25px 10px 25px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: none;
+    margin-bottom: 5px;
+  }
+  .caloriecount h2{
+    font-size: 18px;
+  }
+  .top-title{
+    top: 5.5%;
+    left: 50%;
+    font-size: 24px;
+  }
+  #datespanexercise{
+    padding: 6px;
+    font-size: 18px;
+  }
+  .diarydate button{
+    font-size: 22px;
+  }
+  .exercise-main-sections{
+    width: 100%;
+    height: 91%;
+  }
+  .addexercisecontainer{
+    height: 100%;
+    width: 38%;
+  }
+  #addexercisebtn h1{
+    font-size: 24px;
+  }
+  .exercisegoal-catalog{
+    gap: 8px;
+    height: 100%;
+    width: 30%;
+  }
+  .caloriechart-workoutlog{
+    gap: 8px;
+    height: 100%;
+    width: 30%;
+  }
+  .exercise-list{
+    bottom: 95px;
+    width: 95%;
+    height: 200px;
+    border: 2px solid white;
+    border-radius: var(--border-radius-1);
+    overflow-y: auto;
+    z-index: 1;
+    background-color: white;
+  }
+  .exercise-list::-webkit-scrollbar{
+    width: 8px;
+    overflow-y: hidden;
+  }
+  .exercise-item:nth-child(odd){
+    padding: 0px 15px;
+    width: 100%;
+    height: 50px;
+  }
+  .exercise-item:nth-child(even){
+    padding: 0px 15px;
+    width: 100%;
+    height: 50px;
+  }
+  .exercisegoal{
+    width: 100%;
+    height: 40%;
+    background: #888888;
+    padding: 5px;
+  }
+  .exercisegoal .title{
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .milestone{
+    top: 45px;
+  }
+  .milestone h2{
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .milestone input{
+    width: 30%;
+    padding: 6px;
+    margin-left: -15px;
+    margin-right: -15px;
+    font-size: 14px;
+  }
+  .milestone input::placeholder{
+    font-size: 12px;
+  }
+  .milestone button{
+    font-size: 14px;
+    padding: 8px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 1);
+  }
+  .milestone button:hover{
+    transform: scale(1.03);
+  }
+  .milestone button:active{
+    transform: scale(0.95);
+  }
+  .progressbar-container{
+    width: 400px;
+    height: 20px;
+    top: 95px;
+  }
+  .progress-bar{
+    height: 100%;
+    width: 0%;
+  }
+  .progressdetails{
+    width: 100%;
+    height: 40px;
+    top: 108px;
+    z-index: 1;
+  }
+  .progressdetails h2{
+    font-size: 13px;
+  }
+  .progressdetails span{
+    font-weight: normal;
+  }
+  .catalog{
+    width: 100%;
+    height: 100%;
+    padding: 6px;
+    background: rgb(82, 2, 2);
+  }
+  .catalog h2{
+    font-size: 18px;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .search-exercise-container{
+    top: 185px;
+    height: 30px;
+  }
+  #exercise-search{
+    height: 30px;
+    font-size: 14px;
+    padding: 8px 70px 8px 10px;
+    box-shadow: 0 0 6px 0 rgb(255, 255, 255);
+  }
+  #exercise-search::placeholder{
+    font-size: 12px;
+  }
+  .search-exercise-container button{
+    width: 54px;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    right: 0px;
+    top: 0;
+  }
+  .search-exercise-container button i {
+    font-size: 20px;
+  }
+  .exercise-list{
+    bottom: 58px;
+    width: 95%;
+    height: 215px;
+    border: 2px solid white;
+  }
+  .exercise-list::-webkit-scrollbar{
+    width: 6px;
+  }
+  .exercise-item:nth-child(odd){
+    padding: 0px 8px;
+    width: 100%;
+    height: 36px;
+  }
+  .exercise-item:nth-child(even){
+    padding: 0px 8px;
+    width: 100%;
+    height: 36px;
+  }
+  .exercise-item .left,
+  .exercise-item .right{
+    gap: 6px;
+  }
+  .exercise-item h1{
+    font-size: 16px;
+  }
+  .exercise-item i{
+    font-size: 20px;
+  }
+  .exercise-link{
+    bottom: 8px;
+    width: 95%;
+    height: 42px;
+    padding: 8px;
+  }
+  .exercise-link a{
+    font-size: 16px;
+  }
+  .chart-container{
+    padding: 10px;
+    width: 100%;
+    height: 70%;
+  }
+  .logdata{
+    width: 100%;
+    height: 52%;
+    padding: 8px 10px;
+  }
+  .logdata h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px; 
+  }
+  .exerciselog-container{
+    height: 340px;
+  }
+  .exerciselog-container::-webkit-scrollbar{
+    width: 6px;
+  }
+  .categories{
+    height: 250px;
+    width: 98%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 10px;
+  }
+  .exercise-category{
+    width: 200px;
+    height: 160px;
+  }
+  .exercise-category i{
+    font-size: 70px;
+  }
+  .exercise-category h1{
+    font-size: 20px;
+  }
+  .exercise-category:hover{
+    transform: translateY(-6px);
+  }
+  .find-exercise-container{
+    position: absolute;
+    width: 40%;
+    height: 100%;
+  }
+  #addExerciseBtn{
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6);
+    right: 48px;
+    top: 4px;
+    width: 126px;
+    height: 40px;
+  }
+  .find-exercise-container .addExerciseTitle{
+    font-size: 20px;
+    top: 6px;
+    margin-left: 18px;
+  }
+  #closeExerciseBtn{
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+    top: 3px;
+  }
+  .find-exercise-container #exercise-input-box{
+    height: 50px;
+    padding-left: 12px;
+    padding-right: 100px;
+    font-size: 14px;
+    box-shadow: 0 0 6px 0 rgb(0, 0, 0, 0.35);
+  }
+  .searchbox button {
+    width: 70px;
+    height: 50px;
+    right: 14px;
+    top: 0;
+    z-index: 2;
+  }
+  .searchbox button i {
+    font-size: 30px;
+  }
+  .currentselection{
+    margin-top: 4px;
+  }
+  .currentselection h2 {
+    font-size: 14px;
+  }
+  .suggestions{
+    height: 56%;
+    top: 29%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .suggestions::-webkit-scrollbar{
+    width: 6px;
+    overflow-y: hidden;
+  }
+  .suggestionsdiv{
+    gap: 15px;
+    padding: 8px;
+    font-size: 14px;
+  }
+  .suggestionsdiv i{
+    font-size: 16px;
+  }
+  .duration-exercise-container{
+    height: 19%;
+    bottom: -11%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .duration-exercise-container .exercisename{
+    font-size: 16px;
+    padding: 2px;
+  }
+  .duration,
+  .intensity,
+  .totalkcalburnt-duration{
+    margin-top: 20px;
+    gap: 4px;
+  }
+  .duration h2,
+  .intensity h2,
+  .totalkcalburnt-duration h2{
+    font-size: 14px;
+    font-weight: 600;
+  }
+  #duration,
+  #timedropdown{
+    width: 55px;
+    padding: 6px;
+    font-size: 13px;
+  }
+  #intensitydropdown{
+    width: 100px;
+    padding: 6px;
+    font-size: 13px;
+  }
+  .totalkcalburnt-duration span{
+    font-size: 13px;
+  }
 }

@@ -59,14 +59,13 @@ main.after {
 }
 
 .data-container{
+  position: relative;
   background-color: rgb(21,27,35);
   grid-column: span 12;
   grid-row: span 11;
   display: flex;
   justify-content: flex-start;
   padding: 20px;
-
-  position: relative;
 }
 
 .data-container .left-section{
@@ -304,7 +303,6 @@ input:focus, textarea:focus{
   border-radius: var(--border-radius-2);
   border: 3px solid white;
   overflow: hidden;
-
 }
 
 .bmicontainer{
@@ -458,8 +456,25 @@ input:focus, textarea:focus{
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
 
   float: left;
+}
+
+.sleepcontainer::-webkit-scrollbar{
+  width: 6px;
+  overflow-y: hidden;
+}
+
+.sleepcontainer::-webkit-scrollbar-track {
+  background: white;
+  border-radius: inherit;
+}
+
+.sleepcontainer::-webkit-scrollbar-thumb {
+  background:rgb(168, 168, 168); 
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .sleepcontainer .sleeptable{
@@ -630,31 +645,16 @@ input:focus, textarea:focus{
   background: white;
   width: 80%;
   max-height: 200px;
-  overflow-y: auto;
   text-align: left;
   z-index: 0; 
   margin-top: 25px; 
+  margin-bottom: 20px;
 
   visibility: hidden;
 }
 
 .log.visible{
   visibility: visible;
-}
-
-.log::-webkit-scrollbar{
-  width: 4px;
-  overflow-y: hidden;
-}
-
-.log::-webkit-scrollbar-track {
-  background: inherit;
-}
-
-.log::-webkit-scrollbar-thumb {
-  background:rgb(0, 0, 0); 
-  border-radius: 10px;
-  cursor: pointer;
 }
 
 .log-item{
@@ -742,18 +742,6 @@ input:focus, textarea:focus{
   text-align: center;
   font-size: 30px;
   color: rgb(255, 217, 0);
-}
-
-.cloudcontainer{
-  position: relative;
-  margin-top: 85px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: max-content;
-  border-radius: 8px;
-  padding: 20px;
 }
 
 .calorieboard{
@@ -1027,7 +1015,6 @@ input:focus, textarea:focus{
   z-index: 10;
 }
 
-
 #post-entry{
   width: 80px;
   height: 40px;
@@ -1124,6 +1111,7 @@ input:focus, textarea:focus{
   border-radius: var(--border-radius-2);
   background-color: rgb(129, 127, 127);
 }
+
 #twopicbtn{
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
@@ -1140,10 +1128,10 @@ input:focus, textarea:focus{
   background: white;
   width: 80%;
   max-height: 200px;
-  overflow-y: auto;
   text-align: left;
   z-index: 0; 
   margin-top: 25px; 
+  margin-bottom: 10px;
 
   visibility: hidden;
 }
@@ -1181,4 +1169,380 @@ input:focus, textarea:focus{
 
 .progresslog-item:last-child{
   border-bottom: none;
+}
+
+@media (max-width: 1550px) {
+  main {
+    margin: 20px;
+  }
+  main .healthheader {
+    height: 65px;
+    padding: 10px 0 0 30px;
+  }
+  main .healthheader h2{
+    font-size: 18px;
+    font-weight: 700;
+  }
+  main .healthheader p{
+    font-size: 12px;
+  }
+  .data-container{
+    padding: 12px;
+  }
+  .data-container .left-section{
+    width: 600px;
+  }
+  .data-container .left-section .header{
+    padding: 8px;
+    border-bottom: 2px solid white;
+  }
+  .data-container .left-section .header h2{
+    font-size: 20px;
+  }
+  .bodyinfocontainer{
+    height: 100vh;
+    width: 100%;
+    padding: 10px 6px 12px 6px;
+    gap: 8px;
+  }
+  .bodyinfocontainer::-webkit-scrollbar{
+    width: 4px;
+  }
+  .bodyinfocontainer div{
+    width: 70%;
+  }
+  .bodyinfocontainer h4{
+    font-size: 14px;
+    font-weight: 400;
+    padding: 2px;
+  }
+  .bodyinfocontainer input{
+    padding: 3px 0px 4px 4px;
+    box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+  }
+  .bodyinfocontainer input::placeholder{
+    font-size: 12px;
+  }
+  .gender h4{
+    border-bottom: 1px solid white;
+    margin-bottom: 5px;
+  }
+  .gender .selectgenderbox{
+    gap: 5px;
+  }
+  .gender .selectgenderbox input{
+    width: 10px;
+    height: 10px;
+  }
+  .gender .selectgenderbox label{
+    font-size: 12px;
+  }
+  .goals .weeklyh4{
+    margin-top: 6px;
+  }
+  .goals button,
+  .activitydropdown button{
+    padding: 6px;
+    box-shadow: 1px 1px 3px 1px rgb(255, 255, 255);
+  }
+  .goals i{
+    font-size: 14px;
+  }
+  .wklygoallist,
+  .activitymenu{
+    font-size: 14px;
+  }
+  .wklygoallist.show,
+  .activitymenu.show{
+    max-height: 400px;
+  }
+  .wklygoallist a,
+  .activitymenu a{
+    padding: 3px 0 3px 5px;
+  }
+  #weeklygoalLabel,
+  #activityLabel{
+    font-size: 12px;
+  }
+  .formsubmit{
+    top: 10px;
+  }
+  .formsubmit button{
+    font-weight: 600;
+    height: 42px;
+    padding: 0 16px;
+  }
+  .data-container .middle-section{
+    width: 1400px;
+    height: 100%;
+    margin-left: 10px;
+  }
+  .bmicontainer{
+    width: 100%;
+    height: 34%;
+    border-bottom: 2px solid white;
+  }
+  .bmicontainer .bmititle{
+    width: 100%;
+    font-size: 24px;
+    top: 6px;
+  }
+  .bmicontainer .bmititle i{
+    font-size: 28px;
+  }
+  .bmimenu{
+    width: 260px;
+    font-size: 12px;
+    top: 26px;
+    right: 20px;
+  }
+  .bmimenu th, .bmimenu td{
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 12px;
+    padding: 2px;
+  }
+  .bmicontainer .box{
+    perspective: 500px;
+    gap: 8px;
+    margin-top: 30px;
+  }
+  .box .item{
+    border: 2px solid white;
+    width: 120px;
+    height: 120px;
+    font-size: 22px;
+    box-shadow: 1px 2px 6px 4px rgba(0, 0, 0, 0.1);
+  }
+  .bmicontainer i{
+    position: absolute;
+    font-size: 40px;
+    bottom: 0px;
+  }
+  .sleepcontainer{
+    position: relative;
+    width: 48%;
+    height: 335px;
+    left: 10px;
+  }
+  .sleepcontainer .sleeptable{
+    font-size: 12px;
+    top: 40px; 
+    right: 5px;
+  }
+  .sleepcontainer th,.sleepcontainer td{
+    font-size: 12px;
+    padding: 4px;
+  }
+  .sleepcontainer h1{
+    gap: 4px;
+    padding: 8px;
+    font-size: 22px;
+  }
+  .sleepcontainer .moon{
+    font-size: 24px;
+  }
+  .sleepcontainer i{
+    font-size: 12px;
+  }
+  #sleephours,
+  #sleepminutes{
+    top: 15px;
+    margin-bottom: 8px;
+    width: 190px;
+    padding: 10px 0px 10px 6px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .entersleepvalue{
+    width: 220px;
+    padding: 3px;
+    top: 8px;
+    font-size: 12px;
+  }
+  .sleepcontainer button{
+    top: 10px;
+    margin-bottom: 8px;
+    padding: 8px;
+    width: 190px;
+    font-size: 14px;
+  }
+  .sleepcontainer button:hover{
+    transform: scale(1.03);
+  }
+  .log {
+    border: 1px solid rgb(0, 0, 0);
+    width: 84%;
+    max-height: 140px;
+    margin-top: 15px; 
+  }
+  .log-item{
+    padding: 5px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    font-size: 10px;
+  }
+  .calorieinsight{
+    width: 48%;
+    height: 335px;
+    left: 10px;
+    margin-left: 8px;
+  }
+  .calorieinsight .ci-h1{
+    gap: 4px;
+    font-size: 22px;
+    padding: 8px;
+    border-bottom: 3px solid white;
+  }
+  .calorieinsight .ci-h1 i{
+    font-size: 24px;
+  }
+  .calorieboard{
+    top: 47%;
+    left: 48.5%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 35%;
+    padding: 6px;
+  }
+  .caloriecategory{
+    width: 110px;
+    height: 50px;
+    border: 1px solid black;
+    padding-top: 8px;
+    font-size: 10px;
+  }
+  .caloriecategory input{
+    font-size: 12px;
+    padding: 1px;
+  }
+  .data-container .right-section{
+    height: 100%;
+    width: 800px;
+    margin-left: 10px;
+  }
+  .right-section .title{
+    top: 5px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .linechartcontainer{
+    width: 95%;
+    height: 40%;
+    margin-top: 44px;
+    border: 2px solid rgba(255, 255, 255, 0.726);
+    flex-shrink: 0;
+    margin-bottom: 10px;
+  }
+  .line{
+    width: 100%; 
+    height: 4px;
+    margin-bottom: 6px;
+  }
+  .progresstitle{
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .progresstitle i{
+    font-size: 20px;
+  }
+  .progresscontainer{
+    margin-top: 2px;
+  }
+  .addentry{
+    top: 5px;
+    width: 90%;
+    height: 40px;
+    padding: 10px;
+  }
+  .addentry h1{
+    font-size: 18px;
+  }
+  .galleryalertmessage{
+    right: 80px;
+    font-size:12px;
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease-in, visibility 200ms ease;
+  }
+  .addentry button{
+    width: 14px;
+    height: 14px;
+    padding: 12px;
+    font-size: 14px;
+  }
+  .entryinput {
+    top: 14px;
+    width: 90%;
+    padding: 6px 10px 6px 10px;
+    gap: 6px;
+  }
+  .entry_weight {
+    width: 90px;
+    font-size: 14px;
+    padding-right: 40px;
+  }
+  .entry_weight::placeholder {
+    font-size: 12px;
+  }
+  #date-entry{
+    padding: 2px;
+    border: 2px solid black;
+    margin-bottom: 6px;
+    font-size: 12px;
+    width: max-content;
+  }
+  #add-image-btn{
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+  }
+  #file-input{
+    width: 50px;
+    height: 50px;
+  }
+  #post-entry{
+    width: 60px;
+    height: 30px;
+    padding: 3px;
+    font-size: 14px;
+    box-shadow: 0px 0px 3px 0px rgb(255, 255, 255);
+    margin-left: 24px;
+  }
+  .gallerycontainer{
+    gap: 5px;
+  }
+  .gallery{
+    bottom: 32px;
+    width: 120px;
+    height: 95px;
+    border: 2px solid black;
+  }
+  .gallery i{
+    font-size: 60px;
+  }
+  .picdisplaybuttons{
+    top: -28px;
+    width: 120px;
+    gap: 2px;
+  }
+  .picdisplaybuttons button{
+    padding: 2px 8px 2px 8px;
+  }
+  #onepicbtn{
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+  .picdisplaybuttons i{
+    font-size: 18px;
+  }
+  .progresslog{
+    max-height: 200px;
+    margin-top: -20px; 
+  }
+  .progresslog-item{
+    padding: 6px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+  }
 }

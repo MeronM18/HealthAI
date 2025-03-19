@@ -196,42 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   
-  function setupMoodTracking() {
-    // Setup mood selection buttons if they exist
-    const moodSections = document.querySelectorAll('.moodsection');
-    
-    if (moodSections.length > 0) {
-      console.log("Setting up mood tracking...");
-      
-      moodSections.forEach(section => {
-        section.addEventListener('click', function() {
-          // Remove active class from all mood sections
-          moodSections.forEach(s => s.classList.remove('active-mood'));
-          
-          // Add active class to the clicked mood section
-          this.classList.add('active-mood');
-          
-          // You could save this to localStorage or send to server
-          const selectedMood = this.querySelector('p').textContent;
-          console.log("Selected mood:", selectedMood);
-          
-          // Save to localStorage for demo purposes
-          localStorage.setItem('lastSelectedMood', selectedMood);
-        });
-      });
-      
-      // Load previously selected mood if any
-      const lastMood = localStorage.getItem('lastSelectedMood');
-      if (lastMood) {
-        moodSections.forEach(section => {
-          if (section.querySelector('p').textContent === lastMood) {
-            section.classList.add('active-mood');
-          }
-        });
-      }
-    }
-  }
-  
   function checkAuthentication() {
     // Authentication verification
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -267,14 +231,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(userData => {
       console.log("User data received:", userData);
       
-      // Update UI with user data if needed
-      const usernameElements = document.querySelectorAll('h3'); // Assuming the username is in an h3 tag
-      usernameElements.forEach(element => {
-        if (element.textContent === "Meron Matti") {
-          element.textContent = userData.username || "User";
-          console.log("Username updated");
-        }
-      });
+      // Store user data in localStorage for use across pages
+      localStorage.setItem('userData', JSON.stringify(userData));
+      
+      // No longer modifying the header based on username check
+      // This preserves the header appearance across all pages
     })
     .catch(err => {
       console.error('Auth check failed:', err);

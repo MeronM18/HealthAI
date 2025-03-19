@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
     greeting.style.fontSize = '1.4rem'; //change font size
     greeting.style.transition = 'all 400ms ease-out'; //add a transition as it moves up
     
-    chatArea.style.top = '90%'; //moves the chat container down
+    chatArea.style.top = '86%'; //moves the chat container down
     chatArea.style.transition = 'all 550ms ease-out'; //also add transition
   }
   

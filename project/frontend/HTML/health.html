@@ -41,8 +41,8 @@
         </a>
       </div>
       <div class="right-section">
-        <img class="pfp" src="/images/pfp.jpg">
-        <h3>Meron Matti</h3>
+        <img class="pfp" src="/images/profileicon.jpg">
+        <h3>username</h3>
         <button class="drop-button" id="submenu-btn">
           <i class='bx bx-chevron-up downarrow-icon'></i>
         </button>
@@ -87,15 +87,15 @@
           <div class="bodyinfocontainer">
             <div class="age">
               <h4>Age</h4>
-              <input class="age-box" type="text" placeholder="Age" id="age">
+              <input class="age-box" type="number" placeholder="Age" id="age" min="0">
             </div>
             <div class="height">
               <h4>Height</h4>
-              <input class="height-box" type="text" placeholder="Height (in)" id="height">
+              <input class="height-box" type="number" placeholder="Height (in)" id="height" min="0">
             </div>
             <div class="weight">
               <h4>Weight</h4>
-              <input class="weight-box" type="text" placeholder="Weight (lbs)" id="weight">
+              <input class="weight-box" type="number" placeholder="Weight (lbs)" id="weight" min="0">
             </div>
             <div class="gender">
               <h4>Gender</h4>
@@ -232,10 +232,12 @@
                   Lose 1lbs/week
                   <input type="text" value="-- kcal"id="calorie2" readonly>
                 </div>
-                <div class="caloriecategory" id="cat3">
-                  Maintain Weight
-                  <input type="text" value="-- kcal"id="calorie3" readonly>
-                </div>
+                <!--   
+                  <div class="caloriecategory" id="cat3">
+                    Maintain Weight
+                    <input type="text" value="-- kcal"id="calorie3" readonly>
+                  </div>
+                -->
                 <div class="caloriecategory" id="cat4">
                   Gain 0.5lbs/week
                   <input type="text" value="-- kcal"id="calorie4" readonly>

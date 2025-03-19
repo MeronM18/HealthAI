@@ -28,7 +28,7 @@ main {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr); 
   margin: 50px;
-  background-color: rgb(3, 14, 77);
+  background-color: rgb(25, 33, 44);
   grid-column: 1 / span 12;
   grid-row: 2 / span 11;
   transition: grid-column 500ms ease-in-out;
@@ -45,7 +45,7 @@ main .welcome-text{
   height: 90px;
   grid-column: span 12;
   padding: 15px 0 0 30px;
-  color: rgb(202, 198, 198);
+  color: rgb(255, 255, 255);
 }
 
 main .welcome-text h2{
@@ -58,249 +58,86 @@ main .welcome-text p{
 }
 
 .data-container{
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(21,27,35);
   grid-column: span 12;
   grid-row: span 11;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: masonry;
+  padding: 3.5rem;
+  gap: 2rem;
+  overflow-y: auto;
 }
 
-.bar-container{
-  width: 900px;
-  height: 98%;
+.data-container div{
   position: relative;
-  background-color: transparent;
-  border: 2px solid rgb(3, 14, 77);
-  border-radius: 8px;
-  padding: 5px 10px 5px 10px;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
 }
 
-.middlemain-section{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
-  gap: 25px;
-}
-  
-  #donut-container{
-    grid-row: auto;
-    background-color: transparent;
-    border: 2px solid rgb(3, 14, 77);
-    width: 380px;
-    height: 310px;
-  }
-  
-  #calories-flexbox{
-    padding: 15px 0 10px 15px;
-  }
-  
-  #calories-flexbox h5{
-    font-size: 19px;
-    color: black;
-  }
-  
-  #remaining-flexbox{
-    padding: 0 0 10px 15px;
-  }
-  
-  #remaining-flexbox h5{
-    font-size: 14px;
-    color: #757575;
-  }
-  
-  #donut-chart{
-    width: 100%;
-    margin: 10px 0 10px 0;
-  }
-
-.exercisecard-container{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  background-color: transparent;
-  border: 2px solid rgb(3, 14, 77);
-  width: 380px;
-  height: 290px;
-  border-radius: 8px;
-
-  padding: 15px;
-  gap: 15px;
-}
-
-.exercisecard-container .first{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  vertical-align: middle;
-  justify-items: center;
-  width: 100%;
-
-  border-bottom: 2px solid rgb(51, 132, 207);
-}
-
-.exercisecard-container .first h2{
-  font-size: 19px;
-  color: rgb(0, 0, 0);
-  font-weight: 700;
-}
-
-.exercisecard-container .first a{
-  display: flex;
-  align-items: center;
-  justify-items: center;
-}
-
-.exercisecard-container .first i{
-  color: rgb(0, 0, 0);
-  font-size: 20px;
-  margin-left: 3px;
-}
-
-.exercisecard-container .second{
-  height: 100px;
-  gap: 40px;
-  padding: 20px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  flex-direction: row;
-
-  border: 2px solid orange;
-  border-radius: 3px;
-}
-
-.exercisecard-container .second i{
-  font-size: 45px;
-  color: orange;
-}
-
-.exercisecard-container .second p,
-.exercisecard-container .third p{
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.exercisecard-container .third{
-  height: 100px;
-  gap: 40px;
-  padding: 20px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  flex-direction: row;
-
-  border: 2px solid rgb(222, 235, 38);
-  border-radius: 3px;
-}
-
-.exercisecard-container .third i{
-  font-size: 45px;
-  color: black;
-}
-
-.moodbar-container{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
-  border-radius: 8px;
-  border: 2px solid rgb(3, 14, 77);
-  width: 380px;
-  height: 265px;
-}
-
-.moodtitle{
-  text-align: center;
-  padding: 15px 20px 8px 20px;
-  width: 100%;
-
-  border-bottom: 3px solid black;
-}
-
-.moodtitle h2{
-  font-size: 25px;
-  color: rgb(0, 0, 0);
-  font-weight: 600;
-}
-
-.contain-the-emojis{
-  overflow: hidden;
-  width: 100%;
+.data-container div:nth-child(1) {
+  grid-row: span 1;
   height: 100%;
+  width: 80%;
+}
+
+.data-container div:nth-child(2),
+.data-container div:nth-child(6) {
+  width: 70%;
+}
+
+.data-container div:nth-child(3) {
+  grid-row: span 2;
+  width: 68%;
+}
+
+.data-container div:nth-child(4) {
+  grid-row: span 2;
+  width: 68%;
+}
+
+.data-container div:nth-child(7) {
+  grid-row: span 1;
+  height: 100%;
+  width: 80%;
+}
+
+#checkindiv{
+  border: none;
+  background: transparent;
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
 }
 
-.moodsection{
-  background-color: lightgoldenrodyellow;
-  border-radius: 8px;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  gap: 10px;
-  padding: 5px 5px 35px 5px;
-}
-
-.moodsection i{
-  font-size: 50px;
-
-  transition: color 0.45s;
-}
-
-.moodsection p{
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.moodsection i:hover{
+#checkinbtn{
   cursor: pointer;
+  width: 200px;
+  height: 60px;
+  background: red;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: var(--border-radius-2);
 }
 
-.moodsection .bx-happy:hover{
-  color: #0950ac;
-}
-
-.moodsection .bx-cool:hover{
-  color: #10800c;
-}
-
-.moodsection .bx-meh-alt:hover{
-  color: #5e5e5e;
-}
-
-.moodsection .bx-tired:hover{
-  color: #600caf;
-}
-
-.moodsection .bx-sad:hover{
-  color: #bb1e1e;
-}
-
-.scatter-container{
-  height: 98%;
-  width: 900px;
-  position: relative;
-  border: 2px solid rgb(3, 14, 77);
-  padding: 5px 10px 5px 10px;
-  border-radius: 8px;
-}
-
-canvas{
-  display: block;
-  width: 100%;
-  height: 100%;
+@media (max-width: 1550px) {
+  main {
+    margin: 20px;
+  }
+  main .welcome-text {
+    height: 65px;
+    padding: 10px 0 0 30px;
+  }
+  main .welcome-text h2{
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  main .welcome-text p{
+    font-size: 12px;
+  }
 }
