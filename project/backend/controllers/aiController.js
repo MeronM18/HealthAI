@@ -1,16 +1,31 @@
 const OpenAI = require("openai");
-const dotenv = require('dotenv');
-
-//Load environment variables
-dotenv.config();
+require('dotenv').config();
 
 //Get OpenAI API key from environment variables
 const OPENAI_API_KEY = process.env.OPENAI_APIKEY;
 
-//Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: OPENAI_API_KEY,
-});
+//Debug logging
+console.log('Environment variables loaded');
+console.log('API Key status:', OPENAI_API_KEY ? 'Present' : 'Missing');
+console.log('API Key length:', OPENAI_API_KEY ? OPENAI_API_KEY.length : 0);
+console.log('First 4 chars of API key:', OPENAI_API_KEY ? OPENAI_API_KEY.substring(0, 4) : 'none');
+
+if (!OPENAI_API_KEY) {
+  console.error('OpenAI API key is missing. Please check your .env file');
+  throw new Error('OpenAI API key is required');
+}
+
+//Initialize OpenAI client with error handling
+let openai;
+try {
+  openai = new OpenAI({
+    apiKey: OPENAI_API_KEY,
+  });
+  console.log('OpenAI client initialized successfully');
+} catch (error) {
+  console.error('Error initializing OpenAI client:', error);
+  throw error;
+}
 
 //Function to detect if message is a greeting
 function isGreeting(message) {
@@ -284,6 +299,13 @@ const getAIResponse = async (req, res) => {
     if (!message) {
       return res.status(400).json({ message: 'Message is required' });
     }
+
+    if (!openai) {
+      return res.status(500).json({ 
+        message: 'OpenAI client not initialized',
+        error: 'Configuration error'
+      });
+    }
     
     //Get today's date
     const today = new Date().toISOString().split('T')[0];
@@ -426,6 +448,24 @@ const getAIResponse = async (req, res) => {
     });
   } catch (error) {
     console.error('Error in getAIResponse:', error);
+    
+    // Handle specific API key errors
+    if (error.code === 'invalid_api_key') {
+      return res.status(401).json({
+        message: 'API key configuration error',
+        error: 'Invalid API key'
+      });
+    }
+    
+    // Handle other OpenAI-specific errors
+    if (error.response) {
+      return res.status(error.response.status || 500).json({
+        message: 'OpenAI API error',
+        error: error.response.data
+      });
+    }
+    
+    // Handle general errors
     res.status(500).json({
       message: 'Server error',
       error: error.message

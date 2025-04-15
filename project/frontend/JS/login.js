@@ -104,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         console.log('Login successful, received data:', data);
         
-<<<<<<< HEAD
         //Save token
           localStorage.setItem('token', data.token);
         localStorage.setItem('healthai_token', data.token); //Save with app-specific key
@@ -113,26 +112,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const userData = {
           //Root level data for backward compatibility
           _id: data.user.id, //Store ID as _id for easier access
-=======
-        // Save token
-          localStorage.setItem('token', data.token);
-        localStorage.setItem('healthai_token', data.token); // Save with app-specific key
-        
-        // Save full user data including ID and profile picture in BOTH formats for compatibility
-        const userData = {
-          // Root level data for backward compatibility
-          _id: data.user.id, // Store ID as _id for easier access
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
           id: data.user.id,
           username: data.user.username,
           email: data.user.email,
           profilePicture: data.user.profilePicture,
           
-<<<<<<< HEAD
           //Nested profile structure for new code
-=======
-          // Nested profile structure for new code
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
           profile: {
             _id: data.user.id,
             id: data.user.id,
@@ -145,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         console.log('Saved user data to localStorage:', Object.keys(userData).join(', '));
         
-<<<<<<< HEAD
         //After saving, fetch full profile data
         await fetchFullProfileData(data.token, data.user.id);
         
@@ -153,15 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
         initializeUserData(data.user.id);
         
         //Redirect to dashboard
-=======
-        // After saving, fetch full profile data
-        await fetchFullProfileData(data.token, data.user.id);
-        
-        // Initialize user-specific data for new users
-        initializeUserData(data.user.id);
-        
-        // Redirect to dashboard
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
         window.location.href = '/HTML/index.html';
       } catch (err) {
         console.error('Login error:', err);
@@ -237,11 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-<<<<<<< HEAD
 //Function to fetch complete profile data after login
-=======
-// Function to fetch complete profile data after login
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
 async function fetchFullProfileData(token, userId) {
   try {
     const response = await fetch('/api/profile', {
@@ -251,16 +222,11 @@ async function fetchFullProfileData(token, userId) {
     });
     
     if (!response.ok) {
-<<<<<<< HEAD
       return; //Don't throw error, just proceed with what we have
-=======
-      return; // Don't throw error, just proceed with what we have
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     }
     
     const profileData = await response.json();
     
-<<<<<<< HEAD
     //Update localStorage with complete profile data
     const userData = JSON.parse(localStorage.getItem('userData') || '{}');
     
@@ -273,20 +239,6 @@ async function fetchFullProfileData(token, userId) {
     Object.assign(userData.profile, profileData);
     
     //Always ensure IDs are present
-=======
-    // Update localStorage with complete profile data
-    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    
-    // Ensure we maintain both formats for compatibility
-    // 1. Update at root level (old format)
-    Object.assign(userData, profileData);
-    
-    // 2. Update in profile property (new format)
-    if (!userData.profile) userData.profile = {};
-    Object.assign(userData.profile, profileData);
-    
-    // Always ensure IDs are present
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     if (!userData._id && userId) userData._id = userId;
     if (!userData.id && userId) userData.id = userId;
     if (!userData.profile._id && userId) userData.profile._id = userId;
@@ -297,19 +249,11 @@ async function fetchFullProfileData(token, userId) {
     console.log('Full profile data loaded and stored in both formats');
   } catch (err) {
     console.error('Error fetching full profile data:', err);
-<<<<<<< HEAD
     //Continue with login process even if this fails
   }
 }
 
 //Function to initialize user-specific data for new users
-=======
-    // Continue with login process even if this fails
-  }
-}
-
-// Function to initialize user-specific data for new users
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
 function initializeUserData(userId) {
   if (!userId) {
     console.error('Cannot initialize user data - no user ID provided');
@@ -317,19 +261,11 @@ function initializeUserData(userId) {
   }
   console.log('Initializing user data for ID:', userId);
   
-<<<<<<< HEAD
   //Check if streak data exists for this user
   const streakKey = `healthai_streak_${userId}`;
   const lastCheckInKey = `healthai_lastCheckIn_${userId}`;
   
   //Initialize streak data only if it doesn't exist
-=======
-  // Check if streak data exists for this user
-  const streakKey = `healthai_streak_${userId}`;
-  const lastCheckInKey = `healthai_lastCheckIn_${userId}`;
-  
-  // Initialize streak data only if it doesn't exist
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   if (localStorage.getItem(streakKey) === null) {
     console.log('Initializing streak data for new user');
     localStorage.setItem(streakKey, '0');
@@ -337,11 +273,7 @@ function initializeUserData(userId) {
     console.log('User already has streak data:', localStorage.getItem(streakKey));
   }
   
-<<<<<<< HEAD
   //Initialize empty arrays for other data if they don't exist
-=======
-  // Initialize empty arrays for other data if they don't exist
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const weightsKey = `healthai_weights_${userId}`;
   const caloriesKey = `healthai_calories_${userId}`;
   const exerciseKey = `healthai_exercise_${userId}`;

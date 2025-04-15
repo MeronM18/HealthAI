@@ -5,11 +5,7 @@ const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const User = require('../models/user');
-<<<<<<< HEAD
 const Profile = require('../models/profile');
-=======
-const Profile = require('../models/Profile');
->>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
 
 // @route   POST /api/auth/register
 // @desc    Register a user
