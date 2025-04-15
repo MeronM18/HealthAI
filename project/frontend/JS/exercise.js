@@ -1,43 +1,75 @@
 document.addEventListener('DOMContentLoaded', function() {
+<<<<<<< HEAD
   //===== DOM ELEMENTS =====
   //Date navigation elements
+=======
+  // ===== DOM ELEMENTS =====
+  // Date navigation elements
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const yesterdayBtn = document.getElementById('leftdatebtnexercise');
   const tomorrowBtn = document.getElementById('rightdatebtnexercise');
   const dateSpan = document.getElementById('datespanexercise');
 
+<<<<<<< HEAD
   //Exercise logging elements
+=======
+  // Exercise logging elements
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const addExerciseBtn = document.getElementById('addexercisebtn');
   const logContainer = document.querySelector('.exerciselog-container');
   const totalCaloriesSpan = document.getElementById('calorieburnexercisepage');
   
+<<<<<<< HEAD
   //Milestone elements
+=======
+  // Milestone elements
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const milestoneInput = document.getElementById('milestonecalorievalue');
   const milestoneButton = document.getElementById('milestonebtn');
   const progressPercentage = document.getElementById('progress-percentage');
   const progressRemainingCalories = document.getElementById('progress-remaining-calories');
   const progressBar = document.querySelector('.progress-bar');
 
+<<<<<<< HEAD
   //Exercise selection containers
+=======
+  // Exercise selection containers
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const chooseExerciseContainer = document.querySelector('.choose-exercise-container');
   const searchExerciseDiv = document.getElementById('searchExerciseDiv');
   const closeExerciseBtn = document.getElementById('closeExerciseBtn');
 
+<<<<<<< HEAD
   //Category elements
+=======
+  // Category elements
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const cardioCategory = document.getElementById('cardioCategory');
   const gymCategory = document.getElementById('gymCategory');
   const outdoorCategory = document.getElementById('outdoorCategory');
   const sportsCategory = document.getElementById('sportsCategory');
 
+<<<<<<< HEAD
   //Selection elements
+=======
+  // Selection elements
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const cardioSelection = document.getElementById('cardioSelection');
   const gymSelection = document.getElementById('gymSelection');
   const sportSelection = document.getElementById('sportSelection');
   const outdoorSelection = document.getElementById('outdoorSelection');
 
+<<<<<<< HEAD
   //Exercise diary elements
   const addToDiary = document.querySelector('.addexercisetodiary');
 
   //Exercise search elements
+=======
+  // Exercise diary elements
+  const addToDiary = document.querySelector('.addexercisetodiary');
+
+  // Exercise search elements
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const exerciseSearchInput = document.getElementById('exercise-search');
   const searchExerciseBtn = document.getElementById('searchexercisebtn');
   const exerciseList = document.querySelector('.exercise-list');
@@ -48,12 +80,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const exerciseNameSpan = document.querySelector('.exercisename');
   const calorieListNumber = document.getElementById('calorie-list-number');
 
+<<<<<<< HEAD
   //Create overlay div
+=======
+  // Create overlay div
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const overlayDiv = document.createElement('div');
   overlayDiv.className = 'page-overlay';
   document.body.appendChild(overlayDiv);
 
+<<<<<<< HEAD
   //===== STATE VARIABLES =====
+=======
+  // ===== STATE VARIABLES =====
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   let exerciseCount = 0;
   let totalCalories = 0;
   let calorieGoal = 0;
@@ -63,13 +103,21 @@ document.addEventListener('DOMContentLoaded', function() {
   let exercises = [];
   let selectedExercise = null;
 
+<<<<<<< HEAD
   //Date variables
+=======
+  // Date variables
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   let currentDate = new Date();
   let today = new Date();
   today.setHours(0, 0, 0, 0);
   currentDate.setHours(0, 0, 0, 0);
   
+<<<<<<< HEAD
   //===== EMBEDDED EXERCISE DATA =====
+=======
+  // ===== EMBEDDED EXERCISE DATA =====
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const exerciseData = {
     "exercises": [
       {
@@ -909,9 +957,15 @@ document.addEventListener('DOMContentLoaded', function() {
     ]
   };
 
+<<<<<<< HEAD
   //===== CORE FUNCTIONS =====
   
   //Display exercise results in the UI
+=======
+  // ===== CORE FUNCTIONS =====
+  
+  // Display exercise results in the UI
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   function displayExerciseResults(exercises) {
     const exerciseList = document.querySelector('.exercise-list');
     if (!exerciseList) {
@@ -919,7 +973,11 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
+<<<<<<< HEAD
     //Clear the existing content
+=======
+    // Clear the existing content
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     exerciseList.innerHTML = '';
 
     if (exercises.length === 0) {
@@ -927,7 +985,11 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+<<<<<<< HEAD
     //Group exercises by category
+=======
+    // Group exercises by category
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const exercisesByCategory = {
       'Cardio': exercises.filter(ex => ex.category === 'Cardio'),
       'Gym': exercises.filter(ex => ex.category === 'Gym'),
@@ -935,6 +997,7 @@ document.addEventListener('DOMContentLoaded', function() {
       'Outdoor': exercises.filter(ex => ex.category === 'Outdoor')
     };
 
+<<<<<<< HEAD
     //Create alternating list of exercises
     const sortedExercises = [];
     const categories = ['Cardio', 'Gym', 'Sports', 'Outdoor'];
@@ -943,6 +1006,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const maxLength = Math.max(...categories.map(cat => exercisesByCategory[cat].length));
     
     //Alternate between categories
+=======
+    // Create alternating list of exercises
+    const sortedExercises = [];
+    const categories = ['Cardio', 'Gym', 'Sports', 'Outdoor'];
+    
+    // Find the maximum length of any category
+    const maxLength = Math.max(...categories.map(cat => exercisesByCategory[cat].length));
+    
+    // Alternate between categories
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     for (let i = 0; i < maxLength; i++) {
       for (const category of categories) {
         if (exercisesByCategory[category][i]) {
@@ -951,14 +1024,21 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
+<<<<<<< HEAD
     //Display exercises
     sortedExercises.forEach(exercise => {
       //Determine icon based on category
+=======
+    // Display exercises
+    sortedExercises.forEach(exercise => {
+      // Determine icon based on category
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       let iconClass = '';
       let iconColor = '';
       
       if (exercise.category === 'Cardio') {
         iconClass = 'bx-run';
+<<<<<<< HEAD
         iconColor = 'color: rgb(255, 221, 0);'; //Yellow color for Cardio
       } else if (exercise.category === 'Gym') {
         iconClass = 'bx-dumbbell';
@@ -969,6 +1049,18 @@ document.addEventListener('DOMContentLoaded', function() {
       } else if (exercise.category === 'Outdoor') {
         iconClass = 'bxs-tree-alt';
         iconColor = 'color: rgb(4, 148, 23);'; //Green color for Outdoor
+=======
+        iconColor = 'color: rgb(255, 221, 0);'; // Yellow color for Cardio
+      } else if (exercise.category === 'Gym') {
+        iconClass = 'bx-dumbbell';
+        iconColor = 'color: rgb(54, 162, 235);'; // Blue color for Gym
+      } else if (exercise.category === 'Sports') {
+        iconClass = 'bxs-basketball bx-rotate-270';
+        iconColor = 'color: rgb(247, 111, 0);'; // Orange color for Sports
+      } else if (exercise.category === 'Outdoor') {
+        iconClass = 'bxs-tree-alt';
+        iconColor = 'color: rgb(4, 148, 23);'; // Green color for Outdoor
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       }
       
       const exerciseItem = document.createElement('div');
@@ -983,7 +1075,11 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       `;
       
+<<<<<<< HEAD
       //Add click event to select this exercise
+=======
+      // Add click event to select this exercise
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       exerciseItem.addEventListener('click', () => {
         selectExercise(exercise, exerciseItem);
       });
@@ -991,24 +1087,37 @@ document.addEventListener('DOMContentLoaded', function() {
       exerciseList.appendChild(exerciseItem);
     });
     
+<<<<<<< HEAD
     //Set initial YouTube link to "#" to prevent page reloading
+=======
+    // Set initial YouTube link to "#" to prevent page reloading
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const exerciseLink = document.querySelector('.exercise-link a');
     if (exerciseLink) {
       exerciseLink.href = "#";
       exerciseLink.textContent = "Watch Tutorial";
       
+<<<<<<< HEAD
       //Add event listener to prevent default behavior
+=======
+      // Add event listener to prevent default behavior
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       exerciseLink.addEventListener('click', function(e) {
         e.preventDefault();
       });
     }
   }
 
+<<<<<<< HEAD
   //Select an exercise for the diary
+=======
+  // Select an exercise for the diary
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   function selectExercise(exercise, clickedElement) {
     selectedExercise = exercise;
     selectedCategory = exercise.category;
     
+<<<<<<< HEAD
     //Update UI to show selected exercise
     exerciseNameSpan.textContent = exercise.name;
     
@@ -1019,17 +1128,37 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateCaloriesBurned();
     
     //Update the YouTube link
+=======
+    // Update UI to show selected exercise
+    exerciseNameSpan.textContent = exercise.name;
+    
+    // Set active selection based on category
+    setActiveSelectionByCategory(exercise.category);
+    
+    // Calculate estimated calories based on duration and intensity
+    calculateCaloriesBurned();
+    
+    // Update the YouTube link
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const exerciseLink = document.querySelector('.exercise-link a');
     if (exerciseLink && exercise.link) {
       exerciseLink.href = exercise.link;
       exerciseLink.textContent = "Watch Tutorial";
       
+<<<<<<< HEAD
       //Remove any existing event listeners
+=======
+      // Remove any existing event listeners
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const newLink = exerciseLink.cloneNode(true);
       exerciseLink.parentNode.replaceChild(newLink, exerciseLink);
     }
     
+<<<<<<< HEAD
     //Reset all exercise items to default styling
+=======
+    // Reset all exercise items to default styling
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const allExerciseItems = document.querySelectorAll('.exercise-item');
     allExerciseItems.forEach(item => {
       item.style.backgroundColor = '';
@@ -1037,7 +1166,11 @@ document.addEventListener('DOMContentLoaded', function() {
       item.querySelector('#workout-category').style.color = '';
     });
     
+<<<<<<< HEAD
     //Apply selected styling to the clicked item
+=======
+    // Apply selected styling to the clicked item
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     if (clickedElement) {
       clickedElement.style.backgroundColor = 'black';
       clickedElement.querySelector('#workout-name').style.color = 'white';
@@ -1045,7 +1178,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+<<<<<<< HEAD
   //Initialize search functionality
+=======
+  // Initialize search functionality
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   function initializeExerciseSearch() {
     console.log('Initializing exercise search...');
     
@@ -1059,10 +1196,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Search elements found, setting up event listeners');
     
+<<<<<<< HEAD
     //Display initial exercises
     displayExerciseResults(exerciseData.exercises);
     
     //Add event listener for real-time search
+=======
+    // Display initial exercises
+    displayExerciseResults(exerciseData.exercises);
+    
+    // Add event listener for real-time search
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     searchInput.addEventListener('input', () => {
       const searchTerm = searchInput.value.trim().toLowerCase();
       const results = exerciseData.exercises.filter(exercise => 
@@ -1073,7 +1217,11 @@ document.addEventListener('DOMContentLoaded', function() {
       displayExerciseResults(results);
     });
     
+<<<<<<< HEAD
     //Add event listener for search button
+=======
+    // Add event listener for search button
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     searchButton.addEventListener('click', () => {
       const searchTerm = searchInput.value.trim().toLowerCase();
       const results = exerciseData.exercises.filter(exercise => 
@@ -1085,6 +1233,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+<<<<<<< HEAD
   //===== CONTAINER MANAGEMENT FUNCTIONS =====
   
   //Function to open the choose exercise container
@@ -1092,12 +1241,25 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Opening choose exercise container");
     
     //Make container visible using both inline styles and classes
+=======
+  // ===== CONTAINER MANAGEMENT FUNCTIONS =====
+  
+  // Function to open the choose exercise container
+  function openChooseExercise() {
+    console.log("Opening choose exercise container");
+    
+    // Make container visible using both inline styles and classes
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     chooseExerciseContainer.style.display = 'block';
     chooseExerciseContainer.style.visibility = 'visible';
     chooseExerciseContainer.style.opacity = '1';
     chooseExerciseContainer.classList.add('search-exercise-visible');
     
+<<<<<<< HEAD
     //Make sure the categories are visible
+=======
+    // Make sure the categories are visible
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const categories = chooseExerciseContainer.querySelector('.categories');
     if (categories) {
       categories.style.display = 'flex';
@@ -1105,52 +1267,108 @@ document.addEventListener('DOMContentLoaded', function() {
       categories.style.opacity = '1';
     }
     
+<<<<<<< HEAD
     //Show the overlay
+=======
+    // Show the overlay
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     overlayDiv.style.display = 'block';
     
     console.log("Choose exercise container should now be visible");
   }
   
+<<<<<<< HEAD
   //Function to close the choose exercise container
+=======
+  // Function to close the choose exercise container
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   function closeChooseExercise() {
     chooseExerciseContainer.style.visibility = 'hidden';
     chooseExerciseContainer.style.opacity = '0';
     chooseExerciseContainer.classList.remove('search-exercise-visible');
     
+<<<<<<< HEAD
     //Only hide overlay if search exercise is also closed
+=======
+    // Only hide overlay if search exercise is also closed
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     if (searchExerciseDiv.style.visibility !== 'visible') {
       overlayDiv.style.display = 'none';
     }
   }
   
+<<<<<<< HEAD
   //Function to open the search exercise container
+=======
+  // Function to open the search exercise container
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   function openSearchExercise() {
     searchExerciseDiv.style.visibility = 'visible';
     searchExerciseDiv.style.opacity = '1';
     searchExerciseDiv.classList.add('search-exercise-visible');
     overlayDiv.style.display = 'block';
     
+<<<<<<< HEAD
     //Display exercises based on the currently selected category
     displayFindExerciseResults();
   }
 
   //Function to close the search exercise container
+=======
+    // Display exercises based on the currently selected category
+    displayFindExerciseResults();
+  }
+
+  // Function to close the search exercise container
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   function closeSearchExercise() {
     searchExerciseDiv.style.visibility = 'hidden';
     searchExerciseDiv.style.opacity = '0';
     searchExerciseDiv.classList.remove('search-exercise-visible');
     
+<<<<<<< HEAD
     //Only hide overlay if choose exercise is also closed
+=======
+    // Only hide overlay if choose exercise is also closed
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     if (chooseExerciseContainer.style.visibility !== 'visible') {
     overlayDiv.style.display = 'none';
   }
   }
 
+<<<<<<< HEAD
   //===== CATEGORY AND SELECTION FUNCTIONS =====
   
   //Set active selection based on category
   function setActiveSelectionByCategory(category) {
     //Clear all active states
+=======
+  // ===== CATEGORY AND SELECTION FUNCTIONS =====
+  
+  // Set active selection based on category
+  function setActiveSelectionByCategory(category) {
+    // Clear all active states
+    cardioSelection.classList.remove('active');
+    gymSelection.classList.remove('active');
+    sportSelection.classList.remove('active');
+    outdoorSelection.classList.remove('active');
+    
+    // Set new active state based on category
+    if (category === 'Cardio') {
+      cardioSelection.classList.add('active');
+    } else if (category === 'Gym') {
+      gymSelection.classList.add('active');
+    } else if (category === 'Sports') {
+      sportSelection.classList.add('active');
+    } else if (category === 'Outdoor') {
+      outdoorSelection.classList.add('active');
+    }
+  }
+
+  // Set active selection - modified to handle selection clicks
+  function setActiveSelection(selectionElement) {
+    // Clear all active states
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     cardioSelection.classList.remove('active');
     gymSelection.classList.remove('active');
     sportSelection.classList.remove('active');
@@ -1191,11 +1409,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+<<<<<<< HEAD
   //===== CALORIE AND PROGRESS FUNCTIONS =====
   
   //Function to calculate calories burned based on exercise category, duration, and intensity
   function calculateCaloriesBurned() {
     //Get the currently selected category
+=======
+  // ===== CALORIE AND PROGRESS FUNCTIONS =====
+  
+  // Function to calculate calories burned based on exercise category, duration, and intensity
+  function calculateCaloriesBurned() {
+    // Get the currently selected category
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     let selectedCategory = '';
     if (cardioSelection.classList.contains('active')) {
       selectedCategory = 'Cardio';
@@ -1207,12 +1433,17 @@ document.addEventListener('DOMContentLoaded', function() {
       selectedCategory = 'Outdoor';
     }
 
+<<<<<<< HEAD
     //Get duration and time unit
+=======
+    // Get duration and time unit
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const durationInput = document.getElementById('duration');
     const timeDropdown = document.getElementById('timedropdown');
     const duration = parseFloat(durationInput.value) || 0;
     const timeUnit = timeDropdown.value;
 
+<<<<<<< HEAD
     //Convert duration to minutes
     let durationInMinutes = duration;
     if (timeUnit === 'option1') { //seconds
@@ -1257,6 +1488,52 @@ document.addEventListener('DOMContentLoaded', function() {
     const caloriesBurned = Math.round(metValue * 0.007935 * weightInPounds * durationInMinutes);
 
     //Update the calorie display
+=======
+    // Convert duration to minutes
+    let durationInMinutes = duration;
+    if (timeUnit === 'option1') { // seconds
+      durationInMinutes = duration / 60;
+    } else if (timeUnit === 'option3') { // hours
+      durationInMinutes = duration * 60;
+    }
+
+    // Get intensity
+    const intensityDropdown = document.getElementById('intensitydropdown');
+    const intensity = intensityDropdown.value;
+
+    // Get MET value based on category and intensity
+    let metValue = 0;
+    
+    if (selectedCategory === 'Cardio') {
+      if (intensity === 'option1') metValue = 3.5;      // Light
+      else if (intensity === 'option2') metValue = 5.83; // Moderate
+      else if (intensity === 'option3') metValue = 8.17; // Active
+      else if (intensity === 'option4') metValue = 11.67; // Very Active
+    } else if (selectedCategory === 'Gym') {
+      if (intensity === 'option1') metValue = 2.8;      // Light
+      else if (intensity === 'option2') metValue = 4.0;  // Moderate
+      else if (intensity === 'option3') metValue = 6.0;  // Active
+      else if (intensity === 'option4') metValue = 8.0;  // Very Active
+    } else if (selectedCategory === 'Sports') {
+      if (intensity === 'option1') metValue = 4.0;      // Light
+      else if (intensity === 'option2') metValue = 6.0;  // Moderate
+      else if (intensity === 'option3') metValue = 8.5;  // Active
+      else if (intensity === 'option4') metValue = 11.0; // Very Active
+    } else if (selectedCategory === 'Outdoor') {
+      if (intensity === 'option1') metValue = 3.5;      // Light
+      else if (intensity === 'option2') metValue = 6.0;  // Moderate
+      else if (intensity === 'option3') metValue = 8.0;  // Active
+      else if (intensity === 'option4') metValue = 11.5; // Very Active
+    }
+
+    // Default weight in pounds (can be replaced with user's actual weight)
+    const weightInPounds = 150;
+
+    // Calculate calories burned using the formula: MET x 0.007935 x weight(lbs.) x time(minutes)
+    const caloriesBurned = Math.round(metValue * 0.007935 * weightInPounds * durationInMinutes);
+
+    // Update the calorie display
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const calorieDisplay = document.getElementById('calorie-list-number');
     if (calorieDisplay) {
       calorieDisplay.textContent = `${caloriesBurned} kcal`;
@@ -1292,7 +1569,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
+<<<<<<< HEAD
     //Save data to local storage
+=======
+    // Save data to local storage
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     saveExerciseData();
   }
   
@@ -1362,6 +1643,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     updateChart();
     
+<<<<<<< HEAD
     //Update dashboard calories count
     updateDashboardCaloriesCount();
     
@@ -1375,6 +1657,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const dateString = currentDate.toISOString().split('T')[0];
     
     //Get user data
+=======
+    // Update dashboard calories count
+    updateDashboardCaloriesCount();
+    
+    // Save data to local storage
+    saveExerciseData();
+  }
+
+  // Function to update dashboard calories count
+  function updateDashboardCaloriesCount() {
+    // Get the current date as a string (YYYY-MM-DD)
+    const dateString = currentDate.toISOString().split('T')[0];
+    
+    // Get user data
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const userData = JSON.parse(localStorage.getItem('userData') || '{}');
     const userId = userData._id || (userData.profile && userData.profile._id);
     
@@ -1383,10 +1680,17 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
+<<<<<<< HEAD
     //Get existing nutrition data from local storage
     const userNutrition = JSON.parse(localStorage.getItem(`userNutrition_${userId}`) || '{}');
     
     //Create or update data for the current date
+=======
+    // Get existing nutrition data from local storage
+    const userNutrition = JSON.parse(localStorage.getItem(`userNutrition_${userId}`) || '{}');
+    
+    // Create or update data for the current date
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     if (!userNutrition[dateString]) {
       userNutrition[dateString] = {
         calories: 0,
@@ -1397,6 +1701,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     }
     
+<<<<<<< HEAD
     //Update exercise calories
     userNutrition[dateString].exerciseCalories = totalCalories;
     
@@ -1412,6 +1717,23 @@ document.addEventListener('DOMContentLoaded', function() {
     //If we're on the dashboard page, update the UI
     if (window.location.pathname.includes('index.html')) {
       //Update exercise-calories element
+=======
+    // Update exercise calories
+    userNutrition[dateString].exerciseCalories = totalCalories;
+    
+    // Save to local storage
+    localStorage.setItem(`userNutrition_${userId}`, JSON.stringify(userNutrition));
+    
+    // Also save to the specific exercise key for backward compatibility
+    localStorage.setItem(`healthai_exercise_${userId}`, totalCalories);
+    
+    // Trigger a dashboard refresh
+    localStorage.setItem('healthai_refresh_dashboard', Date.now().toString());
+    
+    // If we're on the dashboard page, update the UI
+    if (window.location.pathname.includes('index.html')) {
+      // Update exercise-calories element
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const exerciseCaloriesElement = document.getElementById('exercise-calories');
       
       if (exerciseCaloriesElement) {
@@ -1420,7 +1742,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+<<<<<<< HEAD
   //===== DATE MANAGEMENT FUNCTIONS =====
+=======
+  // ===== DATE MANAGEMENT FUNCTIONS =====
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   
   function updateDateDisplay() {
     const options = { month: 'long', day: 'numeric' };
@@ -1432,7 +1758,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+<<<<<<< HEAD
   //===== CHART FUNCTIONS =====
+=======
+  // ===== CHART FUNCTIONS =====
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   
   const calorieData = [
     { category: 'Gym', calories: 0 },
@@ -1459,9 +1789,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+<<<<<<< HEAD
   //===== EVENT LISTENERS =====
   
   //Add event listeners for search
+=======
+  // ===== EVENT LISTENERS =====
+  
+  // Add event listeners for search
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   if (exerciseSearchInput) {
     exerciseSearchInput.addEventListener('input', function() {
       searchExercises(this.value, exercises);
@@ -1474,7 +1810,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+<<<<<<< HEAD
   //Add event listeners for exercise input box
+=======
+  // Add event listeners for exercise input box
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   if (exerciseInputBox) {
     exerciseInputBox.addEventListener('input', function() {
       const searchTerm = this.value.trim();
@@ -1482,7 +1822,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+<<<<<<< HEAD
   //Add event listeners for duration and intensity inputs
+=======
+  // Add event listeners for duration and intensity inputs
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const durationInput = document.getElementById('duration');
   const timeDropdown = document.getElementById('timedropdown');
   const intensityDropdown = document.getElementById('intensitydropdown');
@@ -1499,7 +1843,11 @@ document.addEventListener('DOMContentLoaded', function() {
     intensityDropdown.addEventListener('change', calculateCaloriesBurned);
   }
   
+<<<<<<< HEAD
   //Add event listeners for date navigation
+=======
+  // Add event listeners for date navigation
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   yesterdayBtn.addEventListener('click', function() {
     currentDate.setDate(currentDate.getDate() - 1);
     updateDateDisplay();
@@ -1512,7 +1860,11 @@ document.addEventListener('DOMContentLoaded', function() {
     loadExerciseData();
   });
   
+<<<<<<< HEAD
   //Add event listener for milestone button
+=======
+  // Add event listener for milestone button
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   milestoneButton.addEventListener('click', function() {
     const inputValue = parseInt(milestoneInput.value);
     
@@ -1527,25 +1879,43 @@ document.addEventListener('DOMContentLoaded', function() {
     updateProgress();
     milestoneInput.value = '';
     
+<<<<<<< HEAD
     //Save data to local storage
     saveExerciseData();
   });
   
   //Add event listeners for Add Exercise button
+=======
+    // Save data to local storage
+    saveExerciseData();
+  });
+  
+  // Add event listeners for Add Exercise button
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   addExerciseBtn.addEventListener('click', function() {
     console.log("Add Exercise button clicked");
     openChooseExercise();
   });
 
+<<<<<<< HEAD
   //Add event listeners for Add to Diary button
   addToDiary.addEventListener('click', function() {
     //Check if an exercise is selected
+=======
+  // Add event listeners for Add to Diary button
+  addToDiary.addEventListener('click', function() {
+    // Check if an exercise is selected
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     if (!selectedExercise) {
       alert('Please select an exercise first');
       return;
     }
     
+<<<<<<< HEAD
     //Check if duration is specified
+=======
+    // Check if duration is specified
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const durationInput = document.getElementById('duration');
     const duration = parseFloat(durationInput.value);
     if (isNaN(duration) || duration <= 0) {
@@ -1554,7 +1924,11 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
+<<<<<<< HEAD
     //Check if intensity is selected
+=======
+    // Check if intensity is selected
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const intensityDropdown = document.getElementById('intensitydropdown');
     if (!intensityDropdown.value) {
       alert('Please select an intensity level');
@@ -1576,14 +1950,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const now = new Date();
     const dateTimeStr = now.toLocaleString();
     
+<<<<<<< HEAD
     //Get calories from the calorie estimate display
+=======
+    // Get calories from the calorie estimate display
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const caloriesText = calorieListNumber.textContent;
     const caloriesBurned = parseInt(caloriesText) || Math.floor(Math.random() * 300) + 100;
     
     const logItem = document.createElement('div');
     logItem.className = 'log-item';
     
+<<<<<<< HEAD
     //Use selected exercise name if available, otherwise use category
+=======
+    // Use selected exercise name if available, otherwise use category
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     const exerciseName = selectedExercise ? selectedExercise.name : `${selectedCategory} Exercise ${exerciseCount}`;
     
     logItem.innerHTML = `
@@ -1612,17 +1994,29 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCaloriesAndChart();
     saveExerciseData();
     
+<<<<<<< HEAD
     //Reset the form
+=======
+    // Reset the form
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     durationInput.value = '';
     intensityDropdown.selectedIndex = 0;
     calorieListNumber.textContent = '-- kcal';
     
+<<<<<<< HEAD
     //Close the containers
+=======
+    // Close the containers
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     closeSearchExercise();
     closeChooseExercise();
   });
 
+<<<<<<< HEAD
   //Add event listeners for category buttons
+=======
+  // Add event listeners for category buttons
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   cardioCategory.addEventListener('click', function(){
     selectedCategory = 'Cardio';
     setActiveSelection(cardioSelection);
@@ -1651,7 +2045,11 @@ document.addEventListener('DOMContentLoaded', function() {
     openSearchExercise();
   });
 
+<<<<<<< HEAD
   //Add event listener for overlay
+=======
+  // Add event listener for overlay
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   overlayDiv.addEventListener('click', function(event) {
     if (event.target === overlayDiv) {
       closeSearchExercise();
@@ -1659,14 +2057,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+<<<<<<< HEAD
   //Add event listener for close button
+=======
+  // Add event listener for close button
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   if (closeExerciseBtn) {
     closeExerciseBtn.addEventListener('click', function() {
       closeSearchExercise();
     });
   }
   
+<<<<<<< HEAD
   //Add direct click handlers for selection elements
+=======
+  // Add direct click handlers for selection elements
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   cardioSelection.addEventListener('click', function() {
     setActiveSelection(cardioSelection);
   });
@@ -1683,6 +2089,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setActiveSelection(outdoorSelection);
   });
 
+<<<<<<< HEAD
   //===== INITIALIZATION =====
   
   //Initialize exercise search
@@ -1698,6 +2105,23 @@ document.addEventListener('DOMContentLoaded', function() {
   updateCaloriesAndChart();
   
   //Add styles for animations
+=======
+  // ===== INITIALIZATION =====
+  
+  // Initialize exercise search
+  initializeExerciseSearch();
+  
+  // Update date display
+  updateDateDisplay();
+  
+  // Load data for the current date
+  loadExerciseData();
+  
+  // Initialize chart
+  updateCaloriesAndChart();
+  
+  // Add styles for animations
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   const style = document.createElement('style');
   style.textContent = `
     @keyframes fadeIn {
@@ -1807,11 +2231,16 @@ document.addEventListener('DOMContentLoaded', function() {
   `;
   document.head.appendChild(style);
 
+<<<<<<< HEAD
   //Function to display exercises in the find-exercise-container
+=======
+  // Function to display exercises in the find-exercise-container
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   function displayFindExerciseResults(searchTerm = '') {
     const exerciseSuggestions = document.getElementById('exercisesuggestions');
     if (!exerciseSuggestions) return;
 
+<<<<<<< HEAD
     //Clear existing suggestions
     exerciseSuggestions.innerHTML = '';
 
@@ -1819,6 +2248,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const exercises = exerciseData.exercises;
 
     //Get the currently selected category
+=======
+    // Clear existing suggestions
+    exerciseSuggestions.innerHTML = '';
+
+    // Get all exercises from the embedded data
+    const exercises = exerciseData.exercises;
+
+    // Get the currently selected category
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     let selectedCategory = '';
     if (cardioSelection.classList.contains('active')) {
       selectedCategory = 'Cardio';
@@ -1830,12 +2268,20 @@ document.addEventListener('DOMContentLoaded', function() {
       selectedCategory = 'Outdoor';
     }
 
+<<<<<<< HEAD
     //Filter exercises by the selected category
+=======
+    // Filter exercises by the selected category
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     let filteredExercises = selectedCategory 
       ? exercises.filter(ex => ex.category === selectedCategory)
       : exercises;
     
+<<<<<<< HEAD
     //Further filter by search term if provided
+=======
+    // Further filter by search term if provided
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     if (searchTerm) {
       searchTerm = searchTerm.toLowerCase();
       filteredExercises = filteredExercises.filter(ex => 
@@ -1844,11 +2290,16 @@ document.addEventListener('DOMContentLoaded', function() {
       );
     }
 
+<<<<<<< HEAD
     //Create and append exercise items
+=======
+    // Create and append exercise items
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     filteredExercises.forEach(exercise => {
       const exerciseItem = document.createElement('div');
       exerciseItem.className = 'exercise-item';
       
+<<<<<<< HEAD
       //Set icon color based on category
       let iconColor;
       switch(exercise.category) {
@@ -1866,6 +2317,25 @@ document.addEventListener('DOMContentLoaded', function() {
           break;
         default:
           iconColor = 'rgb(255, 221, 0)'; //Default to yellow
+=======
+      // Set icon color based on category
+      let iconColor;
+      switch(exercise.category) {
+        case 'Cardio':
+          iconColor = 'rgb(255, 221, 0)'; // Yellow
+          break;
+        case 'Gym':
+          iconColor = 'rgb(54, 162, 235)'; // Blue
+          break;
+        case 'Sports':
+          iconColor = 'rgb(247, 111, 0)'; // Orange
+          break;
+        case 'Outdoor':
+          iconColor = 'rgb(4, 148, 23)'; // Green
+          break;
+        default:
+          iconColor = 'rgb(255, 221, 0)'; // Default to yellow
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       }
 
       exerciseItem.innerHTML = `
@@ -1876,7 +2346,11 @@ document.addEventListener('DOMContentLoaded', function() {
         <span id="workout-category">${exercise.category}</span>
       `;
 
+<<<<<<< HEAD
       //Add click event listener
+=======
+      // Add click event listener
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       exerciseItem.addEventListener('click', () => {
         selectExercise(exercise, exerciseItem);
       });
@@ -1885,24 +2359,40 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+<<<<<<< HEAD
   //Add event listeners for category selections
   cardioSelection.addEventListener('click', function() {
     setActiveSelection(cardioSelection);
     displayFindExerciseResults(); //Refresh the exercise list
+=======
+  // Add event listeners for category selections
+  cardioSelection.addEventListener('click', function() {
+    setActiveSelection(cardioSelection);
+    displayFindExerciseResults(); // Refresh the exercise list
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   });
 
   gymSelection.addEventListener('click', function() {
     setActiveSelection(gymSelection);
+<<<<<<< HEAD
     displayFindExerciseResults(); //Refresh the exercise list
+=======
+    displayFindExerciseResults(); // Refresh the exercise list
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   });
 
   sportSelection.addEventListener('click', function() {
     setActiveSelection(sportSelection);
+<<<<<<< HEAD
     displayFindExerciseResults(); //Refresh the exercise list
+=======
+    displayFindExerciseResults(); // Refresh the exercise list
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   });
 
   outdoorSelection.addEventListener('click', function() {
     setActiveSelection(outdoorSelection);
+<<<<<<< HEAD
     displayFindExerciseResults(); //Refresh the exercise list
   });
 
@@ -1923,6 +2413,28 @@ document.addEventListener('DOMContentLoaded', function() {
     let exerciseData = JSON.parse(localStorage.getItem('exerciseData')) || {};
     
     //Create or update data for the current date
+=======
+    displayFindExerciseResults(); // Refresh the exercise list
+  });
+
+  // Display exercises when the add exercise button is clicked
+  addExerciseBtn.addEventListener('click', () => {
+    chooseExerciseContainer.style.display = 'block';
+    // Don't call displayFindExerciseResults here as it will be called when a category is selected
+  });
+
+  // ===== DATA PERSISTENCE FUNCTIONS =====
+  
+  // Function to save exercise data to local storage
+  function saveExerciseData() {
+    // Get the current date as a string (YYYY-MM-DD)
+    const dateString = currentDate.toISOString().split('T')[0];
+    
+    // Get existing data from local storage
+    let exerciseData = JSON.parse(localStorage.getItem('exerciseData')) || {};
+    
+    // Create or update data for the current date
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     exerciseData[dateString] = {
       exercises: Array.from(document.querySelectorAll('.log-item')).map(item => ({
         name: item.querySelector('.log-item-title').textContent,
@@ -1935,12 +2447,17 @@ document.addEventListener('DOMContentLoaded', function() {
       milestoneSet: milestoneSet,
       goalAchieved: goalAchieved,
       chartData: calorieData,
+<<<<<<< HEAD
       //Save progress details
+=======
+      // Save progress details
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       progressPercentage: progressPercentage.textContent,
       progressRemainingCalories: progressRemainingCalories.textContent,
       progressBarWidth: progressBar.style.width
     };
     
+<<<<<<< HEAD
     //Save to local storage
     localStorage.setItem('exerciseData', JSON.stringify(exerciseData));
   }
@@ -1962,6 +2479,29 @@ document.addEventListener('DOMContentLoaded', function() {
       logContainer.innerHTML = '';
       
       //Add log items from storage
+=======
+    // Save to local storage
+    localStorage.setItem('exerciseData', JSON.stringify(exerciseData));
+  }
+  
+  // Function to load exercise data from local storage
+  function loadExerciseData() {
+    // Get the current date as a string (YYYY-MM-DD)
+    const dateString = currentDate.toISOString().split('T')[0];
+    
+    // Get data from local storage
+    const exerciseData = JSON.parse(localStorage.getItem('exerciseData')) || {};
+    
+    // Check if data exists for the current date
+    if (exerciseData[dateString]) {
+      const data = exerciseData[dateString];
+      
+      // Clear existing log items
+      const logContainer = document.querySelector('.exerciselog-container');
+      logContainer.innerHTML = '';
+      
+      // Add log items from storage
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       data.exercises.forEach(exercise => {
         const logItem = document.createElement('div');
         logItem.className = 'log-item';
@@ -1975,7 +2515,11 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="log-item-trash"><i class='bx bxs-trash'></i></div>
         `;
         
+<<<<<<< HEAD
         //Add trash icon event listener
+=======
+        // Add trash icon event listener
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
         const trashIcon = logItem.querySelector('.log-item-trash');
         trashIcon.addEventListener('click', function() {
           logItem.style.animation = 'fadeOut 0.3s';
@@ -1990,15 +2534,24 @@ document.addEventListener('DOMContentLoaded', function() {
         logContainer.appendChild(logItem);
       });
       
+<<<<<<< HEAD
       //Update total calories
       totalCalories = data.totalCalories;
       totalCaloriesSpan.textContent = totalCalories > 0 ? `${totalCalories} kcal` : "--";
       
       //Update milestone data
+=======
+      // Update total calories
+      totalCalories = data.totalCalories;
+      totalCaloriesSpan.textContent = totalCalories > 0 ? `${totalCalories} kcal` : "--";
+      
+      // Update milestone data
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       calorieGoal = data.milestoneGoal || 0;
       milestoneSet = data.milestoneSet || false;
       goalAchieved = data.goalAchieved || false;
       
+<<<<<<< HEAD
       //Update milestone input if goal is set
       if (milestoneSet) {
         milestoneInput.value = calorieGoal;
@@ -2008,6 +2561,17 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       //Update chart data
+=======
+      // Update milestone input if goal is set
+      if (milestoneSet) {
+        milestoneInput.value = calorieGoal;
+      } else {
+        // Reset milestone input if no goal is set for this date
+        milestoneInput.value = '';
+      }
+      
+      // Update chart data
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       if (data.chartData) {
         calorieData.forEach((item, index) => {
           if (data.chartData[index]) {
@@ -2017,7 +2581,11 @@ document.addEventListener('DOMContentLoaded', function() {
         updateChart();
       }
       
+<<<<<<< HEAD
       //Update progress details
+=======
+      // Update progress details
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       if (data.progressPercentage) {
         progressPercentage.textContent = data.progressPercentage;
       }
@@ -2030,16 +2598,25 @@ document.addEventListener('DOMContentLoaded', function() {
         progressBar.style.width = data.progressBarWidth;
       }
       
+<<<<<<< HEAD
       //Update progress if milestone is set
+=======
+      // Update progress if milestone is set
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       if (milestoneSet) {
         updateProgress();
       }
     } else {
+<<<<<<< HEAD
       //No data for this date, reset everything
+=======
+      // No data for this date, reset everything
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       resetExerciseData();
     }
   }
   
+<<<<<<< HEAD
   //Function to reset exercise data for a new date
   function resetExerciseData() {
     //Clear log container
@@ -2051,20 +2628,44 @@ document.addEventListener('DOMContentLoaded', function() {
     totalCaloriesSpan.textContent = "--";
     
     //Reset chart data
+=======
+  // Function to reset exercise data for a new date
+  function resetExerciseData() {
+    // Clear log container
+    const logContainer = document.querySelector('.exerciselog-container');
+    logContainer.innerHTML = '';
+    
+    // Reset total calories
+    totalCalories = 0;
+    totalCaloriesSpan.textContent = "--";
+    
+    // Reset chart data
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     calorieData.forEach(item => {
       item.calories = 0;
     });
     updateChart();
     
+<<<<<<< HEAD
     //Reset progress details
+=======
+    // Reset progress details
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     progressPercentage.textContent = "--%";
     progressRemainingCalories.textContent = "-- kcal";
     progressBar.style.width = "0%";
     
+<<<<<<< HEAD
     //Reset milestone input
     milestoneInput.value = '';
     
     //Reset milestone data for this date
+=======
+    // Reset milestone input
+    milestoneInput.value = '';
+    
+    // Reset milestone data for this date
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     calorieGoal = 0;
     milestoneSet = false;
     goalAchieved = false;

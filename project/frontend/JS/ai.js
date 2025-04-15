@@ -5,12 +5,21 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
   const chatContainer = document.querySelector('.chat-container'); //chat container for messages
   const chatMessagesContainer = document.getElementById('chat-messages-container'); //chat messages container
   
+<<<<<<< HEAD
   //Get user ID from localStorage
   const userId = localStorage.getItem('userId') || 'default';
   
   //Function to scroll to the bottom of the chat container
   function scrollToBottom() {
     //Use setTimeout to ensure the DOM has updated before scrolling
+=======
+  // Get user ID from localStorage
+  const userId = localStorage.getItem('userId') || 'default';
+  
+  // Function to scroll to the bottom of the chat container
+  function scrollToBottom() {
+    // Use setTimeout to ensure the DOM has updated before scrolling
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     setTimeout(() => {
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }, 10);
@@ -63,16 +72,26 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
     }, speed);
   }
   
+<<<<<<< HEAD
   //Function to animate text in a message element
   function animateMessageText(element, text, speed, callback) {
     element.textContent = ''; //Clear the element
+=======
+  // Function to animate text in a message element
+  function animateMessageText(element, text, speed, callback) {
+    element.textContent = ''; // Clear the element
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     let charIndex = 0;
     
     const typingInterval = setInterval(() => {
       if (charIndex < text.length) {
         element.textContent += text.charAt(charIndex);
         charIndex++;
+<<<<<<< HEAD
         scrollToBottom(); //Keep scrolling as text is typed
+=======
+        scrollToBottom(); // Keep scrolling as text is typed
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       } else {
         clearInterval(typingInterval);
         if (callback) callback();
@@ -80,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
     }, speed);
   }
   
+<<<<<<< HEAD
   //Function to save chat history to localStorage
   function saveChatHistory(message, isUser = true) {
     try {
@@ -88,26 +108,45 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
       const chatHistory = JSON.parse(localStorage.getItem(chatHistoryKey) || '[]');
       
       //Add new message to history
+=======
+  // Function to save chat history to localStorage
+  function saveChatHistory(message, isUser = true) {
+    try {
+      // Get existing chat history or initialize empty array
+      const chatHistoryKey = `chatHistory_${userId}`;
+      const chatHistory = JSON.parse(localStorage.getItem(chatHistoryKey) || '[]');
+      
+      // Add new message to history
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       chatHistory.push({
         text: message,
         isUser: isUser,
         timestamp: new Date().toISOString()
       });
       
+<<<<<<< HEAD
       //Save updated history
+=======
+      // Save updated history
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       localStorage.setItem(chatHistoryKey, JSON.stringify(chatHistory));
     } catch (error) {
       console.error('Error saving chat history:', error);
     }
   }
   
+<<<<<<< HEAD
   //Function to load chat history from localStorage
+=======
+  // Function to load chat history from localStorage
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
   function loadChatHistory() {
     try {
       const chatHistoryKey = `chatHistory_${userId}`;
       const chatHistory = JSON.parse(localStorage.getItem(chatHistoryKey) || '[]');
       
       if (chatHistory.length > 0) {
+<<<<<<< HEAD
         //Reposition page elements first
         repositionPage();
         
@@ -115,11 +154,21 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
         chatContainer.classList.add('visible');
         
         //Display each message
+=======
+        // Reposition page elements first
+        repositionPage();
+        
+        // Show chat container if there's history
+        chatContainer.classList.add('visible');
+        
+        // Display each message
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
         chatHistory.forEach(message => {
           const messageElement = document.createElement('div');
           messageElement.className = message.isUser ? 'user-messages' : 'chat-messages';
           chatMessagesContainer.appendChild(messageElement);
           
+<<<<<<< HEAD
           //Display all messages immediately without animation
           messageElement.textContent = message.text;
         });
@@ -128,6 +177,16 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
         scrollToBottom();
         
         //Set textarea placeholder
+=======
+          // Display all messages immediately without animation
+          messageElement.textContent = message.text;
+        });
+        
+        // Scroll to bottom after loading all messages
+        scrollToBottom();
+        
+        // Set textarea placeholder
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
         textarea.placeholder = "Reply to Healix...";
       }
     } catch (error) {
@@ -137,6 +196,7 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
   
   async function getAIResponse(message) {
     try {
+<<<<<<< HEAD
       //Get user data from localStorage
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
       const userId = userData._id || (userData.profile && userData.profile._id);
@@ -145,6 +205,16 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
       const today = new Date().toISOString().split('T')[0];
       
       //Get sleep logs for today
+=======
+      // Get user data from localStorage
+      const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+      const userId = userData._id || (userData.profile && userData.profile._id);
+      
+      // Get today's date
+      const today = new Date().toISOString().split('T')[0];
+      
+      // Get sleep logs for today
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const sleepLogsKey = `healthai_sleepLogs_${userId}_${today}`;
       let sleepLogs = [];
       try {
@@ -157,7 +227,11 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
         console.error('Error parsing sleep logs:', error);
       }
       
+<<<<<<< HEAD
       //Get nutrition data from localStorage
+=======
+      // Get nutrition data from localStorage
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const userNutrition = JSON.parse(localStorage.getItem(`userNutrition_${userId}`) || '{}');
       const todayNutrition = userNutrition[today] || {
         calories: 0,
@@ -167,27 +241,46 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
         exerciseCalories: 0
       };
 
+<<<<<<< HEAD
       //Get exercise data from localStorage
       const exerciseData = JSON.parse(localStorage.getItem('exerciseData') || '{}');
 
       //Get the mealData from localStorage to get accurate macro information
+=======
+      // Get exercise data from localStorage
+      const exerciseData = JSON.parse(localStorage.getItem('exerciseData') || '{}');
+
+      // Get the mealData from localStorage to get accurate macro information
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const mealData = JSON.parse(localStorage.getItem('mealData') || '{}');
       const todayMealData = mealData[today];
       
       if (todayMealData) {
+<<<<<<< HEAD
         //Update nutrition values from meal data
+=======
+        // Update nutrition values from meal data
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
         todayNutrition.calories = todayMealData.totalCalories || todayNutrition.calories;
         todayNutrition.protein = todayMealData.totalProtein || todayNutrition.protein;
         todayNutrition.carbs = todayMealData.totalCarbs || todayNutrition.carbs;
         todayNutrition.fats = todayMealData.totalFats || todayNutrition.fats;
       }
       
+<<<<<<< HEAD
       //Also check for dailyNutrition in localStorage
+=======
+      // Also check for dailyNutrition in localStorage
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const dailyNutritionData = localStorage.getItem('dailyNutrition');
       if (dailyNutritionData) {
         try {
           const parsedData = JSON.parse(dailyNutritionData);
+<<<<<<< HEAD
           //Use the values from dailyNutrition if they're non-zero
+=======
+          // Use the values from dailyNutrition if they're non-zero
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
           if (parsedData.protein > 0) todayNutrition.protein = parsedData.protein;
           if (parsedData.carbs > 0) todayNutrition.carbs = parsedData.carbs;
           if (parsedData.fats > 0) todayNutrition.fats = parsedData.fats;
@@ -197,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
         }
       }
 
+<<<<<<< HEAD
       //Get exercise calories
       const exerciseCalories = localStorage.getItem(`healthai_exercise_${userId}`) || '0';
       
@@ -205,6 +299,16 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
       let latestWeightData = null;
       
       //First check the latest weight key (most reliable)
+=======
+      // Get exercise calories
+      const exerciseCalories = localStorage.getItem(`healthai_exercise_${userId}`) || '0';
+      
+      // Get the most up-to-date weight data from multiple sources
+      let latestWeight = null;
+      let latestWeightData = null;
+      
+      // First check the latest weight key (most reliable)
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const latestWeightKey = `healthai_latestWeight_${userId}`;
       const latestWeightObj = JSON.parse(localStorage.getItem(latestWeightKey) || '{}');
       if (latestWeightObj && latestWeightObj.weight) {
@@ -213,7 +317,11 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
         console.log(`Using latest weight from latestWeightKey: ${latestWeight}`);
       }
       
+<<<<<<< HEAD
       //If not found, check the user data object
+=======
+      // If not found, check the user data object
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       if (!latestWeight) {
         const healthai_user_data = JSON.parse(localStorage.getItem('healthai_user_data') || '{}');
         if (healthai_user_data && healthai_user_data.currentWeight) {
@@ -222,21 +330,36 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
         }
       }
       
+<<<<<<< HEAD
       //If still not found, use the global CURRENT_WEIGHT key
+=======
+      // If still not found, use the global CURRENT_WEIGHT key
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       if (!latestWeight) {
         latestWeight = localStorage.getItem('CURRENT_WEIGHT');
         console.log(`Using latest weight from CURRENT_WEIGHT: ${latestWeight}`);
       }
       
+<<<<<<< HEAD
       //Get complete health data
       const healthData = JSON.parse(localStorage.getItem('healthai_health_data') || '{}');
       
       //Construct user data object with all necessary data
+=======
+      // Get complete health data
+      const healthData = JSON.parse(localStorage.getItem('healthai_health_data') || '{}');
+      
+      // Construct user data object with all necessary data
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const userDataForAI = {
         profile: JSON.parse(localStorage.getItem('userProfile') || '{}'),
         health: {
           ...healthData,
+<<<<<<< HEAD
           weight: parseFloat(latestWeight) || healthData.weight, //Use latest weight if available
+=======
+          weight: parseFloat(latestWeight) || healthData.weight, // Use latest weight if available
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
           goalWeight: parseFloat(localStorage.getItem('GOAL_WEIGHT')) || healthData.goalWeight
         },
         weights: JSON.parse(localStorage.getItem('userWeights') || '[]'),
@@ -261,7 +384,11 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
       
       console.log('Sending data to AI:', userDataForAI);
       
+<<<<<<< HEAD
       //Send request to backend
+=======
+      // Send request to backend
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const response = await fetch('/api/ai/chat', {
         method: 'POST',
         headers: {
@@ -287,9 +414,15 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
   }
   
   function performAction() {
+<<<<<<< HEAD
     //Check if the button is already clicked (loading in progress)
     if(buttonClicked) {
       return; //Exit the function if already processing a message
+=======
+    // Check if the button is already clicked (loading in progress)
+    if(buttonClicked) {
+      return; // Exit the function if already processing a message
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
     }
     
     if(textarea.value.trim() !== '') {
@@ -297,10 +430,17 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
       searchBtn.classList.add('hidden');
       buttonClicked = true;
       
+<<<<<<< HEAD
       //Get the user's message
       const userMessage = textarea.value.trim();
       
       //Clear the textarea
+=======
+      // Get the user's message
+      const userMessage = textarea.value.trim();
+      
+      // Clear the textarea
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       textarea.value = '';
       
       autoResize();
@@ -312,6 +452,7 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
       loader.style.opacity = '0';
       loader.style.visibility = 'visible';
       
+<<<<<<< HEAD
       //Wait for page repositioning to complete before showing the chat container
       setTimeout(() => {
         //Show the chat container if this is the first message
@@ -319,36 +460,68 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
           chatContainer.classList.add('visible');
           
           //Add user message to the chat container after a short delay
+=======
+      // Wait for page repositioning to complete before showing the chat container
+      setTimeout(() => {
+        // Show the chat container if this is the first message
+        if (!chatContainer.classList.contains('visible')) {
+          chatContainer.classList.add('visible');
+          
+          // Add user message to the chat container after a short delay
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
           setTimeout(() => {
             const userMessageElement = document.createElement('div');
             userMessageElement.className = 'user-messages';
             chatMessagesContainer.appendChild(userMessageElement);
             
+<<<<<<< HEAD
             //Animate the user message text
             animateMessageText(userMessageElement, userMessage, 30, () => {
               //Only after user message animation is complete, get AI response
+=======
+            // Animate the user message text
+            animateMessageText(userMessageElement, userMessage, 30, () => {
+              // Only after user message animation is complete, get AI response
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
               setTimeout(() => {
                 loader.style.transition = 'opacity 0.4s ease-in-out';
         loader.style.opacity = '1';
         
+<<<<<<< HEAD
                 //Get AI response
+=======
+                // Get AI response
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
                 getAIResponse(userMessage).then(aiResponse => {
           loader.style.opacity = 0;
           
                   setTimeout(() => {
             loader.style.visibility = 'hidden';
             
+<<<<<<< HEAD
                     //Add AI response to the chat container
+=======
+                    // Add AI response to the chat container
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
                     const chatMessageElement = document.createElement('div');
                     chatMessageElement.className = 'chat-messages';
                     chatMessagesContainer.appendChild(chatMessageElement);
                     
+<<<<<<< HEAD
                     //Save AI response to chat history
                     saveChatHistory(aiResponse, false);
                     
                     //Animate the AI response text
                     animateMessageText(chatMessageElement, aiResponse, 30, function() {
                       //After animation completes, enable the textarea
+=======
+                    // Save AI response to chat history
+                    saveChatHistory(aiResponse, false);
+                    
+                    // Animate the AI response text
+                    animateMessageText(chatMessageElement, aiResponse, 30, function() {
+                      // After animation completes, enable the textarea
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
                       textarea.disabled = false;
                       textarea.placeholder = '';
                       typeText(textarea, "Reply to Healix...", 40, function() {
@@ -361,6 +534,7 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
               }, 100);
             });
             
+<<<<<<< HEAD
             //Save user message to chat history
             saveChatHistory(userMessage, true);
             
@@ -369,35 +543,68 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
           }, 300);
         } else {
           //If chat container is already visible, add the message immediately
+=======
+            // Save user message to chat history
+            saveChatHistory(userMessage, true);
+            
+            // Scroll to the bottom after adding user message
+            scrollToBottom();
+          }, 300);
+        } else {
+          // If chat container is already visible, add the message immediately
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
           const userMessageElement = document.createElement('div');
           userMessageElement.className = 'user-messages';
           chatMessagesContainer.appendChild(userMessageElement);
           
+<<<<<<< HEAD
           //Animate the user message text
           animateMessageText(userMessageElement, userMessage, 30, () => {
             //Only after user message animation is complete, get AI response
+=======
+          // Animate the user message text
+          animateMessageText(userMessageElement, userMessage, 30, () => {
+            // Only after user message animation is complete, get AI response
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
             setTimeout(() => {
               loader.style.transition = 'opacity 0.4s ease-in-out';
               loader.style.opacity = '1';
               
+<<<<<<< HEAD
               //Get AI response
+=======
+              // Get AI response
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
               getAIResponse(userMessage).then(aiResponse => {
                 loader.style.opacity = 0;
                 
                 setTimeout(() => {
                   loader.style.visibility = 'hidden';
                   
+<<<<<<< HEAD
                   //Add AI response to the chat container
+=======
+                  // Add AI response to the chat container
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
                   const chatMessageElement = document.createElement('div');
                   chatMessageElement.className = 'chat-messages';
                   chatMessagesContainer.appendChild(chatMessageElement);
                   
+<<<<<<< HEAD
                   //Save AI response to chat history
                   saveChatHistory(aiResponse, false);
                   
                   //Animate the AI response text
                   animateMessageText(chatMessageElement, aiResponse, 30, function() {
                     //After animation completes, enable the textarea
+=======
+                  // Save AI response to chat history
+                  saveChatHistory(aiResponse, false);
+                  
+                  // Animate the AI response text
+                  animateMessageText(chatMessageElement, aiResponse, 30, function() {
+                    // After animation completes, enable the textarea
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
                     textarea.disabled = false;
                     textarea.placeholder = '';
                     typeText(textarea, "Reply to Healix...", 40, function() {
@@ -410,10 +617,17 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
       }, 100);
           });
           
+<<<<<<< HEAD
           //Save user message to chat history
           saveChatHistory(userMessage, true);
           
           //Scroll to the bottom after adding user message
+=======
+          // Save user message to chat history
+          saveChatHistory(userMessage, true);
+          
+          // Scroll to the bottom after adding user message
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
           scrollToBottom();
         }
       }, 550);
@@ -443,6 +657,7 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
   
   setTimeout(autoResize, 0);
   
+<<<<<<< HEAD
   //Load chat history when page loads
   loadChatHistory();
 
@@ -455,18 +670,40 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
       localStorage.removeItem(chatHistoryKey);
       
       //Clear chat messages from UI
+=======
+  // Load chat history when page loads
+  loadChatHistory();
+
+  // Add reset chat functionality
+  const resetChatBtn = document.getElementById('reset-chat');
+  if (resetChatBtn) {
+    resetChatBtn.addEventListener('click', function() {
+      // Clear chat history from localStorage
+      const chatHistoryKey = `chatHistory_${userId}`;
+      localStorage.removeItem(chatHistoryKey);
+      
+      // Clear chat messages from UI
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const chatMessagesContainer = document.getElementById('chat-messages-container');
       if (chatMessagesContainer) {
         chatMessagesContainer.innerHTML = '';
       }
       
+<<<<<<< HEAD
       //Hide chat container
+=======
+      // Hide chat container
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const chatContainer = document.querySelector('.chat-container');
       if (chatContainer) {
         chatContainer.classList.remove('visible');
       }
       
+<<<<<<< HEAD
       //Reset page layout
+=======
+      // Reset page layout
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const greeting = document.getElementById('chat-greeting');
       const chatArea = document.querySelector('.chat');
       
@@ -476,7 +713,11 @@ document.addEventListener('DOMContentLoaded', function() { //load all elements o
         chatArea.style.top = '50%';
       }
       
+<<<<<<< HEAD
       //Reset textarea
+=======
+      // Reset textarea
+>>>>>>> 0a94f13c0c78cfdafe7b5a984a8b46827db9275b
       const textarea = document.getElementById('chat-text');
       if (textarea) {
         textarea.value = '';
