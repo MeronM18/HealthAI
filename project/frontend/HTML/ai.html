@@ -42,7 +42,6 @@
         </a>
       </div>
       <div class="right-section">
-        <img class="pfp" src="/images/profileicon.jpg">
         <h3>username</h3>
         <button class="drop-button" id="submenu-btn">
           <i class='bx bx-chevron-up downarrow-icon'></i>
@@ -91,8 +90,15 @@
           <button id="search" class="hidden"><i class='bx bx-up-arrow-alt'></i></button>
           <span class="loader"></span>
         </div>
+
+        <div class="chat-container">
+          <div id="chat-messages-container"></div>
+        </div>
       </div>
 
+      <button id="reset-chat" class="reset-chat-btn" title="Clear chat history">
+        Clear <i class='bx bx-trash'></i>
+      </button>
     </main>
   </div>
 </body>
