@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
 const User = require('../models/user');
+const Profile = require('../models/Profile');
 
 // @route   POST /api/auth/register
 // @desc    Register a user
@@ -84,62 +85,65 @@ router.post(
 // @route   POST /api/auth/login
 // @desc    Authenticate user & get token
 // @access  Public
-router.post(
-  '/login',
-  [
-    check('username', 'Please include a valid username').not().isEmpty(),
-    check('password', 'Password is required').exists()
-  ],
-  async (req, res) => {
-    console.log('Login endpoint hit with username:', req.body.username);
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
+router.post('/login', async (req, res) => {
+  try {
     const { username, password } = req.body;
-
-    try {
-      // Check if user exists by username
-      let user = await User.findOne({ username });
-
-      if (!user) {
-        console.log('Invalid login attempt - user not found:', username);
-        return res.status(400).json({ msg: 'Invalid Credentials' });
-      }
-
-      // Check password
-      const isMatch = await bcrypt.compare(password, user.password);
-
-      if (!isMatch) {
-        console.log('Invalid login attempt - password mismatch for:', username);
-        return res.status(400).json({ msg: 'Invalid Credentials' });
-      }
-
-      // Create and return JWT
-      const payload = {
-        user: {
-          id: user.id
-        }
-      };
-
-      jwt.sign(
-        payload,
-        process.env.JWT_SECRET,
-        { expiresIn: '1h' }, // Token expires in 1 hour
-        (err, token) => {
-          if (err) throw err;
-          console.log('Login successful for:', username);
-          res.json({ token });
-        }
-      );
-    } catch (err) {
-      console.error('Login error:', err.message);
-      res.status(500).send('Server Error');
+    
+    console.log('Login attempt for username:', username);
+    
+    // Validate input
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Please provide username and password' });
     }
+    
+    // Check for user
+    const user = await User.findOne({ username });
+    if (!user) {
+      console.log('Login failed: Username not found');
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
+    
+    // Compare password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      console.log('Login failed: Password mismatch');
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
+    
+    // Get user's profile
+    const profile = await Profile.findOne({ user: user._id });
+    
+    // Create token
+    const payload = {
+      user: {
+        id: user.id
+      }
+    };
+    
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '24h' },
+      (err, token) => {
+        if (err) throw err;
+        console.log('Login successful for:', username);
+        res.json({
+          token,
+          user: {
+            id: user.id, // Include the user ID in the response
+            _id: user.id, // Also include as _id for consistency
+            username: user.username,
+            email: user.email,
+            profilePicture: profile ? profile.profilePicture : user.profilePicture
+          }
+        });
+      }
+    );
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).json({ error: 'Server error' });
   }
-);
+});
 
 // @route   GET /api/auth/user
 // @desc    Get user data
