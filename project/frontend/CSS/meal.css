@@ -96,8 +96,9 @@ main.after {
   position: relative;
   width: max-content;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
   color: white;
+  font-family: "Poppins", serif;
 }
 
 .caloriecount h2::after{
@@ -123,6 +124,13 @@ main.after {
   left: 50%;
   top: 6%;
   transform: translate(-50%, -50%);
+}
+
+.top-title h2{
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  font-family: "Poppins", serif;
 }
 
 .diarydate{
@@ -153,6 +161,26 @@ main.after {
   width: max-content;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
 .searchmeals{
   position: absolute;
   display: flex;
@@ -166,11 +194,15 @@ main.after {
   border-radius: var(--border-radius-2);
   border: 1px solid white;
   transition: 100ms ease-in;
-  z-index: 1;
+  z-index: 1001;
   overflow-y: auto;
-
   opacity: 0;
   visibility: hidden;
+}
+
+.searchmeals.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .searchmeals header{
@@ -436,7 +468,9 @@ main.after {
 
 .servingsize h2{
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
+  color: white;
+  font-family: "Poppins", serif;
   margin-right: 10px;
 }
 
@@ -533,9 +567,10 @@ main.after {
 .lunchtopbar h2,
 .drinkstopbar h2,
 .dinnertopbar h2{
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 700;
-  color: rgb(196, 217, 255);
+  color: white;
+  font-family: "Poppins", serif;
 }
 
 .breakfasttopbar h2 i,
@@ -665,6 +700,18 @@ main.after {
 
 .foodlogitem .right span{
   padding-right: 10px;
+}
+
+.foodlogitem .right span.food-item-trash {
+  cursor: pointer;
+}
+
+.foodlogitem .right span.food-item-trash i {
+  transition: color 0.2s ease;
+}
+
+.foodlogitem .right span.food-item-trash:hover i {
+  color: var(--red-color);
 }
 
 .macros{
@@ -898,6 +945,7 @@ main.after {
     font-size: 15px;
     font-weight: 500;
     margin-right: 8px;
+    color: black;
   }
   .servingsize input,
   #unitsdropdown{

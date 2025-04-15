@@ -508,6 +508,7 @@ main.after {
 
   visibility: hidden;
   opacity: 0;
+  display: none;
 }
 
 .categories{
@@ -525,6 +526,7 @@ main.after {
   justify-content: space-evenly;
   flex-direction: row;
   gap: 10px;
+  cursor: pointer;
 }
 
 .exercise-category{
@@ -799,6 +801,32 @@ main.after {
 
 .suggestionsdiv i{
   font-size: 20px;
+}
+
+#exercisesuggestions .exercise-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#exercisesuggestions .exercise-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+}
+
+#exercisesuggestions #workout-name {
+  font-weight: 400;
+  flex-grow: 1;
+}
+
+#exercisesuggestions #workout-category {
+  color: #666;
+  font-size: 14px;
 }
 
 .duration-exercise-container{

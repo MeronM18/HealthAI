@@ -1,73 +1,73 @@
 const getChartOptions = () => {
   return {
-    series: [10, 0, 0],  // Data for the doughnut
-    colors: ["#0fb040", "#e72e2e", "#1c56c1"],  // Colors for the slices
+    series: [10, 0, 0],  //Data for the doughnut
+    colors: ["#0fb040", "#e72e2e", "#1c56c1"],  //Colors for the slices
     chart: {
       height: 220,
       width: "100%",
-      type: "donut",  // Ensure the type is donut
+      type: "donut",  //Ensure the type is donut
     },
     plotOptions: {
       pie: {
         donut: {
           labels: {
-            show: true,  // Show the labels inside the doughnut
+            show: true,  //Show the labels inside the doughnut
             name: {
-              show: true,  // Show the name of each segment
-              fontSize: '18px',  // Size of the name text
-              fontWeight: 700,  // Font weight of the name
-              color: '#ffffff',  // Changed to white for "Calories" text
-              offsetY: 20,  // Vertical offset of the name text
+              show: true,  //Show the name of each segment
+              fontSize: '18px',  //Size of the name text
+              fontWeight: 700,  //Font weight of the name
+              color: '#ffffff',  //Changed to white for "Calories" text
+              offsetY: 20,  //Vertical offset of the name text
             },
             value: {
-              show: true,  // Show the value inside the doughnut
-              fontSize: '21px',  // Size of the value text
-              color: '#FFFFFF',  // Already white for the "10kcal" value
-              offsetY: -20,  // Vertical offset of the value text
+              show: true,  //Show the value inside the doughnut
+              fontSize: '21px',  //Size of the value text
+              color: '#FFFFFF',  //Already white for the "10kcal" value
+              offsetY: -20,  //Vertical offset of the value text
               formatter: function (value) {
-                return value + "kcal";  // Format the value
+                return value + "kcal";  //Format the value
               },
             },
             total: {
-              showAlways: true,  // Always show the total label
+              showAlways: true,  //Always show the total label
               show: true,
-              label: "Remaining",  // Label for the total
+              label: "Remaining",  //Label for the total
               fontSize: '18px',
-              color: '#a0a0a0',  // Changed to lighter gray for "Remaining" text
+              color: '#a0a0a0',  //Changed to lighter gray for "Remaining" text
               formatter: function (w) {
                 const sum = w.globals.seriesTotals.reduce((a, b) => {
                   return a + b;
                 }, 0);
-                return sum + ' kcal';  // Total sum value formatting
+                return sum + ' kcal';  //Total sum value formatting
               },
             },
           },
-          size: "80%",  // Set the size of the donut
+          size: "80%",  //Set the size of the donut
         },
       },
     },
     dataLabels: {
-      enabled: false,  // Disable the default data labels
+      enabled: false,  //Disable the default data labels
     },
     labels: [
-      `Goal: 10 kcal`,  // Show label with value
-      `Food: 0 kcal`,  // Show label with value
-      `Exercise: 0 kcal`,  // Show label with value
-    ],  // Labels for the donut slices, now including values
+      `Goal: 10 kcal`,  //Show label with value
+      `Food: 0 kcal`,  //Show label with value
+      `Exercise: 0 kcal`,  //Show label with value
+    ],  //Labels for the donut slices, now including values
     legend: {
       position: 'right',
-      fontSize: '25px',  // Font size for legend labels
+      fontSize: '25px',  //Font size for legend labels
       fontWeight: 700,
       labels: {
-        colors: '#ffffff',  // Changed legend text color to white
+        colors: '#ffffff',  //Changed legend text color to white
       },
       markers: {
-        width: 12,  // Width of the marker
-        height: 12,  // Height of the marker
+        width: 12,  //Width of the marker
+        height: 12,  //Height of the marker
       },
       itemMargin: {
-        horizontal: 0,  // Horizontal margin between legend items
-        vertical: 12,  // Vertical margin between legend items
+        horizontal: 0,  //Horizontal margin between legend items
+        vertical: 12,  //Vertical margin between legend items
       },
     },
   };
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /********************************************************************************************************************************************************** */
 
 document.addEventListener("DOMContentLoaded", function() {
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];  // Array of months
+  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];  //Array of months
   const data = {
     labels: labels,
     datasets: [{
@@ -121,11 +121,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const DATA_COUNT = 3;
   const labels = ['Protein', 'Carbohydrates', 'Fats'];
   
-  // Function to get configuration based on screen width
+  //Function to get configuration based on screen width
   function getChartConfig() {
     const screenWidth = window.innerWidth;
     
-    // Base configuration
+    //Base configuration
     const config = {
       type: 'bar',
       data: {
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
         datasets: [
           {
             label: 'Grams',
-            data: [], // Sample data
+            data: [], //Sample data
             borderColor: 'rgb(0, 0, 0)',
             backgroundColor: 'rgb(34, 43, 56)',
           },
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (screenWidth <= 1080) {
       config.options.plugins.title.font.size = 20;
       config.options.scales.x.ticks.stepSize = 20;
-      // Hide legend on very small screens or adjust its position
+      //Hide legend on very small screens or adjust its position
       if (screenWidth < 768) {
         config.options.plugins.legend.display = false;
       }
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const macroChart = new Chart(ctx, getChartConfig());
   
   window.addEventListener('resize', function() {
-    macroChart.destroy(); // Destroy previous chart
+    macroChart.destroy(); //Destroy previous chart
     const newChart = new Chart(ctx, getChartConfig());
   });
 });
@@ -301,4 +301,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  console.log('Chart.js loaded - not initializing linechart (handled by health.js)');
 });

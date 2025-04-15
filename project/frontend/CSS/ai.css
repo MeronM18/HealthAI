@@ -208,6 +208,114 @@ main.after {
   opacity: 0;
 }
 
+.chat-container{
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 28rem;
+  width: 43rem;
+  background-color: transparent;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  scroll-behavior: smooth;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.chat-container.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#chat-messages-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: min-content;
+}
+
+.user-messages{
+  position: relative;
+  align-self: flex-end;
+  width: 65%;
+  height: max-content;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1.4rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages{
+  position: relative;
+  align-self: flex-start;
+  width: 65%;
+  height: max-content;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1.4rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a message bubble effect */
+.user-messages::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 255, 255);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+.chat-messages::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+
+/* Add scrollbar styling for the chat container */
+.chat-container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.chat-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -264,5 +372,54 @@ main.after {
     top: 0.4rem;
     width: 1.8rem;
     height: 1.8rem;
+  }
+}
+
+.reset-chat-btn {
+  position: fixed;
+  top: 120px;
+  right: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+  height: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  width: 6rem;
+}
+
+.reset-chat-btn i {
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.reset-chat-btn:hover {
+  background: rgba(255, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.reset-chat-btn:hover i {
+  transform: scale(1.1);
+}
+
+@media (max-width: 1550px) {
+  .reset-chat-btn {
+    top: 100px;
+    height: 2.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .reset-chat-btn i {
+    font-size: 1rem;
   }
 }

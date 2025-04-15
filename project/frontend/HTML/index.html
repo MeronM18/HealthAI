@@ -33,10 +33,8 @@
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
       const userId = userData._id || (userData.profile && userData.profile._id);
       
-      // Try multiple storage keys in order of priority
       let calorieGoal = null;
       
-      // First try user-specific key - most reliable source
       if (userId) {
         const userSpecificKey = `healthai_calorieGoal_${userId}`;
         calorieGoal = localStorage.getItem(userSpecificKey);
@@ -45,7 +43,6 @@
         }
       }
       
-      // If not found, try healthai_calorie_goal
       if (!calorieGoal) {
         calorieGoal = localStorage.getItem('healthai_calorie_goal');
         if (calorieGoal) {
@@ -53,7 +50,6 @@
         }
       }
       
-      // If still not found, try CALORIE_GOAL
       if (!calorieGoal) {
         calorieGoal = localStorage.getItem('CALORIE_GOAL');
         if (calorieGoal) {
@@ -61,7 +57,6 @@
         }
       }
       
-      // Return the found value or a default of 2000
       return calorieGoal || "2000";
     }
     
