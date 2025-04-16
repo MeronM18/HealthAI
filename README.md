@@ -4,6 +4,8 @@ Project Name: HealthAI
 
 Team Members: Meron Matti and Jasmanpreet Singh
 
+GitHub Usernames: MeronM18 and Jasman047
+
 Project Description: 
 
 What is HealthAI?
