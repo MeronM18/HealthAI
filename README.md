@@ -23,6 +23,9 @@ Project Estimated Time Needed:
 8 hours a week, 
 10 weeks 
 
+# **Architecture Diagram**
+![image](https://github.com/user-attachments/assets/ede40689-8287-45bd-9cad-4f1175c64f99)
+
 # **Demo Video**
 
 https://youtu.be/H7M7AJPNw8M
